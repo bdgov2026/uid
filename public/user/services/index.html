@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ই-সেবা ও সনদসমূহ | UID</title>
+    
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+         
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap');
+        
+        :root {
+            --primary-color: #059669;  
+            --primary-light: #ecfdf5;
+            --primary-dark: #047857;
+            --bg-body: #f8fafc;
+            --bg-sidebar: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --border-color: rgba(226, 232, 240, 0.8);
+        }
+
+        body {
+            font-family: 'Noto Sans Bengali', 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;  
+        }
+        
+        .font-mono-code { font-family: 'Fira Code', monospace; }
+
+         
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+         
+        .icon-sm { width: 1.25rem; height: 1.25rem; }
+        .icon-md { width: 1.5rem; height: 1.5rem; }
+        .icon-lg { width: 2rem; height: 2rem; }
+        .icon-xl { width: 3rem; height: 3rem; }
+
+         
+        .text-xs { font-size: 0.75rem; }
+        .text-sm { font-size: 0.875rem; }
+        .tracking-wider { letter-spacing: 0.05em; }
+        .tracking-widest { letter-spacing: 0.08em; }
+
+         
+        .sidebar-wrapper {
+            width: 290px;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            z-index: 1040;
+            box-shadow: 4px 0 24px rgba(0,0,0,0.02);
+        }
+        
+         
+        .hover-bg-light { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+        .hover-bg-light:hover { 
+            background-color: #f1f5f9; 
+            color: #0f172a !important; 
+            transform: translateX(5px);
+        }
+        
+         
+        .nav-link-base {
+            border-radius: 0.75rem;
+            margin: 0.15rem 0;
+        }
+
+        .nav-link-active {
+            background-color: var(--primary-light) !important;
+            color: var(--primary-dark) !important;
+            font-weight: 600;
+            box-shadow: 0 1px 3px rgba(5, 150, 105, 0.1);
+            position: relative;
+        }
+        .nav-link-active::before {
+            content: '';
+            position: absolute;
+            left: -1rem;  
+            top: 15%; height: 70%; width: 4px;
+            background-color: var(--primary-color);
+            border-radius: 0 4px 4px 0;
+        }
+        .nav-link-active svg { color: var(--primary-color); }
+        
+        .nav-link-inactive {
+            color: var(--text-muted);
+        }
+        .nav-link-inactive svg { color: #94a3b8; transition: color 0.2s ease; }
+        .hover-bg-light:hover svg { color: #475569; }
+
+         
+        .main-wrapper {
+            background-color: var(--bg-body);
+        }
+
+         
+        .header-glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem; 
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+        }
+        
+         
+        .btn-float {
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .btn-float:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px -2px rgba(0,0,0,0.05);
+            border-color: #cbd5e1 !important;
+        }
+        
+        .section-title {
+            font-size: 11px;
+            color: #94a3b8;
+        }
+    </style>
+
+    
+    
+</head>
+<body class="d-flex vh-100 overflow-hidden text-body">
+    
+    
+    <aside class="d-none d-lg-flex flex-column sidebar-wrapper">
+        
+        <div class="p-4 d-flex align-items-center gap-3">
+            <div class="d-flex align-items-center justify-content-center text-white fw-bold shadow-sm rounded-4 flex-shrink-0" style="width: 52px; height: 52px; background: linear-gradient(135deg, #059669 0%, #047857 100%); border: 2px solid rgba(255,255,255,0.3);">
+                <svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path></svg>
+            </div>
+            <div>
+                <h1 class="fw-bold m-0 fs-6 text-dark" style="letter-spacing: -0.01em;">UID</h1>
+                <p class="m-0 text-muted tracking-wider text-uppercase fw-bold" style="font-size: 10px;">নাগরিক পরিচয়</p>
+            </div>
+        </div>
+
+        
+        <nav class="flex-grow-1 px-3 pb-3 d-flex flex-column gap-1 overflow-auto">
+            
+            
+            <a href="http://localhost:1313/user/" class="nav-link-base d-flex align-items-center gap-3 px-3 py-2.5 text-decoration-none nav-link-inactive hover-bg-light">
+                <svg class="icon-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                <span class="text-sm">ড্যাশবোর্ড</span>
+            </a>
+
+            
+            <div class="mt-4 mb-2 px-3 d-flex align-items-center">
+                <span class="section-title text-uppercase fw-bold tracking-widest">মূল পরিচয়</span>
+                <div class="flex-grow-1 border-bottom ms-3" style="border-color: #e2e8f0 !important;"></div>
+            </div>
+            
+            <a href="http://localhost:1313/user/lineage/" class="nav-link-base d-flex align-items-center gap-3 px-3 py-2.5 text-decoration-none nav-link-inactive hover-bg-light">
+                <svg class="icon-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <span class="text-sm">বংশলতিকা</span>
+            </a>
+            
+            <a href="http://localhost:1313/user/health/" class="nav-link-base d-flex align-items-center gap-3 px-3 py-2.5 text-decoration-none nav-link-inactive hover-bg-light">
+                <svg class="icon-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                <span class="text-sm">স্বাস্থ্য ও জেনেটিক্স</span>
+            </a>
+
+            
+            <div class="mt-4 mb-2 px-3 d-flex align-items-center">
+                <span class="section-title text-uppercase fw-bold tracking-widest">সেবা মডিউল</span>
+                <div class="flex-grow-1 border-bottom ms-3" style="border-color: #e2e8f0 !important;"></div>
+            </div>
+            
+            <a href="http://localhost:1313/user/wallet/" class="nav-link-base d-flex align-items-center gap-3 px-3 py-2.5 text-decoration-none nav-link-inactive hover-bg-light">
+                <svg class="icon-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                <span class="text-sm">ডিজিটাল ওয়ালেট</span>
+            </a>
+
+            <a href="http://localhost:1313/user/finance/" class="nav-link-base d-flex align-items-center gap-3 px-3 py-2.5 text-decoration-none nav-link-inactive hover-bg-light">
+                <svg class="icon-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span class="text-sm">অর্থ ও কর</span>
+            </a>
+
+            <a href="http://localhost:1313/user/assets/" class="nav-link-base d-flex align-items-center gap-3 px-3 py-2.5 text-decoration-none nav-link-inactive hover-bg-light">
+                <svg class="icon-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                <span class="text-sm">সম্পদ ও ভূমি</span>
+            </a>
+
+            <a href="http://localhost:1313/user/education/" class="nav-link-base d-flex align-items-center gap-3 px-3 py-2.5 text-decoration-none nav-link-inactive hover-bg-light">
+                <svg class="icon-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path></svg>
+                <span class="text-sm">শিক্ষা ও দক্ষতা</span>
+            </a>
+            <a href="http://localhost:1313/user/career/" class="nav-link-base d-flex align-items-center gap-3 px-3 py-2.5 text-decoration-none nav-link-inactive hover-bg-light">
+                <svg class="icon-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                <span class="text-sm">কর্মজীবন</span>
+            </a>
+
+            <a href="http://localhost:1313/user/civic/" class="nav-link-base d-flex align-items-center gap-3 px-3 py-2.5 text-decoration-none nav-link-inactive hover-bg-light">
+                <svg class="icon-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
+                <span class="text-sm">নাগরিক ও আইনি</span>
+            </a>
+            <a href="http://localhost:1313/user/utility/" class="nav-link-base d-flex align-items-center gap-3 px-3 py-2.5 text-decoration-none nav-link-inactive hover-bg-light">
+                <svg class="icon-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <span class="text-sm">ইউটিলিটি সেবা</span>
+            </a>
+            
+            <a href="http://localhost:1313/user/safetynet/" class="nav-link-base d-flex align-items-center gap-3 px-3 py-2.5 text-decoration-none nav-link-inactive hover-bg-light">
+                <svg class="icon-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                <span class="text-sm">কল্যাণ ও ভর্তুকি</span>
+            </a>
+            <a href="http://localhost:1313/user/services/" class="nav-link-base d-flex align-items-center gap-3 px-3 py-2.5 text-decoration-none nav-link-inactive hover-bg-light">
+                <svg class="icon-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                <span class="text-sm">সরকারি অন্যান্য সেবা</span>
+            </a>
+
+            
+            <div class="mt-4 mb-2 px-3 d-flex align-items-center">
+                <span class="section-title text-uppercase fw-bold tracking-widest">নথিপত্র</span>
+                <div class="flex-grow-1 border-bottom ms-3" style="border-color: #e2e8f0 !important;"></div>
+            </div>
+            
+            <a href="http://localhost:1313/user/certificates/" class="nav-link-base d-flex align-items-center gap-3 px-3 py-2.5 text-decoration-none nav-link-inactive hover-bg-light">
+                <svg class="icon-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                <span class="text-sm">ই-সার্টিফিকেট ভল্ট</span>
+            </a>
+            <a href="http://localhost:1313/user/privacy/" class="nav-link-base d-flex align-items-center gap-3 px-3 py-2.5 text-decoration-none nav-link-inactive hover-bg-light">
+                <svg class="icon-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                <span class="text-sm">তথ্য ব্যবস্থাপনা</span>
+            </a>
+        </nav>
+
+        
+        <div class="p-3 mx-3 mb-3 rounded-4" style="background-color: #f8fafc; border: 1px solid var(--border-color);">
+            <div class="d-flex align-items-center gap-3 mb-3 px-1">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Aishik_Rehman_at_Wikimania_Bangladesh_-_2.png" alt="Profile" class="rounded-circle object-fit-cover shadow-sm" style="width: 44px; height: 44px; border: 2px solid #ffffff;">
+                <div>
+                    <p class="fw-bold text-dark m-0 text-sm">ঐশিক রেহমান</p>
+                    <p class="text-muted font-mono-code m-0" style="font-size: 11px; letter-spacing: 0.5px;">AA-10253636</p>
+                </div>
+            </div>
+            <a href="#" class="btn btn-white btn-sm w-100 d-flex align-items-center justify-content-center gap-2 text-danger fw-semibold border shadow-sm btn-float bg-white" style="border-radius: 0.5rem;">
+                <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                লগআউট
+            </a>
+        </div>
+    </aside>
+
+    
+    <main class="flex-grow-1 d-flex flex-column h-100 overflow-auto position-relative main-wrapper">
+        
+        
+        <header class="d-flex d-lg-none justify-content-between align-items-center p-3 border-bottom bg-white shadow-sm z-3 position-sticky top-0">
+            <div class="d-flex align-items-center gap-2">
+                <div class="d-flex align-items-center justify-content-center text-white fw-bold rounded-circle shadow-sm" style="width: 36px; height: 36px; background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+                    <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path></svg>
+                </div>
+                <h1 class="fw-bold m-0 fs-6">ইউআইডি</h1>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-light rounded-circle p-2 position-relative border" style="width: 40px; height: 40px;">
+                    <svg class="icon-sm text-secondary position-absolute top-50 start-50 translate-middle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                    <span class="position-absolute p-1 bg-danger border border-light rounded-circle" style="top: 8px; right: 8px;"></span>
+                </button>
+                <button class="btn btn-light rounded-circle p-2 border" style="width: 40px; height: 40px;">
+                    <svg class="icon-md text-dark position-absolute top-50 start-50 translate-middle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </header>
+
+        
+        <div class="container-fluid p-4 p-lg-5 mx-auto" style="max-width: 1400px;">
+            
+            
+            <header class="d-none d-lg-flex justify-content-between align-items-center p-4 header-glass">
+                <div>
+                    
+                    <h2 class="fs-4 fw-bold text-dark mb-1" style="letter-spacing: -0.01em;">
+                        ই-সেবা ও সনদসমূহ
+                    </h2>
+                    <p class="text-sm text-muted fw-medium m-0">
+                        ইউইউডিআই (UUDI) লজিক ইঞ্জিনের মাধ্যমে তাৎক্ষণিকভাবে ৪৫&#43; সরকারি যাচাইকৃত সনদ এবং লাইসেন্স তৈরি করুন।
+                    </p>
+                </div>
+                
+                <div class="d-flex align-items-center gap-3">
+                    
+                    <button class="btn btn-white rounded-circle shadow-sm position-relative p-2 border bg-white btn-float" style="width: 48px; height: 48px;" title="নোটিফিকেশন">
+                        <svg class="icon-md text-secondary position-absolute top-50 start-50 translate-middle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                        
+                        <span class="position-absolute p-1 bg-danger border border-2 border-white rounded-circle" style="top: 10px; right: 10px;">
+                            <span class="visually-hidden">নতুন এলার্ট</span>
+                        </span>
+                    </button>
+                    
+                    
+                    <button class="btn btn-white rounded-circle shadow-sm p-2 border bg-white btn-float text-success" style="width: 48px; height: 48px;" title="কিউআর স্ক্যান করুন">
+                        <svg class="icon-md position-absolute top-50 start-50 translate-middle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm14 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+                    </button>
+                </div>
+            </header>
+
+            
+            <div class="w-100">
+                
+
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    /* Premium Glassmorphism styling */
+    .glass-card {
+        background: #ffffff;
+        border: 1px solid var(--border-color, #e2e8f0);
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+        border-radius: 1.25rem;
+        transition: box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Category Title Styling */
+    .service-category-title {
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #64748b;
+        margin-bottom: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .service-category-title::after {
+        content: '';
+        flex-grow: 1;
+        height: 1px;
+        background: linear-gradient(to right, #e2e8f0, transparent);
+    }
+
+    /* Service Card Styling */
+    .service-card {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 1.25rem;
+        padding: 1.25rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        height: 100%;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .service-card:hover {
+        transform: translateY(-5px);
+        border-color: #6366f1;
+        box-shadow: 0 12px 24px -8px rgba(99, 102, 241, 0.15);
+    }
+    
+    /* Icon Container */
+    .service-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+        transition: transform 0.3s ease;
+    }
+    .service-card:hover .service-icon {
+        transform: scale(1.1);
+    }
+
+    /* Logic Engine Badge */
+    .engine-badge {
+        font-size: 9px;
+        font-weight: 700;
+        padding: 4px 8px;
+        border-radius: 6px;
+        background: #f8fafc;
+        color: #64748b;
+        margin-bottom: 10px;
+        display: inline-block;
+        border: 1px solid #e2e8f0;
+        letter-spacing: 0.05em;
+    }
+
+    /* Apply Button */
+    .btn-apply {
+        margin-top: auto;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 8px 12px;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+    }
+
+    .font-mono-code { font-family: 'Fira Code', monospace; }
+    .tracking-widest { letter-spacing: 0.08em; }
+    .hover-translate-up { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .hover-translate-up:hover { transform: translateY(-4px); }
+</style>
+
+<div class="row g-4">
+
+    <!-- SEARCH & QUICK STATS -->
+    <div class="col-12">
+        <div class="glass-card p-4 p-lg-5" style="background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);">
+            <div class="row align-items-center g-4">
+                <div class="col-md-6">
+                    <p class="text-[10px] text-indigo-600 text-uppercase fw-bold m-0 mb-1 tracking-widest">ইউইউডিআই (UUDI) পোর্টাল</p>
+                    <h3 class="fw-bold text-dark m-0 fs-4 mb-2">নাগরিক সেবা ও সনদ ক্যাটালগ</h3>
+                    <p class="text-[12px] text-muted m-0">আপনার ভেরিফাইড ডেটার ওপর ভিত্তি করে তাৎক্ষণিকভাবে ডিজিটাল সনদ তৈরি করুন।</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group shadow-sm rounded-pill overflow-hidden border border-slate-200 bg-white p-1">
+                        <span class="input-group-text bg-transparent border-0 text-primary ps-3"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" class="form-control border-0 shadow-none text-sm" placeholder="খুঁজুন: উত্তরাধিকার, আয়ের সনদ, ট্রেড লাইসেন্স...">
+                        <button class="btn btn-primary rounded-pill px-4 fw-semibold text-xs">অনুসন্ধান</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORY 1: IDENTITY & CIVIL (জাতীয়তা ও পরিচয়) -->
+    <div class="col-12 mt-4">
+        <div class="service-category-title"><i class="fa-solid fa-id-card text-slate-400 me-1"></i> পরিচয় ও নাগরিকত্ব (Identity & Civil)</div>
+        <div class="row g-4">
+            <!-- 1. জাতীয়তা/নাগরিকত্ব সনদ -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-blue-50 text-blue-600 border border-blue-100"><i class="fa-solid fa-flag"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-sitemap text-muted me-1"></i> উৎস: বংশলতিকা গ্রাফ</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">জাতীয়তা/নাগরিকত্ব সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">জাতীয়তা এবং স্থায়ী বাসস্থানের প্রমাণপত্র (স্থায়ী ঠিকানা যাচাইকৃত)।</p>
+                    <button class="btn btn-primary btn-apply w-100 shadow-sm">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+            <!-- 2. রোহিঙ্গা নয় প্রত্যয়ন -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-emerald-50 text-emerald-600 border border-emerald-100"><i class="fa-solid fa-dna"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-fingerprint text-muted me-1"></i> উৎস: ডিএনএ + বংশলতিকা</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">রোহিঙ্গা নয় প্রত্যয়ন</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">যাচাইকৃত অ-শরণার্থী বা ভূমিপুত্র প্রমাণপত্র (পাসপোর্টের জন্য জরুরি)।</p>
+                    <button class="btn btn-outline-success btn-apply w-100">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+            <!-- 3. একই ব্যক্তির প্রত্যয়ন -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-indigo-50 text-indigo-600 border border-indigo-100"><i class="fa-solid fa-id-card-clip"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-code-merge text-muted me-1"></i> উৎস: আইডি মার্জ ইঞ্জিন</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">একই ব্যক্তির প্রত্যয়ন</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">পুরাতন এনআইডি বা জন্ম নিবন্ধনের নামের বানানের সাথে মিলকরণ প্রমাণ।</p>
+                    <button class="btn btn-outline-indigo btn-apply w-100 border-indigo-200 text-indigo-700">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+            <!-- 4. উপজাতি/সম্প্রদায় সনদ -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-teal-50 text-teal-600 border border-teal-100"><i class="fa-solid fa-users-rays"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-users text-muted me-1"></i> উৎস: কমিউনিটি লেজার</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">উপজাতি/সম্প্রদায় সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">ক্ষুদ্র নৃগোষ্ঠী ও সম্প্রদায় যাচাইকরণ (কোটা বা বিশেষ সুবিধার জন্য)।</p>
+                    <button class="btn btn-outline-teal btn-apply w-100 border-teal-200 text-teal-700">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORY 2: FINANCIAL & INCOME (আর্থিক ও কর) -->
+    <div class="col-12 mt-5">
+        <div class="service-category-title"><i class="fa-solid fa-coins text-slate-400 me-1"></i> আর্থিক ও আয় (Financial & Income Proofs)</div>
+        <div class="row g-4">
+            <!-- 1. বার্ষিক আয়ের সনদ -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-green-50 text-green-600 border border-green-100"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-building-columns text-muted me-1"></i> উৎস: ফাইন্যান্স মডিউল</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">বার্ষিক/মাসিক আয়ের সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">সিঙ্ক করা ব্যাংক এবং ওয়ালেট ডেটা থেকে স্বয়ংক্রিয়ভাবে গণনাকৃত।</p>
+                    <button class="btn btn-success btn-apply w-100 shadow-sm">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+            <!-- 2. হোল্ডিং ট্যাক্স প্রত্যয়ন -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-purple-50 text-purple-600 border border-purple-100"><i class="fa-solid fa-house-circle-check"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-city text-muted me-1"></i> উৎস: সম্পদ + সিটি কর্পোরেশন</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">হোল্ডিং ট্যাক্স প্রত্যয়ন</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">বাড়ি বা স্থাপনার হালনাগাদ সম্পত্তি কর ছাড়পত্র (Property Tax)।</p>
+                    <button class="btn btn-outline-purple btn-apply w-100 border-purple-200 text-purple-700">পরিশোধ ও ডাউনলোড</button>
+                </div>
+            </div>
+            <!-- 3. আর্থিক অস্বচ্ছলতার সনদ -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-orange-50 text-orange-600 border border-orange-100"><i class="fa-solid fa-hand-holding-hand"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-scale-unbalanced text-muted me-1"></i> উৎস: সেফটি নেট ইঞ্জিন</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">আর্থিক অস্বচ্ছলতার সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">বৃত্তি, চিকিৎসা সাহায্য বা সরকারি সুবিধার দাবির জন্য প্রমাণপত্র।</p>
+                    <button class="btn btn-outline-warning btn-apply w-100 text-dark border-warning-subtle" style="background-color: #fffbeb;">যোগ্যতা যাচাই করুন</button>
+                </div>
+            </div>
+            <!-- 4. ট্রেড লাইসেন্স / প্রিমিসেস -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card" style="border-left: 4px solid #0f172a;">
+                    <div class="service-icon bg-slate-900 text-white shadow-sm"><i class="fa-solid fa-briefcase"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-file-contract text-muted me-1"></i> উৎস: বিজনেস রেজিস্ট্রি</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">ট্রেড ও প্রিমিসেস লাইসেন্স</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">আরজেএসসি (RJSC) সিঙ্কসহ ব্যবসার জন্য ই-ট্রেড লাইসেন্স।</p>
+                    <button class="btn btn-dark btn-apply w-100 shadow-sm">নবায়ন / নতুন আবেদন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORY 3: FAMILY & HERITAGE (পরিবার ও উত্তরাধিকার) -->
+    <div class="col-12 mt-5">
+        <div class="service-category-title"><i class="fa-solid fa-people-roof text-slate-400 me-1"></i> পরিবার ও উত্তরাধিকার (Family, Heritage & Progeny)</div>
+        <div class="row g-4">
+            <!-- 1. ওয়ারিশ/উত্তরাধিকার সনদ -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card" style="border-left: 4px solid #8b5cf6;">
+                    <div class="service-icon bg-purple-100 text-purple-600 border border-purple-200"><i class="fa-solid fa-sitemap"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-network-wired text-muted me-1"></i> উৎস: বংশলতিকা (সম্পূর্ণ)</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">ওয়ারিশ/উত্তরাধিকার সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">ফরায়েজ অনুযায়ী জীবিত সকল বৈধ উত্তরাধিকারীর স্বয়ংক্রিয় তালিকা।</p>
+                    <button class="btn btn-apply w-100 text-white shadow-sm" style="background: #8b5cf6; border: none;">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+            <!-- 2. পারিবারিক সনদ -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-pink-50 text-pink-600 border border-pink-100"><i class="fa-solid fa-people-group"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-house-user text-muted me-1"></i> উৎস: পরিবার মডিউল</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">পারিবারিক সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">বর্তমান পরিবারের সকল জীবিত সদস্যদের অফিশিয়াল প্রমাণপত্র।</p>
+                    <button class="btn btn-outline-danger btn-apply w-100 border-danger-subtle text-danger">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+            <!-- 3. অবিবাহিত / বিবাহিত প্রত্যয়ন -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-rose-50 text-rose-600 border border-rose-100"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-ring text-muted me-1"></i> উৎস: বৈবাহিক রেজিস্ট্রি</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">অবিবাহিত / পুনঃবিবাহ সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">নাগরিকের বর্তমান বৈবাহিক অবস্থার (Single/Married) ডিজিটাল প্রমাণ।</p>
+                    <button class="btn btn-outline-rose btn-apply w-100" style="color: #e11d48; border-color: #fecdd3; background-color: #fff1f2;">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+            <!-- 4. অভিভাবক সম্মতি সনদ -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-cyan-50 text-cyan-600 border border-cyan-100"><i class="fa-solid fa-hands-holding-child"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-fingerprint text-muted me-1"></i> অনুমোদন: বায়োমেট্রিক</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">অভিভাবক সম্মতি সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">ভ্রমণ বা আইনি কাজের জন্য অভিভাবকের ডিজিটাল কনসেন্ট বা সম্মতিপত্র।</p>
+                    <button class="btn btn-outline-info btn-apply w-100 text-cyan-700 border-cyan-200">অনুরোধ পাঠান</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORY 4: LAND, UTILITY & VEHICLE (সম্পদ ও পরিষেবা) -->
+    <div class="col-12 mt-5 mb-4">
+        <div class="service-category-title"><i class="fa-solid fa-map-location-dot text-slate-400 me-1"></i> ভূমি, পরিষেবা ও যানবাহন (Land, Utility & Vehicle)</div>
+        <div class="row g-4">
+            <!-- 1. ভূমিহীন সনদ -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-amber-50 text-amber-700 border border-amber-100"><i class="fa-solid fa-map-pin"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-layer-group text-muted me-1"></i> উৎস: সম্পদ + ভূমি মন্ত্রণালয়</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">ভূমিহীন সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">নিজস্ব কোনো সম্পত্তি বা ভূমি না থাকার যাচাইকৃত সরকারি প্রমাণ।</p>
+                    <button class="btn btn-warning btn-apply w-100 text-dark shadow-sm">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+            <!-- 2. নতুন বিদ্যুৎ সংযোগ প্রত্যয়ন -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-yellow-50 text-yellow-600 border border-yellow-100"><i class="fa-solid fa-bolt"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-plug text-muted me-1"></i> উৎস: ইউটিলিটি + এনআইডি</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">বিদ্যুৎ সংযোগ প্রত্যয়ন</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">নতুন বিদ্যুৎ বা গ্যাস লাইনের জন্য স্বয়ংক্রিয় অনাপত্তিপত্র (NOC)।</p>
+                    <button class="btn btn-outline-warning btn-apply w-100 text-dark border-warning-subtle" style="background-color: #fefce8;">ডিপিডিসি/ডেসকো আবেদন</button>
+                </div>
+            </div>
+            <!-- 3. যানবাহন লাইসেন্স -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-blue-100 text-blue-800 border border-blue-200"><i class="fa-solid fa-car"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-server text-muted me-1"></i> উৎস: বিআরটিএ (BRTA) এপিআই</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">যানবাহন লাইসেন্স (পাস)</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">গাড়ির ফিটনেস, ট্যাক্স টোকেন বা ড্রাইভিং লাইসেন্স নবায়ন ও প্রত্যয়ন।</p>
+                    <button class="btn btn-outline-primary btn-apply w-100 border-primary-subtle">নবায়ন / দেখুন</button>
+                </div>
+            </div>
+            <!-- 4. অনাপত্তি সনদ (NOC) -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-slate-100 text-slate-700 border border-slate-200"><i class="fa-solid fa-file-contract"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-building text-muted me-1"></i> উৎস: ক্যারিয়ার/নিয়োগকর্তা</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">অনাপত্তি সনদ (NOC)</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">পাসপোর্ট তৈরি বা বিদেশ ভ্রমণের জন্য বর্তমান কর্মস্থলের স্বয়ংক্রিয় ছাড়পত্র।</p>
+                    <button class="btn btn-outline-secondary btn-apply w-100 text-dark">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER INFO -->
+    <div class="col-12 mt-4">
+        <div class="p-4 p-lg-5 bg-slate-900 rounded-4 shadow-lg border border-slate-700 position-relative overflow-hidden hover-translate-up transition">
+            <i class="fa-solid fa-microchip position-absolute text-white opacity-5" style="font-size: 8rem; right: -20px; top: -10px;"></i>
+            
+            <div class="row align-items-center position-relative z-1">
+                <div class="col-md-8">
+                    <h5 class="fw-bold m-0 text-warning d-flex align-items-center">
+                        <i class="fa-solid fa-shield-halved me-2"></i> জিরো-ইন্টারভেনশন প্রোটোকল (স্বয়ংক্রিয় ব্যবস্থা)
+                    </h5>
+                    <p class="m-0 text-slate-300 mt-2 leading-relaxed" style="font-size: 13px;">এই সনদগুলো কোনো কর্মকর্তার হাতের সই ছাড়াই আপনার UUDI ডেটার ভিত্তিতে সরাসরি তৈরি হয়। জাল সনদ বা দুর্নীতির কোনো সুযোগ নেই। প্রতিটি সনদে থাকা <strong>এনক্রিপ্টেড QR কোডটিই</strong> এর ডিজিটাল ও আইনি বৈধতার একমাত্র প্রমাণ।</p>
+                </div>
+                <div class="col-md-4 text-md-end mt-4 mt-md-0">
+                    <button class="btn btn-warning fw-bold px-4 py-2.5 shadow-sm text-dark">
+                        <i class="fa-solid fa-box-archive me-2"></i> আর্কাইভ করা সকল সনদ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+            </div>
+            
+            
+            <footer class="mt-5 pt-4 border-top text-center text-sm text-muted pb-4">
+                <p class="m-0">&copy; 2026 জাতীয় ইউইউডিআই কর্তৃপক্ষ, গণপ্রজাতন্ত্রী বাংলাদেশ সরকার। সর্বস্বত্ব সংরক্ষিত।</p>
+                <div class="d-flex align-items-center justify-content-center gap-2 mt-2">
+                    <svg class="icon-sm text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    <span class="text-xs fw-medium" style="letter-spacing: 0.02em;">অ্যাডভান্সড বায়োমেট্রিক হ্যাশ প্রোটোকল (ABHP) দ্বারা সুরক্ষিত</span>
+                </div>
+            </footer>
+            
+        </div>
+    </main>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    
+    
+</body>
+</html>

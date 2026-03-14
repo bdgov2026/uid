@@ -1,0 +1,326 @@
+---
+title: "নাগরিক ও আইনি রেকর্ড"
+description: "আপনার আইনি অধিকার, ইমিগ্রেশন স্ট্যাটাস এবং বিচারিক অবস্থার বিস্তারিত খতিয়ান।"
+---
+
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    /* Premium Glassmorphism styling */
+    .glass-card {
+        background: #ffffff;
+        border: 1px solid var(--border-color, #e2e8f0);
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+        border-radius: 1.25rem;
+        transition: box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Civic Banner */
+    .civic-banner {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        color: white;
+        border-radius: 1.25rem;
+        box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.4);
+        position: relative;
+        overflow: hidden;
+    }
+    .civic-banner::after {
+        content: '\f24e'; /* fa-scale-balanced */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        position: absolute;
+        right: -10px;
+        bottom: -20px;
+        font-size: 10rem;
+        color: rgba(255,255,255,0.03);
+        z-index: 0;
+        transform: rotate(-15deg);
+    }
+    .civic-banner > * { position: relative; z-index: 1; }
+
+    /* Passport Card - BD Theme */
+    .passport-card {
+        background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); /* BD Passport Green */
+        color: #d1fae5;
+        border-radius: 1.25rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 20px -5px rgba(6, 78, 59, 0.3);
+    }
+    .passport-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.02) 10px, rgba(255,255,255,0.02) 20px);
+        z-index: 0;
+    }
+    .passport-card > * { position: relative; z-index: 1; }
+
+    /* Justice Module Styles */
+    .justice-card {
+        border-left: 5px solid #6366f1; /* Indigo */
+        background-color: #ffffff;
+    }
+    .dispute-item {
+        background-color: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 1rem;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .dispute-item:hover {
+        background-color: #f1f5f9;
+        border-color: #cbd5e1;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .status-indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .status-indicator.pulse-green {
+        background-color: #10b981;
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+        animation: pulse-green 2s infinite;
+    }
+    @keyframes pulse-green {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+        70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    .hover-bg-light:hover { background-color: #f8fafc !important; }
+    .hover-translate-up { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .hover-translate-up:hover { transform: translateY(-4px); }
+    .tracking-widest { letter-spacing: 0.05em; }
+</style>
+
+<div class="row g-4">
+
+    <!-- TOP SECTION: Legal Standing & Police Clearance -->
+    <div class="col-12">
+        <div class="civic-banner p-4 p-lg-5 shadow-lg d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-4">
+            <div class="d-flex align-items-center gap-4">
+                <div class="rounded-circle bg-white bg-opacity-10 d-flex align-items-center justify-content-center text-white border border-white border-opacity-25" style="width: 64px; height: 64px;">
+                    <i class="fa-solid fa-scale-balanced fs-3"></i>
+                </div>
+                <div>
+                    <span class="badge bg-success border border-success px-3 py-1.5 text-[10px] fw-bold tracking-widest mb-2 text-uppercase rounded-pill">
+                        <i class="fa-solid fa-check-double me-1"></i> ক্লিয়ার আইনি অবস্থান
+                    </span>
+                    <h3 class="fw-bold text-white fs-4 m-0 mt-1">কোনো সক্রিয় বিচারিক রেকর্ড নেই</h3>
+                    <p class="text-sm text-slate-300 m-0 mt-1">আপনার জাতীয় ব্যাকগ্রাউন্ড চেক ১০০% যাচাইকৃত এবং পরিচ্ছন্ন।</p>
+                </div>
+            </div>
+            
+            <div class="text-md-end z-1">
+                <p class="text-[10px] text-uppercase tracking-widest fw-bold m-0 mb-2 text-slate-400">নিরাপত্তা ছাড়পত্র (Security Clearance)</p>
+                <button class="btn btn-outline-light fw-semibold text-sm px-4 shadow-sm transition hover-translate-up">
+                    <i class="fa-solid fa-file-shield me-2"></i> পুলিশ ক্লিয়ারেন্স ডাউনলোড
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEFT COLUMN: Justice & Dispute Resolution -->
+    <div class="col-lg-7 col-xl-8 d-flex flex-column gap-4">
+        
+        <!-- Justice & Dispute Resolution Module -->
+        <div class="glass-card p-4 p-lg-5">
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-4 border-bottom pb-4 gap-3">
+                <div>
+                    <h4 class="fw-bold text-dark m-0 fs-5"><i class="fa-solid fa-gavel text-indigo-600 me-2"></i> বিচার ও বিরোধ নিষ্পত্তি</h4>
+                    <p class="text-[12px] text-secondary m-0 mt-1">ইউইউডিআই বংশলতিকা ডেটা ব্যবহার করে স্বয়ংক্রিয় আইনি নিষ্পত্তি ইঞ্জিন।</p>
+                </div>
+                <button class="btn btn-dark btn-sm fw-semibold px-3 shadow-sm hover-translate-up"><i class="fa-solid fa-plus me-1"></i> বিরোধ দায়ের করুন</button>
+            </div>
+
+            <div class="row g-4">
+                <!-- 1. Digital Land Arbitration -->
+                <div class="col-12">
+                    <div class="dispute-item p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="rounded-circle bg-indigo-50 text-indigo-600 d-flex align-items-center justify-content-center shadow-sm" style="width: 48px; height: 48px;">
+                                    <i class="fa-solid fa-map-location-dot fs-5"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold text-dark m-0 fs-6">ডিজিটাল ভূমি সালিশি (Land Arbitration)</h6>
+                                    <p class="text-[11px] text-muted m-0 mt-1 fw-medium">উত্তরাধিকার গণনা ইঞ্জিন</p>
+                                </div>
+                            </div>
+                            <span class="badge bg-white text-indigo-600 border border-indigo-200 px-2 py-1 text-[10px] tracking-widest">সিস্টেম প্রস্তুত</span>
+                        </div>
+                        <p class="text-[12px] text-slate-600 mb-3 leading-relaxed">সিস্টেমটি <span class="fw-bold text-dark">বংশলতিকা (Lineage trees)</span> ব্যবহার করে সাধারণ পূর্বপুরুষদের খুঁজে বের করে এবং সঠিক উত্তরাধিকার আইন প্রয়োগ করে সম্পত্তির বিরোধ নিষ্পত্তি করতে পারে।</p>
+                        <button class="btn w-100 fw-semibold border border-indigo-200 text-indigo-700 py-2.5 transition hover-bg-light" style="background-color: #eef2ff;">
+                            <i class="fa-solid fa-microchip me-2"></i> উত্তরাধিকার হিসাব সিমুলেট করুন
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2. e-GD & Cyber Crime -->
+                <div class="col-md-6">
+                    <div class="dispute-item p-4 h-100 d-flex flex-column">
+                        <h6 class="fw-bold text-dark mb-2"><i class="fa-solid fa-shield-halved text-primary me-2"></i>ই-জিডি এবং সাইবার ক্রাইম</h6>
+                        <p class="text-[11px] text-slate-500 mb-4">আপনার বায়োমেট্রিক হ্যাশের সাথে যুক্ত অফিসিয়াল সাধারণ ডায়েরি (GD)।</p>
+                        
+                        <div class="mb-4">
+                            <div class="p-3 bg-white rounded-3 border border-slate-200 text-[11px] d-flex justify-content-between align-items-center shadow-sm">
+                                <span class="text-muted fw-medium">কোনো সক্রিয় রিপোর্ট নেই।</span>
+                                <i class="fa-solid fa-circle-check text-success fs-6"></i>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-dark btn-sm w-100 fw-semibold mt-auto py-2">সাইবার অভিযোগ করুন</button>
+                    </div>
+                </div>
+
+                <!-- 3. Bail & Probation -->
+                <div class="col-md-6">
+                    <div class="dispute-item p-4 h-100 d-flex flex-column">
+                        <h6 class="fw-bold text-dark mb-2"><i class="fa-solid fa-user-lock text-danger me-2"></i>জামিন ও প্রবেশন</h6>
+                        <p class="text-[11px] text-slate-500 mb-4">রিয়েল-টাইম বিচারিক পর্যবেক্ষণ এবং ভার্চুয়াল কিয়স্ক চেক-ইন।</p>
+                        
+                        <div class="p-4 bg-success bg-opacity-10 rounded-3 border border-success border-opacity-25 text-center mt-auto shadow-sm">
+                            <i class="fa-solid fa-check-to-slot text-success fs-4 mb-2"></i>
+                            <p class="text-[11px] text-success fw-bold m-0 tracking-widest">কোনো সক্রিয় প্রবেশন/জামিন নেই</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Electoral Status (Voter Card) -->
+        <div class="glass-card p-4 p-lg-5" style="border-top: 4px solid #ef4444;">
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-4 border-bottom pb-4 gap-3">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-danger bg-opacity-10 text-danger rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                        <i class="fa-solid fa-check-to-slot fs-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="fw-bold text-dark m-0 fs-5">নির্বাচনী নিবন্ধন (ভোটার তথ্য)</h4>
+                        <p class="text-[11px] text-secondary m-0 mt-1">বাংলাদেশ নির্বাচন কমিশন</p>
+                    </div>
+                </div>
+                <span class="badge bg-success bg-opacity-10 text-success border border-success px-3 py-2 text-[11px] fw-bold d-flex align-items-center gap-2 rounded-pill">
+                    <span class="status-indicator pulse-green"></span> সক্রিয় ভোটার
+                </span>
+            </div>
+
+            <div class="row g-4 mb-4">
+                <div class="col-md-6">
+                    <p class="text-[10px] text-muted text-uppercase fw-bold m-0 mb-1 tracking-widest">নির্বাচনী এলাকা</p>
+                    <h5 class="fw-bold text-dark fs-6 m-0">ঢাকা-১৭ (গুলশান)</h5>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-[10px] text-muted text-uppercase fw-bold m-0 mb-1 tracking-widest">নির্ধারিত ভোটকেন্দ্র</p>
+                    <h5 class="fw-bold text-dark fs-6 m-0">বনানী মডেল স্কুল</h5>
+                </div>
+            </div>
+
+            <div class="bg-light rounded-4 border p-4 shadow-sm">
+                <p class="text-[12px] fw-bold text-dark mb-3 border-bottom pb-2"><i class="fa-solid fa-clock-rotate-left me-2 text-secondary"></i> ভোটদানের ইতিহাস (বায়োমেট্রিক যাচাই)</p>
+                <div class="d-flex justify-content-between align-items-center p-3 rounded-3 bg-white border border-slate-100 transition hover-translate-up">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="text-success bg-success bg-opacity-10 p-2 rounded-circle"><i class="fa-solid fa-fingerprint"></i></div>
+                        <div>
+                            <p class="fw-bold text-sm text-dark m-0">দ্বাদশ জাতীয় সংসদ নির্বাচন</p>
+                            <p class="text-[11px] text-muted m-0 mt-1 font-mono-code">স্ট্যাটাস: ভোট দিয়েছেন (UID যাচাইকৃত)</p>
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-mono-code text-slate-600 fw-semibold bg-light px-2 py-1 rounded">জানু ২০২৪</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Passport, Driving & Traffic -->
+    <div class="col-lg-5 col-xl-4 d-flex flex-column gap-4">
+        
+        <!-- Smart E-Passport Card -->
+        <div class="passport-card p-4 hover-translate-up">
+            <div class="d-flex justify-content-between align-items-start mb-4">
+                <div>
+                    <p class="text-[9px] tracking-widest text-emerald-200 fw-bold m-0 mb-1 text-uppercase">গণপ্রজাতন্ত্রী বাংলাদেশ</p>
+                    <h4 class="fw-bold text-white fs-5 m-0 d-flex align-items-center gap-2">
+                        ই-পাসপোর্ট <i class="fa-brands fa-nfc-symbol text-warning fs-6"></i>
+                    </h4>
+                </div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/National_Emblem_of_Bangladesh.svg" alt="BD" style="width: 36px; opacity: 0.85; filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.5));">
+            </div>
+            
+            <div class="mb-4 bg-black bg-opacity-20 p-3 rounded-3 border border-emerald-800">
+                <p class="text-[10px] text-emerald-300 text-uppercase fw-bold m-0 mb-1 tracking-widest">পাসপোর্ট নম্বর</p>
+                <p class="fs-4 font-mono-code fw-bold text-white m-0 tracking-widest">A01234567</p>
+            </div>
+
+            <div class="row g-2 mb-4">
+                <div class="col-6">
+                    <p class="text-[10px] text-emerald-300 text-uppercase fw-bold m-0 mb-1">মেয়াদোত্তীর্ণের তারিখ</p>
+                    <p class="text-xs font-mono-code fw-bold text-white m-0">১৫ ফেব্রু ২০৩৩</p>
+                </div>
+                <div class="col-6">
+                    <p class="text-[10px] text-emerald-300 text-uppercase fw-bold m-0 mb-1">ই-গেট স্ট্যাটাস</p>
+                    <p class="text-xs fw-bold text-warning m-0"><i class="fa-solid fa-check-circle me-1"></i> অনুমোদিত</p>
+                </div>
+            </div>
+
+            <button class="btn btn-light btn-sm w-100 fw-semibold text-emerald-800 py-2.5 transition hover-bg-light shadow-sm" style="background: rgba(255,255,255,0.95);">
+                <i class="fa-solid fa-plane-departure me-2"></i> ভ্রমণের ইতিহাস দেখুন
+            </button>
+        </div>
+
+        <!-- Driving License & Traffic Record -->
+        <div class="glass-card p-4" style="border-top: 4px solid #f59e0b;">
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
+                <h4 class="fw-bold text-dark m-0 fs-6 d-flex align-items-center">
+                    <i class="fa-solid fa-car-burst text-warning-emphasis me-2 fs-5"></i> পরিবহন ও ট্রাফিক
+                </h4>
+                <span class="badge bg-warning bg-opacity-25 text-dark border border-warning px-2 py-1 text-[9px] tracking-widest">বিআরটিএ (BRTA) সিঙ্ক</span>
+            </div>
+
+            <div class="p-3 rounded-4 border bg-light mb-4 shadow-sm">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <div>
+                        <h6 class="fw-bold text-dark m-0 fs-6">স্মার্ট ড্রাইভিং লাইসেন্স</h6>
+                        <p class="text-[10px] text-muted m-0 text-uppercase tracking-widest mt-1">মোটরসাইকেল / হালকা যান</p>
+                    </div>
+                    <span class="badge bg-success text-white px-2 py-1 text-[10px]">বৈধ</span>
+                </div>
+                <div class="font-mono-code text-[11px] text-primary bg-primary bg-opacity-10 d-inline-block px-2 py-1 rounded mt-2 fw-semibold">No: DK-1234567AB</div>
+            </div>
+
+            <!-- Penalty Points System -->
+            <div class="mt-2">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="text-[11px] fw-bold text-slate-700">পেনাল্টি পয়েন্ট</span>
+                    <span class="text-[11px] font-mono-code fw-bold text-success bg-success bg-opacity-10 px-2 py-0.5 rounded">0 / 12</span>
+                </div>
+                <div class="progress mb-3 rounded-pill" style="height: 8px;">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 0%"></div>
+                </div>
+
+                <div class="p-2.5 rounded-3 border border-success bg-success bg-opacity-10 d-flex justify-content-between align-items-center mt-3">
+                    <span class="text-[11px] fw-bold text-success-emphasis text-uppercase"><i class="fa-solid fa-file-invoice-dollar me-1"></i> বকেয়া জরিমানা</span>
+                    <span class="font-mono-code text-sm fw-bold text-success">৳ ০</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Judicial Ethics Info -->
+        <div class="p-4 bg-slate-900 text-white rounded-4 shadow-lg mt-auto position-relative overflow-hidden" style="border: 1px solid #334155;">
+            <i class="fa-solid fa-shield-virus position-absolute text-white opacity-5" style="font-size: 5rem; right: -10px; top: 10px;"></i>
+            <h6 class="text-[11px] fw-bold text-warning text-uppercase mb-2 tracking-widest position-relative z-1 d-flex align-items-center">
+                <i class="fa-solid fa-lock me-2 fs-6"></i> আইনি সুরক্ষা
+            </h6>
+            <p class="m-0 text-slate-400 position-relative z-1 leading-relaxed" style="font-size: 11px;">আপনার বিচারিক রেকর্ড এনক্রিপ্ট করা। আইন প্রয়োগকারী সংস্থা কেবল বায়োমেট্রিক অনুমোদন বা বৈধ আদালতের ডিজিটাল ওয়ারেন্ট দিয়ে নির্দিষ্ট মডিউলে অ্যাক্সেস করতে পারবে।</p>
+        </div>
+
+    </div>
+
+</div>

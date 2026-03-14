@@ -1,0 +1,314 @@
+---
+title: "গোপনীয়তা ও সম্মতি গেটওয়ে"
+description: "আপনার ডেটা অ্যাক্সেসের অনুমতি পরিচালনা, অডিট লগ এবং টাইম-লকড টোকেন তৈরি করার কেন্দ্র।"
+---
+
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    /* Premium Glassmorphism styling */
+    .glass-card {
+        background: #ffffff;
+        border: 1px solid var(--border-color, #e2e8f0);
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+        border-radius: 1.25rem;
+        transition: box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Privacy Banner */
+    .privacy-banner {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        color: white;
+        border-radius: 1.25rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.4);
+    }
+    .privacy-banner::before {
+        content: '\f3ed'; /* fa-shield-halved */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        position: absolute;
+        right: -10px; bottom: -30px;
+        font-size: 12rem;
+        color: rgba(255,255,255,0.03);
+        transform: rotate(-15deg);
+        pointer-events: none;
+    }
+
+    /* Access Log Row */
+    .log-row {
+        transition: all 0.2s;
+        border-left: 3px solid transparent;
+    }
+    .log-row:hover {
+        background-color: #f8fafc;
+        border-left-color: #6366f1;
+    }
+
+    /* Token Card */
+    .token-card {
+        background: linear-gradient(135deg, #4f46e5 0%, #312e81 100%);
+        color: white;
+        border-radius: 1.25rem;
+        padding: 1.5rem;
+        box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    .token-card::after {
+        content: '';
+        position: absolute;
+        top: 0; right: 0; width: 100%; height: 100%;
+        background: radial-gradient(circle at top right, rgba(255,255,255,0.1), transparent 60%);
+        pointer-events: none;
+    }
+
+    /* Status Pulse */
+    .status-pulse {
+        width: 8px; height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+        background-color: #10b981;
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+        animation: pulse-green 2s infinite;
+    }
+    @keyframes pulse-green {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+        70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    .font-mono-code { font-family: 'Fira Code', monospace; }
+    .tracking-widest { letter-spacing: 0.08em; }
+    .hover-translate-up { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .hover-translate-up:hover { transform: translateY(-4px); }
+    
+    .table-logs th {
+        background-color: #f8fafc;
+        color: #64748b;
+        font-weight: 600;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 1rem;
+        border-bottom: 2px solid #e2e8f0;
+    }
+</style>
+
+<div class="row g-4">
+
+    <!-- TOP SECTION: Security Overview -->
+    <div class="col-12">
+        <div class="privacy-banner p-4 p-lg-5 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-4">
+            <div class="d-flex align-items-center gap-4 z-1">
+                <div class="rounded-circle bg-indigo-500 bg-opacity-20 d-flex align-items-center justify-content-center text-indigo-300 border border-indigo-500 border-opacity-25 shadow-sm" style="width: 70px; height: 70px; backdrop-filter: blur(5px);">
+                    <i class="fa-solid fa-user-shield fs-2"></i>
+                </div>
+                <div>
+                    <h3 class="fw-bold text-white fs-3 m-0 mb-1">ডেটা গোপনীয়তা: সর্বোচ্চ সুরক্ষা</h3>
+                    <p class="text-[12px] text-slate-300 m-0 d-flex align-items-center">
+                        আপনার বায়োমেট্রিক RSA-4096 কী দ্বারা সকল ডেটা এনক্রিপ্ট করা। 
+                        <span class="badge bg-success bg-opacity-25 text-success-emphasis border border-success px-2 py-1 ms-3 text-[10px]"><i class="fa-solid fa-lock me-1"></i> সুরক্ষিত</span>
+                    </p>
+                </div>
+            </div>
+            <div class="text-md-end z-1">
+                <p class="text-[10px] text-uppercase tracking-widest fw-bold m-0 mb-2 text-slate-400">লাইভ প্রাইভেসি অডিট</p>
+                <div class="p-2 bg-white bg-opacity-10 border border-white border-opacity-10 rounded-pill d-inline-flex align-items-center gap-2 px-3 shadow-sm">
+                    <span class="status-pulse"></span>
+                    <span class="text-[11px] font-mono-code text-white fw-medium">১৪টি সংযুক্ত নোড মনিটরিং হচ্ছে</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEFT COLUMN: Access Logs & Audit Trail -->
+    <div class="col-lg-7 col-xl-8 d-flex flex-column gap-4">
+        
+        <!-- Live Access Logs -->
+        <div class="glass-card p-4 p-lg-5 flex-grow-1">
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-4 border-bottom pb-4 gap-3">
+                <div>
+                    <h4 class="fw-bold text-dark m-0 fs-5"><i class="fa-solid fa-clock-rotate-left text-indigo-600 me-2"></i> লাইভ অ্যাক্সেস লগ</h4>
+                    <p class="text-[11px] text-secondary m-0 mt-1">কে, কখন, কোথায় আপনার ডেটা অ্যাক্সেস করেছে তার বিস্তারিত রেকর্ড।</p>
+                </div>
+                <button class="btn btn-light border btn-sm fw-semibold text-dark shadow-sm hover-bg-light transition"><i class="fa-solid fa-download text-primary me-1"></i> অডিট লগ (PDF)</button>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-logs table-borderless align-middle m-0">
+                    <thead>
+                        <tr>
+                            <th class="rounded-start">অ্যাক্সেসকারী সংস্থা</th>
+                            <th>অ্যাক্সেসকৃত মডিউল</th>
+                            <th>সময় ও তারিখ</th>
+                            <th class="text-end rounded-end">যাচাইয়ের ধরন (Auth)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <!-- Log Entry 1 -->
+                        <tr class="log-row border-bottom border-light">
+                            <td class="py-3 px-3">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="rounded-circle bg-blue-50 d-flex align-items-center justify-content-center border border-blue-100" style="width: 36px; height: 36px;">
+                                        <i class="fa-solid fa-building-columns text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <p class="fw-bold text-dark m-0 text-sm">সিটি ব্যাংক লিমিটেড</p>
+                                        <p class="text-[10px] text-muted m-0 font-mono-code mt-1">Ref: Loan-88210</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="badge bg-indigo-50 text-indigo-700 border border-indigo-100 text-[10px] px-2 py-1">অর্থ ও কর (Finance)</span></td>
+                            <td class="font-mono-code text-[11px] text-secondary">আজ, সকাল ১০:৪৫</td>
+                            <td class="text-end"><span class="text-success fw-bold text-[10px] bg-success bg-opacity-10 px-2 py-1 rounded"><i class="fa-solid fa-fingerprint me-1"></i> বায়োমেট্রিক</span></td>
+                        </tr>
+                        <!-- Log Entry 2 -->
+                        <tr class="log-row border-bottom border-light">
+                            <td class="py-3 px-3">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="rounded-circle bg-danger bg-opacity-10 d-flex align-items-center justify-content-center border border-danger-subtle" style="width: 36px; height: 36px;">
+                                        <i class="fa-solid fa-tower-broadcast text-danger"></i>
+                                    </div>
+                                    <div>
+                                        <p class="fw-bold text-dark m-0 text-sm">গ্রামীণফোন লিমিটেড</p>
+                                        <p class="text-[10px] text-muted m-0 mt-1">নতুন সিম নিবন্ধন</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="badge bg-slate-100 text-slate-700 border text-[10px] px-2 py-1">মূল পরিচয় (Identity)</span></td>
+                            <td class="font-mono-code text-[11px] text-secondary">১০ মার্চ ২০২৬, ১৪:২০</td>
+                            <td class="text-end"><span class="text-primary fw-bold text-[10px] bg-primary bg-opacity-10 px-2 py-1 rounded"><i class="fa-solid fa-key me-1"></i> টাইমড টোকেন</span></td>
+                        </tr>
+                        <!-- Log Entry 3 -->
+                        <tr class="log-row">
+                            <td class="py-3 px-3">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="rounded-circle bg-slate-800 d-flex align-items-center justify-content-center shadow-sm" style="width: 36px; height: 36px;">
+                                        <i class="fa-solid fa-user-shield text-white"></i>
+                                    </div>
+                                    <div>
+                                        <p class="fw-bold text-dark m-0 text-sm">বাংলাদেশ পুলিশ (বনানী থানা)</p>
+                                        <p class="text-[10px] text-muted m-0 mt-1">ভাড়াটিয়া তথ্য যাচাই</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="badge bg-orange-50 text-orange-700 border border-orange-100 text-[10px] px-2 py-1">আবাসন ও ঠিকানা</span></td>
+                            <td class="font-mono-code text-[11px] text-secondary">০৮ মার্চ ২০২৬, ০৯:১২</td>
+                            <td class="text-end"><span class="text-dark fw-bold text-[10px] border border-slate-300 px-2 py-1 rounded bg-slate-100"><i class="fa-solid fa-gavel me-1"></i> কোর্ট ওয়ারেন্ট</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="mt-4 p-3 bg-danger bg-opacity-10 rounded-4 border border-danger border-opacity-25 d-flex align-items-center gap-3">
+                <i class="fa-solid fa-circle-exclamation text-danger fs-4"></i>
+                <p class="text-[11px] text-danger-emphasis m-0 leading-relaxed">যেকোনো সন্দেহজনক বা অননুমোদিত অ্যাক্সেস প্রচেষ্টা স্বয়ংক্রিয়ভাবে ব্লক করা হয় এবং বিচারিক অডিটের (Judicial Audit) জন্য আইনি কর্তৃপক্ষের কাছে রিপোর্ট করা হয়।</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN: Timed Access, Permissions & Device Management -->
+    <div class="col-lg-5 col-xl-4 d-flex flex-column gap-4">
+        
+        <!-- Generate Time-Locked Token -->
+        <div class="token-card hover-translate-up z-1">
+            <h4 class="fw-bold text-white fs-5 mb-2"><i class="fa-solid fa-hourglass-start me-2"></i> টাইম-লকড টোকেন</h4>
+            <p class="text-[11px] text-indigo-100 mb-4 leading-relaxed">জাতীয় পরিচয়পত্রের ফিজিক্যাল কপির পরিবর্তে একটি অস্থায়ী ডিজিটাল হ্যাশ তৈরি করুন, যা নির্দিষ্ট সময় পর স্বয়ংক্রিয়ভাবে নষ্ট হয়ে যাবে।</p>
+            
+            <div class="mb-4 position-relative z-1">
+                <label class="text-[10px] text-uppercase fw-bold text-indigo-200 mb-2 d-block tracking-widest">অ্যাক্সেস স্কোপ নির্বাচন করুন</label>
+                <select class="form-select form-select-sm bg-indigo-800 bg-opacity-50 border-indigo-400 text-white shadow-none" style="backdrop-filter: blur(4px);">
+                    <option>শুধুমাত্র পরিচয় (সিম/হোটেল বুকিং)</option>
+                    <option>শিক্ষাগত রেকর্ড (চাকরির আবেদন)</option>
+                    <option>সম্পূর্ণ স্বাস্থ্য রেকর্ড (হাসপাতাল/ল্যাব)</option>
+                </select>
+            </div>
+
+            <div class="bg-black bg-opacity-20 rounded-4 p-4 text-center border border-white border-opacity-10 mb-4 position-relative z-1 shadow-sm">
+                <p class="text-[9px] text-indigo-200 text-uppercase fw-bold mb-2 tracking-widest">আপনার সিকিউর টোকেন</p>
+                <h2 class="font-mono-code fw-bold text-white m-0 tracking-widest fs-3">UUDI-77x-99</h2>
+                <div class="progress mt-3 bg-white bg-opacity-10 rounded-pill" style="height: 6px;">
+                    <div class="progress-bar bg-warning" style="width: 70%"></div>
+                </div>
+                <p class="text-[10px] text-warning fw-bold mt-2 m-0 font-mono-code">মেয়াদ শেষ: ০৭:১২ মিনিট পর</p>
+            </div>
+
+            <button class="btn btn-light w-100 fw-bold text-indigo-900 shadow-sm py-2.5 position-relative z-1 transition hover-bg-light">
+                <i class="fa-solid fa-rotate me-2 text-indigo-600"></i> নতুন টোকেন তৈরি করুন
+            </button>
+        </div>
+
+        <!-- Manage Persistent Permissions -->
+        <div class="glass-card p-4">
+            <h4 class="fw-bold text-dark m-0 fs-6 mb-4 border-bottom pb-3">অনুমোদিত সংস্থাসমূহ</h4>
+            
+            <div class="d-flex flex-column gap-3">
+                <!-- Entity 1 -->
+                <div class="d-flex justify-content-between align-items-center p-3 rounded-4 border bg-slate-50 transition hover-bg-light">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle bg-white shadow-sm border d-flex justify-content-center align-items-center text-primary" style="width: 36px; height: 36px;">
+                            <i class="fa-solid fa-landmark"></i>
+                        </div>
+                        <div>
+                            <p class="fw-bold text-dark m-0 text-sm">সোনালী ব্যাংক (বেতন)</p>
+                            <p class="text-[10px] text-muted m-0 mt-1">অ্যাক্সেস: ওয়ালেট, আয়</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-danger btn-sm p-2 rounded-circle" title="অ্যাক্সেস বাতিল করুন"><i class="fa-solid fa-user-slash"></i></button>
+                </div>
+
+                <!-- Entity 2 -->
+                <div class="d-flex justify-content-between align-items-center p-3 rounded-4 border bg-slate-50 transition hover-bg-light">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle bg-white shadow-sm border d-flex justify-content-center align-items-center text-success" style="width: 36px; height: 36px;">
+                            <i class="fa-solid fa-hospital"></i>
+                        </div>
+                        <div>
+                            <p class="fw-bold text-dark m-0 text-sm">স্কয়ার হাসপাতাল</p>
+                            <p class="text-[10px] text-muted m-0 mt-1">অ্যাক্সেস: স্বাস্থ্য লেজার</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-danger btn-sm p-2 rounded-circle" title="অ্যাক্সেস বাতিল করুন"><i class="fa-solid fa-user-slash"></i></button>
+                </div>
+
+                <!-- Blocked Entities Counter -->
+                <div class="mt-2 text-center pt-2">
+                    <div class="bg-danger bg-opacity-10 text-danger py-1.5 px-3 rounded-pill d-inline-flex align-items-center border border-danger-subtle">
+                        <i class="fa-solid fa-ban me-2 fs-6"></i>
+                        <span class="text-[11px] fw-bold font-mono-code">০৪টি সংস্থা ব্লকলিস্টেড</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW: Active Devices & Emergency Kill Switch -->
+        <div class="glass-card p-4 border-top" style="border-top-width: 4px; border-top-color: #ef4444;">
+            <h4 class="fw-bold text-dark m-0 fs-6 mb-3"><i class="fa-solid fa-laptop-mobile text-secondary me-2"></i> অ্যাক্টিভ ডিভাইস ও সেশন</h4>
+            
+            <div class="d-flex justify-content-between align-items-center p-3 rounded-4 bg-white border shadow-sm mb-4">
+                <div class="d-flex align-items-center gap-3">
+                    <i class="fa-brands fa-apple fs-3 text-dark"></i>
+                    <div>
+                        <p class="fw-bold text-dark m-0 text-sm">iPhone 15 Pro Max</p>
+                        <p class="text-[10px] text-muted m-0 mt-1 font-mono-code"><span class="text-success fw-bold">Active Now</span> • Dhaka, BD</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-4" style="background-color: #fef2f2; border: 1px solid #fecaca;">
+                <h5 class="fw-bold text-danger fs-6 mb-2"><i class="fa-solid fa-power-off me-2"></i> ইমার্জেন্সি কিল সুইচ</h5>
+                <p class="text-[10px] text-danger-emphasis mb-3 leading-relaxed">ডিভাইস হারিয়ে গেলে বা আইডি চুরি হওয়ার সন্দেহ হলে তাৎক্ষণিকভাবে সমস্ত ডেটা অ্যাক্সেস ফ্রিজ করুন।</p>
+                <button class="btn btn-danger w-100 fw-bold text-sm shadow-sm transition hover-translate-up">সমস্ত ডেটা ফ্রিজ করুন</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>

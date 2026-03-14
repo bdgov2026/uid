@@ -1,0 +1,339 @@
+---
+title: "ই-সেবা ও সনদসমূহ"
+description: "ইউইউডিআই (UUDI) লজিক ইঞ্জিনের মাধ্যমে তাৎক্ষণিকভাবে ৪৫+ সরকারি যাচাইকৃত সনদ এবং লাইসেন্স তৈরি করুন।"
+---
+
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    /* Premium Glassmorphism styling */
+    .glass-card {
+        background: #ffffff;
+        border: 1px solid var(--border-color, #e2e8f0);
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+        border-radius: 1.25rem;
+        transition: box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Category Title Styling */
+    .service-category-title {
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #64748b;
+        margin-bottom: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .service-category-title::after {
+        content: '';
+        flex-grow: 1;
+        height: 1px;
+        background: linear-gradient(to right, #e2e8f0, transparent);
+    }
+
+    /* Service Card Styling */
+    .service-card {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 1.25rem;
+        padding: 1.25rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        height: 100%;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .service-card:hover {
+        transform: translateY(-5px);
+        border-color: #6366f1;
+        box-shadow: 0 12px 24px -8px rgba(99, 102, 241, 0.15);
+    }
+    
+    /* Icon Container */
+    .service-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+        transition: transform 0.3s ease;
+    }
+    .service-card:hover .service-icon {
+        transform: scale(1.1);
+    }
+
+    /* Logic Engine Badge */
+    .engine-badge {
+        font-size: 9px;
+        font-weight: 700;
+        padding: 4px 8px;
+        border-radius: 6px;
+        background: #f8fafc;
+        color: #64748b;
+        margin-bottom: 10px;
+        display: inline-block;
+        border: 1px solid #e2e8f0;
+        letter-spacing: 0.05em;
+    }
+
+    /* Apply Button */
+    .btn-apply {
+        margin-top: auto;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 8px 12px;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+    }
+
+    .font-mono-code { font-family: 'Fira Code', monospace; }
+    .tracking-widest { letter-spacing: 0.08em; }
+    .hover-translate-up { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .hover-translate-up:hover { transform: translateY(-4px); }
+</style>
+
+<div class="row g-4">
+
+    <!-- SEARCH & QUICK STATS -->
+    <div class="col-12">
+        <div class="glass-card p-4 p-lg-5" style="background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);">
+            <div class="row align-items-center g-4">
+                <div class="col-md-6">
+                    <p class="text-[10px] text-indigo-600 text-uppercase fw-bold m-0 mb-1 tracking-widest">ইউইউডিআই (UUDI) পোর্টাল</p>
+                    <h3 class="fw-bold text-dark m-0 fs-4 mb-2">নাগরিক সেবা ও সনদ ক্যাটালগ</h3>
+                    <p class="text-[12px] text-muted m-0">আপনার ভেরিফাইড ডেটার ওপর ভিত্তি করে তাৎক্ষণিকভাবে ডিজিটাল সনদ তৈরি করুন।</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group shadow-sm rounded-pill overflow-hidden border border-slate-200 bg-white p-1">
+                        <span class="input-group-text bg-transparent border-0 text-primary ps-3"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" class="form-control border-0 shadow-none text-sm" placeholder="খুঁজুন: উত্তরাধিকার, আয়ের সনদ, ট্রেড লাইসেন্স...">
+                        <button class="btn btn-primary rounded-pill px-4 fw-semibold text-xs">অনুসন্ধান</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORY 1: IDENTITY & CIVIL (জাতীয়তা ও পরিচয়) -->
+    <div class="col-12 mt-4">
+        <div class="service-category-title"><i class="fa-solid fa-id-card text-slate-400 me-1"></i> পরিচয় ও নাগরিকত্ব (Identity & Civil)</div>
+        <div class="row g-4">
+            <!-- 1. জাতীয়তা/নাগরিকত্ব সনদ -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-blue-50 text-blue-600 border border-blue-100"><i class="fa-solid fa-flag"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-sitemap text-muted me-1"></i> উৎস: বংশলতিকা গ্রাফ</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">জাতীয়তা/নাগরিকত্ব সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">জাতীয়তা এবং স্থায়ী বাসস্থানের প্রমাণপত্র (স্থায়ী ঠিকানা যাচাইকৃত)।</p>
+                    <button class="btn btn-primary btn-apply w-100 shadow-sm">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+            <!-- 2. রোহিঙ্গা নয় প্রত্যয়ন -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-emerald-50 text-emerald-600 border border-emerald-100"><i class="fa-solid fa-dna"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-fingerprint text-muted me-1"></i> উৎস: ডিএনএ + বংশলতিকা</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">রোহিঙ্গা নয় প্রত্যয়ন</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">যাচাইকৃত অ-শরণার্থী বা ভূমিপুত্র প্রমাণপত্র (পাসপোর্টের জন্য জরুরি)।</p>
+                    <button class="btn btn-outline-success btn-apply w-100">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+            <!-- 3. একই ব্যক্তির প্রত্যয়ন -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-indigo-50 text-indigo-600 border border-indigo-100"><i class="fa-solid fa-id-card-clip"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-code-merge text-muted me-1"></i> উৎস: আইডি মার্জ ইঞ্জিন</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">একই ব্যক্তির প্রত্যয়ন</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">পুরাতন এনআইডি বা জন্ম নিবন্ধনের নামের বানানের সাথে মিলকরণ প্রমাণ।</p>
+                    <button class="btn btn-outline-indigo btn-apply w-100 border-indigo-200 text-indigo-700">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+            <!-- 4. উপজাতি/সম্প্রদায় সনদ -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-teal-50 text-teal-600 border border-teal-100"><i class="fa-solid fa-users-rays"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-users text-muted me-1"></i> উৎস: কমিউনিটি লেজার</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">উপজাতি/সম্প্রদায় সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">ক্ষুদ্র নৃগোষ্ঠী ও সম্প্রদায় যাচাইকরণ (কোটা বা বিশেষ সুবিধার জন্য)।</p>
+                    <button class="btn btn-outline-teal btn-apply w-100 border-teal-200 text-teal-700">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORY 2: FINANCIAL & INCOME (আর্থিক ও কর) -->
+    <div class="col-12 mt-5">
+        <div class="service-category-title"><i class="fa-solid fa-coins text-slate-400 me-1"></i> আর্থিক ও আয় (Financial & Income Proofs)</div>
+        <div class="row g-4">
+            <!-- 1. বার্ষিক আয়ের সনদ -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-green-50 text-green-600 border border-green-100"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-building-columns text-muted me-1"></i> উৎস: ফাইন্যান্স মডিউল</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">বার্ষিক/মাসিক আয়ের সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">সিঙ্ক করা ব্যাংক এবং ওয়ালেট ডেটা থেকে স্বয়ংক্রিয়ভাবে গণনাকৃত।</p>
+                    <button class="btn btn-success btn-apply w-100 shadow-sm">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+            <!-- 2. হোল্ডিং ট্যাক্স প্রত্যয়ন -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-purple-50 text-purple-600 border border-purple-100"><i class="fa-solid fa-house-circle-check"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-city text-muted me-1"></i> উৎস: সম্পদ + সিটি কর্পোরেশন</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">হোল্ডিং ট্যাক্স প্রত্যয়ন</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">বাড়ি বা স্থাপনার হালনাগাদ সম্পত্তি কর ছাড়পত্র (Property Tax)।</p>
+                    <button class="btn btn-outline-purple btn-apply w-100 border-purple-200 text-purple-700">পরিশোধ ও ডাউনলোড</button>
+                </div>
+            </div>
+            <!-- 3. আর্থিক অস্বচ্ছলতার সনদ -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-orange-50 text-orange-600 border border-orange-100"><i class="fa-solid fa-hand-holding-hand"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-scale-unbalanced text-muted me-1"></i> উৎস: সেফটি নেট ইঞ্জিন</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">আর্থিক অস্বচ্ছলতার সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">বৃত্তি, চিকিৎসা সাহায্য বা সরকারি সুবিধার দাবির জন্য প্রমাণপত্র।</p>
+                    <button class="btn btn-outline-warning btn-apply w-100 text-dark border-warning-subtle" style="background-color: #fffbeb;">যোগ্যতা যাচাই করুন</button>
+                </div>
+            </div>
+            <!-- 4. ট্রেড লাইসেন্স / প্রিমিসেস -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card" style="border-left: 4px solid #0f172a;">
+                    <div class="service-icon bg-slate-900 text-white shadow-sm"><i class="fa-solid fa-briefcase"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-file-contract text-muted me-1"></i> উৎস: বিজনেস রেজিস্ট্রি</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">ট্রেড ও প্রিমিসেস লাইসেন্স</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">আরজেএসসি (RJSC) সিঙ্কসহ ব্যবসার জন্য ই-ট্রেড লাইসেন্স।</p>
+                    <button class="btn btn-dark btn-apply w-100 shadow-sm">নবায়ন / নতুন আবেদন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORY 3: FAMILY & HERITAGE (পরিবার ও উত্তরাধিকার) -->
+    <div class="col-12 mt-5">
+        <div class="service-category-title"><i class="fa-solid fa-people-roof text-slate-400 me-1"></i> পরিবার ও উত্তরাধিকার (Family, Heritage & Progeny)</div>
+        <div class="row g-4">
+            <!-- 1. ওয়ারিশ/উত্তরাধিকার সনদ -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card" style="border-left: 4px solid #8b5cf6;">
+                    <div class="service-icon bg-purple-100 text-purple-600 border border-purple-200"><i class="fa-solid fa-sitemap"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-network-wired text-muted me-1"></i> উৎস: বংশলতিকা (সম্পূর্ণ)</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">ওয়ারিশ/উত্তরাধিকার সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">ফরায়েজ অনুযায়ী জীবিত সকল বৈধ উত্তরাধিকারীর স্বয়ংক্রিয় তালিকা।</p>
+                    <button class="btn btn-apply w-100 text-white shadow-sm" style="background: #8b5cf6; border: none;">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+            <!-- 2. পারিবারিক সনদ -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-pink-50 text-pink-600 border border-pink-100"><i class="fa-solid fa-people-group"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-house-user text-muted me-1"></i> উৎস: পরিবার মডিউল</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">পারিবারিক সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">বর্তমান পরিবারের সকল জীবিত সদস্যদের অফিশিয়াল প্রমাণপত্র।</p>
+                    <button class="btn btn-outline-danger btn-apply w-100 border-danger-subtle text-danger">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+            <!-- 3. অবিবাহিত / বিবাহিত প্রত্যয়ন -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-rose-50 text-rose-600 border border-rose-100"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-ring text-muted me-1"></i> উৎস: বৈবাহিক রেজিস্ট্রি</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">অবিবাহিত / পুনঃবিবাহ সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">নাগরিকের বর্তমান বৈবাহিক অবস্থার (Single/Married) ডিজিটাল প্রমাণ।</p>
+                    <button class="btn btn-outline-rose btn-apply w-100" style="color: #e11d48; border-color: #fecdd3; background-color: #fff1f2;">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+            <!-- 4. অভিভাবক সম্মতি সনদ -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-cyan-50 text-cyan-600 border border-cyan-100"><i class="fa-solid fa-hands-holding-child"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-fingerprint text-muted me-1"></i> অনুমোদন: বায়োমেট্রিক</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">অভিভাবক সম্মতি সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">ভ্রমণ বা আইনি কাজের জন্য অভিভাবকের ডিজিটাল কনসেন্ট বা সম্মতিপত্র।</p>
+                    <button class="btn btn-outline-info btn-apply w-100 text-cyan-700 border-cyan-200">অনুরোধ পাঠান</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORY 4: LAND, UTILITY & VEHICLE (সম্পদ ও পরিষেবা) -->
+    <div class="col-12 mt-5 mb-4">
+        <div class="service-category-title"><i class="fa-solid fa-map-location-dot text-slate-400 me-1"></i> ভূমি, পরিষেবা ও যানবাহন (Land, Utility & Vehicle)</div>
+        <div class="row g-4">
+            <!-- 1. ভূমিহীন সনদ -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-amber-50 text-amber-700 border border-amber-100"><i class="fa-solid fa-map-pin"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-layer-group text-muted me-1"></i> উৎস: সম্পদ + ভূমি মন্ত্রণালয়</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">ভূমিহীন সনদ</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">নিজস্ব কোনো সম্পত্তি বা ভূমি না থাকার যাচাইকৃত সরকারি প্রমাণ।</p>
+                    <button class="btn btn-warning btn-apply w-100 text-dark shadow-sm">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+            <!-- 2. নতুন বিদ্যুৎ সংযোগ প্রত্যয়ন -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-yellow-50 text-yellow-600 border border-yellow-100"><i class="fa-solid fa-bolt"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-plug text-muted me-1"></i> উৎস: ইউটিলিটি + এনআইডি</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">বিদ্যুৎ সংযোগ প্রত্যয়ন</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">নতুন বিদ্যুৎ বা গ্যাস লাইনের জন্য স্বয়ংক্রিয় অনাপত্তিপত্র (NOC)।</p>
+                    <button class="btn btn-outline-warning btn-apply w-100 text-dark border-warning-subtle" style="background-color: #fefce8;">ডিপিডিসি/ডেসকো আবেদন</button>
+                </div>
+            </div>
+            <!-- 3. যানবাহন লাইসেন্স -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-blue-100 text-blue-800 border border-blue-200"><i class="fa-solid fa-car"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-server text-muted me-1"></i> উৎস: বিআরটিএ (BRTA) এপিআই</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">যানবাহন লাইসেন্স (পাস)</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">গাড়ির ফিটনেস, ট্যাক্স টোকেন বা ড্রাইভিং লাইসেন্স নবায়ন ও প্রত্যয়ন।</p>
+                    <button class="btn btn-outline-primary btn-apply w-100 border-primary-subtle">নবায়ন / দেখুন</button>
+                </div>
+            </div>
+            <!-- 4. অনাপত্তি সনদ (NOC) -->
+            <div class="col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon bg-slate-100 text-slate-700 border border-slate-200"><i class="fa-solid fa-file-contract"></i></div>
+                    <span class="engine-badge"><i class="fa-solid fa-building text-muted me-1"></i> উৎস: ক্যারিয়ার/নিয়োগকর্তা</span>
+                    <h6 class="fw-bold text-dark mb-2 fs-6">অনাপত্তি সনদ (NOC)</h6>
+                    <p class="text-[11px] text-muted mb-4 leading-relaxed">পাসপোর্ট তৈরি বা বিদেশ ভ্রমণের জন্য বর্তমান কর্মস্থলের স্বয়ংক্রিয় ছাড়পত্র।</p>
+                    <button class="btn btn-outline-secondary btn-apply w-100 text-dark">তাৎক্ষণিক তৈরি করুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER INFO -->
+    <div class="col-12 mt-4">
+        <div class="p-4 p-lg-5 bg-slate-900 rounded-4 shadow-lg border border-slate-700 position-relative overflow-hidden hover-translate-up transition">
+            <i class="fa-solid fa-microchip position-absolute text-white opacity-5" style="font-size: 8rem; right: -20px; top: -10px;"></i>
+            
+            <div class="row align-items-center position-relative z-1">
+                <div class="col-md-8">
+                    <h5 class="fw-bold m-0 text-warning d-flex align-items-center">
+                        <i class="fa-solid fa-shield-halved me-2"></i> জিরো-ইন্টারভেনশন প্রোটোকল (স্বয়ংক্রিয় ব্যবস্থা)
+                    </h5>
+                    <p class="m-0 text-slate-300 mt-2 leading-relaxed" style="font-size: 13px;">এই সনদগুলো কোনো কর্মকর্তার হাতের সই ছাড়াই আপনার UUDI ডেটার ভিত্তিতে সরাসরি তৈরি হয়। জাল সনদ বা দুর্নীতির কোনো সুযোগ নেই। প্রতিটি সনদে থাকা <strong>এনক্রিপ্টেড QR কোডটিই</strong> এর ডিজিটাল ও আইনি বৈধতার একমাত্র প্রমাণ।</p>
+                </div>
+                <div class="col-md-4 text-md-end mt-4 mt-md-0">
+                    <button class="btn btn-warning fw-bold px-4 py-2.5 shadow-sm text-dark">
+                        <i class="fa-solid fa-box-archive me-2"></i> আর্কাইভ করা সকল সনদ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

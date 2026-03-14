@@ -1,0 +1,29 @@
+<div class="card mb-4">
+    {{ with .Get "scenario" }}
+    <div class="card-header bg-warning bg-opacity-10 border-warning">
+      <strong>উদ্দীপক:</strong> {{ . | markdownify }}
+    </div>
+    {{ end }}
+  
+    <div class="card-body">
+      {{ with .Get "question" }}
+      <p class="mb-2"><strong>প্রশ্ন:</strong> {{ . | markdownify }}</p>
+      {{ end }}
+  
+      {{ with .Get "points" }}
+      <ul class="ps-3 mb-3">
+        {{ range (split . "|") }}
+          <li>{{ . | markdownify }}</li>
+        {{ end }}
+      </ul>
+      {{ end }}
+  
+      <ul class="list-group">
+        {{ with .Get "a" }}<li class="list-group-item">ক. {{ . }}</li>{{ end }}
+        {{ with .Get "b" }}<li class="list-group-item">খ. {{ . }}</li>{{ end }}
+        {{ with .Get "c" }}<li class="list-group-item">গ. {{ . }}</li>{{ end }}
+        {{ with .Get "d" }}<li class="list-group-item">ঘ. {{ . }}</li>{{ end }}
+      </ul>
+    </div>
+  </div>
+  

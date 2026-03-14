@@ -1,0 +1,369 @@
+---
+title: "সামাজিক নিরাপত্তা বেষ্টনী ও কল্যাণ"
+description: "রাষ্ট্রীয় ভাতা এবং বস্তুগত ভর্তুকির জন্য স্বয়ংক্রিয় যোগ্যতা যাচাই এবং বিতরণ ইঞ্জিন।"
+---
+
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    /* Premium Glassmorphism styling */
+    .glass-card {
+        background: #ffffff;
+        border: 1px solid var(--border-color, #e2e8f0);
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+        border-radius: 1.25rem;
+        transition: box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Eligibility Pulse Banner */
+    .eligibility-banner {
+        background: linear-gradient(135deg, #4f46e5 0%, #312e81 100%);
+        color: white;
+        border-radius: 1.5rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
+    }
+    .eligibility-banner::before {
+        content: '';
+        position: absolute;
+        top: -20%; right: -10%; width: 300px; height: 300px;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+    .eligibility-banner::after {
+        content: '\f54b'; /* fa-robot */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        position: absolute;
+        right: -10px; bottom: -30px;
+        font-size: 10rem;
+        color: rgba(255,255,255,0.05);
+        transform: rotate(-15deg);
+        pointer-events: none;
+    }
+
+    /* Benefit Card */
+    .benefit-card {
+        border: 1px solid #e2e8f0;
+        background: white;
+        border-radius: 1.25rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-left: 5px solid #10b981;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .benefit-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Subsidy Tracking Item */
+    .subsidy-item {
+        background-color: #f8fafc;
+        border-radius: 1rem;
+        padding: 1.25rem;
+        border: 1px solid #e2e8f0;
+        transition: all 0.2s ease;
+    }
+    .subsidy-item:hover {
+        background-color: #f1f5f9;
+        border-color: #cbd5e1;
+    }
+
+    /* Engine Logic Tag */
+    .engine-logic-tag {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        padding: 4px 8px;
+        border-radius: 6px;
+        background: #ffffff;
+        color: #475569;
+        border: 1px solid #cbd5e1;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+
+    /* Service Request Card */
+    .service-request-card {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 1rem;
+        padding: 1.25rem;
+        transition: all 0.2s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .service-request-card:hover {
+        border-color: #94a3b8;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .font-mono-code { font-family: 'Fira Code', monospace; }
+    .tracking-widest { letter-spacing: 0.08em; }
+    .hover-translate-up { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .hover-translate-up:hover { transform: translateY(-4px); }
+</style>
+
+<div class="row g-4">
+
+    <!-- TOP SECTION: Eligibility Engine Hub -->
+    <div class="col-12">
+        <div class="eligibility-banner p-4 p-lg-5 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-4 hover-translate-up transition">
+            <div class="d-flex align-items-center gap-4 z-1">
+                <div class="rounded-circle bg-white bg-opacity-20 d-flex align-items-center justify-content-center text-white border border-white border-opacity-25 shadow-sm" style="width: 70px; height: 70px; backdrop-filter: blur(5px);">
+                    <i class="fa-solid fa-microchip fs-2"></i>
+                </div>
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <span class="spinner-grow spinner-grow-sm text-success" role="status" style="width: 10px; height: 10px;"></span>
+                        <p class="text-[10px] text-indigo-200 fw-bold m-0 tracking-widest text-uppercase">স্বয়ংক্রিয় যোগ্যতা ইঞ্জিন সক্রিয়</p>
+                    </div>
+                    <h3 class="fw-bold text-white fs-3 m-0 mt-1">আপনি ২টি রাষ্ট্রীয় সুবিধার জন্য যোগ্য</h3>
+                    <p class="text-[12px] text-indigo-100 m-0 mt-1">
+                        ক্রস-রেফারেন্সিং: <span class="badge bg-white bg-opacity-20 text-white px-2 py-0.5 rounded text-[10px]">অর্থনীতি (আয়)</span> + <span class="badge bg-white bg-opacity-20 text-white px-2 py-0.5 rounded text-[10px]">বংশলতিকা (পরিবার)</span>
+                    </p>
+                </div>
+            </div>
+            <div class="text-md-end z-1 border-start border-indigo-400 ps-md-4">
+                <p class="text-[10px] text-indigo-200 text-uppercase tracking-widest fw-bold mb-1">এ মাসে প্রাপ্ত মোট সুবিধা</p>
+                <h2 class="font-mono-code fw-bold text-white m-0 fs-1">৳ ৭,৫০০</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEFT COLUMN: Active Cash Allowances & Applications -->
+    <div class="col-lg-7 col-xl-8 d-flex flex-column gap-4">
+        
+        <!-- Active Allowances -->
+        <div class="glass-card p-4 p-lg-5">
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
+                <h4 class="fw-bold text-dark m-0 fs-5">
+                    <i class="fa-solid fa-hand-holding-dollar text-indigo-600 me-2"></i> সক্রিয় নগদ ভাতা (G2P)
+                </h4>
+                <span class="badge bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-1 text-[10px] tracking-widest">ডাইরেক্ট বেনিফিট ট্রান্সফার</span>
+            </div>
+
+            <div class="d-flex flex-column gap-4">
+                
+                <!-- Benefit 1: Agricultural Subsidy -->
+                <div class="benefit-card p-4">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-circle bg-emerald-50 text-emerald-600 d-flex align-items-center justify-content-center border border-emerald-100" style="width: 50px; height: 50px;">
+                                <i class="fa-solid fa-seedling fs-4"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold text-dark m-0 fs-6">ক্ষুদ্র কৃষক সহায়তা তহবিল</h5>
+                                <p class="text-[11px] text-muted m-0 mt-1">কৃষি মন্ত্রণালয়</p>
+                            </div>
+                        </div>
+                        <span class="badge bg-success text-white px-3 py-1.5 rounded-pill text-[10px] tracking-widest shadow-sm">সক্রিয়</span>
+                    </div>
+                    
+                    <div class="bg-slate-50 rounded-4 p-3 mb-3 border">
+                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2">
+                            <span class="text-[11px] text-secondary fw-semibold"><i class="fa-solid fa-bolt text-warning me-1"></i> যেসব শর্তে ট্রিগার হয়েছে:</span>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="engine-logic-tag">সম্পদ: ০.১৫ একর কৃষি জমি</span>
+                                <span class="engine-logic-tag">বার্ষিক আয় < ৩ লক্ষ ৳</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-end border-top border-dashed pt-3 mt-1">
+                        <div>
+                            <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest">পরবর্তী বিতরণের তারিখ</p>
+                            <p class="text-sm font-mono-code fw-bold text-dark m-0 mt-1">০১ এপ্রিল ২০২৬</p>
+                        </div>
+                        <div class="text-end">
+                            <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest mb-1">ভাতার পরিমাণ</p>
+                            <p class="fs-4 font-mono-code fw-bold text-emerald-600 m-0 lh-1">৳ ৫,০০০</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benefit 2: Child Nutrition Allowance -->
+                <div class="benefit-card p-4" style="border-left-color: #3b82f6;">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-circle bg-blue-50 text-blue-600 d-flex align-items-center justify-content-center border border-blue-100" style="width: 50px; height: 50px;">
+                                <i class="fa-solid fa-baby text-blue-600 fs-4"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold text-dark m-0 fs-6">মা ও শিশু পুষ্টি তহবিল</h5>
+                                <p class="text-[11px] text-muted m-0 mt-1">মহিলা ও শিশু বিষয়ক মন্ত্রণালয়</p>
+                            </div>
+                        </div>
+                        <span class="badge bg-primary text-white px-3 py-1.5 rounded-pill text-[10px] tracking-widest shadow-sm">সক্রিয়</span>
+                    </div>
+                    
+                    <div class="bg-slate-50 rounded-4 p-3 mb-3 border">
+                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2">
+                            <span class="text-[11px] text-secondary fw-semibold"><i class="fa-solid fa-bolt text-warning me-1"></i> যেসব শর্তে ট্রিগার হয়েছে:</span>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="engine-logic-tag">পরিবার: ১ জন শিশু নিবন্ধিত</span>
+                                <span class="engine-logic-tag">বয়স: ১.৫ মাস</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-end border-top border-dashed pt-3 mt-1">
+                        <div>
+                            <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest">মাসিক পেআউট</p>
+                            <p class="text-sm font-mono-code fw-bold text-dark m-0 mt-1">প্রতি মাসের ২৫ তারিখ</p>
+                        </div>
+                        <div class="text-end">
+                            <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest mb-1">ভাতার পরিমাণ</p>
+                            <p class="fs-4 font-mono-code fw-bold text-blue-600 m-0 lh-1">৳ ২,৫০০</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- NEW: New Applications / Requests -->
+        <div class="glass-card p-4 p-lg-5 flex-grow-1">
+            <h4 class="fw-bold text-dark m-0 fs-5 border-bottom pb-3 mb-4">
+                <i class="fa-solid fa-file-signature text-primary me-2"></i> নতুন ভাতা বা সেবার আবেদন
+            </h4>
+            <p class="text-[11px] text-muted mb-4">সিস্টেম আপনার বর্তমান প্রোফাইল বিশ্লেষণ করে নিচের সেবাগুলোর জন্য আবেদনের অপশন খোলা রেখেছে।</p>
+
+            <div class="row g-3">
+                <!-- Request 1 -->
+                <div class="col-md-6">
+                    <div class="service-request-card h-100">
+                        <div>
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <i class="fa-solid fa-cloud-showers-heavy text-secondary fs-5"></i>
+                                <h6 class="fw-bold text-dark m-0">দুর্যোগকালীন সহায়তা</h6>
+                            </div>
+                            <p class="text-[10px] text-muted m-0 leading-relaxed mb-3">বন্যা বা প্রাকৃতিক দুর্যোগের শিকার হলে তাৎক্ষণিক নগদ অর্থ বা ত্রাণ সহায়তার আবেদন করুন।</p>
+                        </div>
+                        <button class="btn btn-outline-dark btn-sm w-100 fw-semibold text-[11px] py-2">আবেদন করুন</button>
+                    </div>
+                </div>
+
+                <!-- Request 2 -->
+                <div class="col-md-6">
+                    <div class="service-request-card h-100">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="fa-solid fa-tractor text-success fs-5"></i>
+                                    <h6 class="fw-bold text-dark m-0">কৃষি যন্ত্রপাতি ভর্তুকি</h6>
+                                </div>
+                                <span class="badge bg-success bg-opacity-10 text-success text-[9px] border border-success-subtle">৫০% ছাড়</span>
+                            </div>
+                            <p class="text-[10px] text-muted m-0 leading-relaxed mb-3">পাওয়ার টিলার বা সেচ পাম্প ক্রয়ে সরকারি ভর্তুকির জন্য আবেদন করুন (কৃষি জমির রেকর্ড সাপেক্ষে)।</p>
+                        </div>
+                        <button class="btn btn-outline-success btn-sm w-100 fw-semibold text-[11px] py-2">আবেদন করুন</button>
+                    </div>
+                </div>
+
+                <!-- Request 3 -->
+                <div class="col-md-6">
+                    <div class="service-request-card h-100">
+                        <div>
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <i class="fa-solid fa-graduation-cap text-indigo-500 fs-5"></i>
+                                <h6 class="fw-bold text-dark m-0">শিক্ষা উপবৃত্তি (উচ্চশিক্ষা)</h6>
+                            </div>
+                            <p class="text-[10px] text-muted m-0 leading-relaxed mb-3">বিশ্ববিদ্যালয় পর্যায়ে অধ্যয়নরত অসচ্ছল ও মেধাবী শিক্ষার্থীদের জন্য এককালীন অনুদান।</p>
+                        </div>
+                        <button class="btn btn-outline-primary btn-sm w-100 fw-semibold text-[11px] py-2">আবেদন করুন</button>
+                    </div>
+                </div>
+                
+                 <!-- Request 4 -->
+                <div class="col-md-6">
+                    <div class="service-request-card h-100">
+                        <div>
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <i class="fa-solid fa-house-chimney-window text-orange-500 fs-5"></i>
+                                <h6 class="fw-bold text-dark m-0">আশ্রয়ণ প্রকল্প (গৃহায়ণ)</h6>
+                            </div>
+                            <p class="text-[10px] text-muted m-0 leading-relaxed mb-3">ভূমিহীন বা গৃহহীনদের জন্য সরকারি উদ্যোগে নির্মিত আধাপাকা ঘরের আবেদন।</p>
+                        </div>
+                        <button class="btn btn-light border btn-sm w-100 fw-semibold text-[11px] py-2 text-muted" disabled>যোগ্যতা অর্জিত হয়নি</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN: Subsidy Routing & Disability -->
+    <div class="col-lg-5 col-xl-4 d-flex flex-column gap-4">
+        
+        <!-- Physical Subsidies (OMS/Inputs) -->
+        <div class="glass-card p-4" style="border-top: 4px solid #f59e0b;">
+            <h4 class="fw-bold text-dark m-0 fs-6 mb-3 d-flex align-items-center">
+                <i class="fa-solid fa-cart-flatbed-suitcases text-warning-emphasis me-2 fs-5"></i> বস্তুগত ও পণ্য ভর্তুকি
+            </h4>
+            <p class="text-[11px] text-secondary mb-4 leading-relaxed">বিতরণ কেন্দ্রে আপনার UUDI-QR স্ক্যান করে সরাসরি সরকারি মূল্যে ভর্তুকিপ্রাপ্ত পণ্য সংগ্রহ করুন।</p>
+            
+            <div class="d-flex flex-column gap-3">
+                <!-- Fertilizer Allocation -->
+                <div class="subsidy-item shadow-sm">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="fw-bold text-sm text-dark d-flex align-items-center"><i class="fa-solid fa-sack-dollar text-success me-2"></i> ইউরিয়া সার (মৌসুমি)</span>
+                        <span class="badge bg-warning bg-opacity-25 text-warning-emphasis border border-warning-subtle text-[10px]">সংগ্রহযোগ্য</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                        <p class="text-[11px] text-muted m-0">কোটা: <span class="fw-bold text-dark">৫০ কেজি</span> (সরকারি মূল্যে)</p>
+                        <button class="btn btn-dark btn-sm text-[10px] fw-bold rounded-pill px-3 shadow-sm"><i class="fa-solid fa-qrcode me-1"></i> কিউআর তৈরি</button>
+                    </div>
+                </div>
+
+                <!-- TCB Ration Link -->
+                <div class="subsidy-item shadow-sm">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="fw-bold text-sm text-dark d-flex align-items-center"><i class="fa-solid fa-bag-shopping text-primary me-2"></i> টিসিবি (TCB) ফ্যামিলি কার্ড</span>
+                        <span class="badge bg-slate-200 text-slate-700 border border-slate-300 text-[10px]">পেন্ডিং (অপেক্ষমান)</span>
+                    </div>
+                    <p class="text-[10px] text-muted m-0 mt-2 leading-relaxed">মাসিক বরাদ্দ: ২ লিটার তেল, ২ কেজি মসুর ডাল, ১ কেজি চিনি। আয় সীমার শর্ত পূরণের পর স্বয়ংক্রিয়ভাবে চালু হবে।</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disability & Special Needs Hub (Linked to Health) -->
+        <div class="glass-card p-4 flex-grow-1" style="border-top: 4px solid #ef4444;">
+            <div class="d-flex justify-content-between align-items-start mb-4">
+                <h4 class="fw-bold text-dark m-0 fs-6 d-flex align-items-center">
+                    <i class="fa-solid fa-wheelchair text-danger me-2 fs-5"></i> প্রতিবন্ধিত্ব ও বিশেষ চাহিদা
+                </h4>
+                <div class="rounded-circle bg-red-50 text-danger d-flex align-items-center justify-content-center shadow-sm border border-red-100" style="width: 36px; height: 36px;">
+                    <i class="fa-solid fa-microscope"></i>
+                </div>
+            </div>
+
+            <div class="p-4 bg-red-50 rounded-4 border border-red-100 mb-4 text-center transition hover-translate-up">
+                <i class="fa-solid fa-heart-circle-check text-danger fs-3 mb-2"></i>
+                <h6 class="fw-bold text-red-900 m-0 text-sm">কোনো স্থায়ী প্রতিবন্ধিত্ব রেকর্ড করা নেই</h6>
+                <p class="text-[10px] text-red-700 m-0 mt-2">স্ট্যাটাসটি আপনার <strong>স্বাস্থ্য ও জেনেটিক্স</strong> মডিউল থেকে সিঙ্ক করা হয়েছে।</p>
+            </div>
+
+            <p class="text-[11px] text-muted mb-4 leading-relaxed">যদি কোনো নিবন্ধিত হাসপাতাল থেকে প্রতিবন্ধিত্বের মেডিকেল সনদ যুক্ত হয়, তবে সিস্টেম স্বয়ংক্রিয়ভাবে <strong>মাসিক সুবর্ণ নাগরিক কার্ড ভাতা</strong> চালু করবে।</p>
+            
+            <button class="btn btn-outline-danger btn-sm w-100 fw-semibold py-2 transition hover-bg-light">মেডিকেল অডিট লিঙ্ক করুন</button>
+        </div>
+
+        <!-- Anti-Corruption Info -->
+        <div class="p-4 bg-slate-900 text-white rounded-4 shadow-lg position-relative overflow-hidden" style="border: 1px solid #334155;">
+            <i class="fa-solid fa-shield-virus position-absolute text-white opacity-5" style="font-size: 5rem; right: -10px; top: 10px;"></i>
+            <h6 class="text-[11px] fw-bold text-warning text-uppercase mb-2 tracking-widest position-relative z-1 d-flex align-items-center">
+                <i class="fa-solid fa-lock me-2 fs-6"></i> জিরো-করাপশন পলিসি
+            </h6>
+            <p class="m-0 text-slate-400 position-relative z-1 leading-relaxed" style="font-size: 11px;">সরকারি তহবিল সরাসরি সেন্ট্রাল ব্যাংক (G2P) থেকে আপনার ইউইউডিআই (UUDI) ওয়ালেটে পাঠানো হয়। মাঝে কোনো মধ্যস্বত্বভোগী নেই। সমস্ত অডিট লগ ব্লকচেইনে অপরিবর্তনীয়ভাবে সংরক্ষিত।</p>
+        </div>
+
+    </div>
+
+</div>

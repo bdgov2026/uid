@@ -1,0 +1,357 @@
+---
+title: "ইউটিলিটি ও আবাসন খতিয়ান"
+description: "স্মার্ট মিটার সিঙ্ক্রোনাইজেশন, ডিজিটাল ভাড়াটিয়া রেকর্ড এবং কার্বন ফুটপ্রিন্ট ট্র্যাকিং।"
+---
+
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    /* Premium Glassmorphism styling */
+    .glass-card {
+        background: #ffffff;
+        border: 1px solid var(--border-color, #e2e8f0);
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+        border-radius: 1.25rem;
+        transition: box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Housing Banner */
+    .housing-banner {
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+        color: white;
+        border-radius: 1.25rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 25px -5px rgba(30, 58, 138, 0.4);
+    }
+    .housing-banner::before {
+        content: '';
+        position: absolute;
+        top: -50%; right: -20%; width: 300px; height: 300px;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    /* Smart Meter Cards */
+    .meter-card {
+        border-radius: 1rem;
+        border: 1px solid #e2e8f0;
+        background: white;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .meter-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 20px -5px rgba(0,0,0,0.08);
+    }
+    .meter-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 4px;
+        transition: height 0.3s ease;
+    }
+    .meter-card:hover::before { height: 6px; }
+
+    .electricity-theme::before { background: #fbbf24; } /* Amber */
+    .water-theme::before { background: #3b82f6; } /* Blue */
+    .gas-theme::before { background: #f97316; } /* Orange */
+    .internet-theme::before { background: #8b5cf6; } /* Purple */
+
+    /* Tenancy Registry Styling */
+    .tenancy-card {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border: 1px solid #e2e8f0;
+        border-radius: 1rem;
+        transition: all 0.2s ease;
+    }
+    .tenancy-card:hover { border-color: #cbd5e1; }
+
+    /* Footprint Indicator */
+    .footprint-bar {
+        height: 8px;
+        border-radius: 4px;
+        background: #e2e8f0;
+        overflow: hidden;
+    }
+    .footprint-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #10b981 0%, #fbbf24 50%, #ef4444 100%);
+        width: 65%;
+        border-radius: 4px;
+    }
+
+    /* Unified Pulse Dot */
+    .status-dot {
+        width: 8px; height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .pulse-green {
+        background-color: #10b981;
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+        animation: pulse-g 2s infinite;
+    }
+    @keyframes pulse-g {
+        0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+        70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    .font-mono-code { font-family: 'Fira Code', monospace; }
+    .tracking-widest { letter-spacing: 0.08em; }
+    .hover-translate-up { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .hover-translate-up:hover { transform: translateY(-4px); }
+    .hover-bg-light:hover { background-color: #f8fafc !important; }
+</style>
+
+<div class="row g-4">
+
+    <!-- TOP SECTION: Housing Status & Residence Verification -->
+    <div class="col-12">
+        <div class="housing-banner p-4 p-lg-5 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-4 hover-translate-up transition">
+            <div class="d-flex align-items-center gap-4 z-1">
+                <div class="rounded-4 bg-white bg-opacity-20 text-white d-flex align-items-center justify-content-center shadow-sm border border-white border-opacity-25" style="width: 70px; height: 70px; backdrop-filter: blur(5px);">
+                    <i class="fa-solid fa-house-chimney-user fs-2"></i>
+                </div>
+                <div>
+                    <span class="badge bg-white text-primary px-3 py-1.5 text-[10px] fw-bold tracking-widest mb-2 text-uppercase rounded-pill shadow-sm d-inline-flex align-items-center gap-1">
+                        <span class="status-dot pulse-green me-1"></span> বর্তমান বাসস্থান যাচাইকৃত
+                    </span>
+                    <h3 class="fw-bold text-white fs-4 m-0">অ্যাপার্টমেন্ট ৪বি, বসুন্ধরা আ/এ</h3>
+                    <p class="text-[12px] text-blue-100 m-0 mt-1 d-flex align-items-center flex-wrap gap-2">
+                        <span><i class="fa-solid fa-location-dot me-1"></i> ব্লক সি, রোড ৫, ঢাকা-১২২৯</span>
+                        <span class="bg-warning bg-opacity-20 px-2 py-0.5 rounded text-[10px] fw-bold">স্ট্যাটাস: ভাড়াটিয়া</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="text-md-end z-1 d-flex flex-column gap-2">
+                <button class="btn btn-light fw-bold text-primary shadow-sm text-sm px-4 py-2 transition hover-bg-light">
+                    <i class="fa-solid fa-truck-moving me-2"></i> ঠিকানা পরিবর্তন করুন
+                </button>
+                <div class="p-2 bg-success bg-opacity-20 border border-success border-opacity-25 rounded-3 d-inline-flex align-items-center justify-content-center gap-2">
+                    <i class="fa-solid fa-sync-alt text-success-emphasis fs-6"></i>
+                    <span class="text-[10px] fw-bold text-success-emphasis tracking-widest">উত্তরাধিকার স্থানান্তর: সক্রিয়</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEFT COLUMN: Smart Meters & Bills -->
+    <div class="col-lg-8 d-flex flex-column gap-4">
+        <div class="glass-card p-4 p-lg-5 flex-grow-1">
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-4 border-bottom pb-4 gap-3">
+                <div>
+                    <h4 class="fw-bold text-dark m-0 fs-5"><i class="fa-solid fa-gauge-high text-primary me-2"></i> স্মার্ট মিটার ও ইউটিলিটি</h4>
+                    <p class="text-[11px] text-secondary m-0 mt-1">আপনার ঠিকানায় সংযুক্ত সকল প্রিপ্রেইড ও পোস্টপেইড বিলিং স্ট্যাটাস।</p>
+                </div>
+                <span class="badge bg-light text-muted border text-[10px] font-mono-code px-3 py-1.5"><i class="fa-solid fa-rotate me-1 text-primary"></i> শেষ সিঙ্ক: ২ মিনিট আগে</span>
+            </div>
+
+            <div class="row g-4">
+                <!-- 1. Electricity: DESCO/DPDC -->
+                <div class="col-md-6">
+                    <div class="meter-card electricity-theme p-4 h-100 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div>
+                                <h6 class="fw-bold text-dark m-0 fs-6">বিদ্যুৎ (DESCO)</h6>
+                                <p class="text-[11px] text-muted font-mono-code m-0 mt-1">মিটার নং: 88921045X</p>
+                            </div>
+                            <div class="bg-amber-50 p-2 rounded-circle text-amber-500 border border-amber-100"><i class="fa-solid fa-bolt fs-5"></i></div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-[10px] text-muted text-uppercase fw-bold mb-1 tracking-widest">প্রিপেইড ব্যালেন্স</p>
+                            <h4 class="font-mono-code fw-bold text-dark m-0">৳ ১,২৪৫.৫০</h4>
+                            <p class="text-[10px] text-danger m-0 mt-1 fw-medium"><i class="fa-solid fa-circle-exclamation me-1"></i> আনুমানিক ৩ দিন চলবে</p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-top pt-3 mt-auto">
+                            <span class="badge bg-success bg-opacity-10 text-success border border-success-subtle px-2 py-1 text-[9px]"><span class="status-dot pulse-green me-1"></span> সক্রিয়</span>
+                            <button class="btn btn-warning btn-sm fw-bold text-[11px] px-3 shadow-sm text-dark">রিচার্জ করুন</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Water: WASA -->
+                <div class="col-md-6">
+                    <div class="meter-card water-theme p-4 h-100 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div>
+                                <h6 class="fw-bold text-dark m-0 fs-6">পানি (WASA)</h6>
+                                <p class="text-[11px] text-muted font-mono-code m-0 mt-1">অ্যাকাউন্ট: 12-445-092</p>
+                            </div>
+                            <div class="bg-blue-50 p-2 rounded-circle text-blue-500 border border-blue-100"><i class="fa-solid fa-droplet fs-5"></i></div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-[10px] text-muted text-uppercase fw-bold mb-1 tracking-widest">চলতি মাসের ব্যবহার</p>
+                            <h4 class="font-mono-code fw-bold text-dark m-0">১২,৪০০ <span class="text-xs fw-normal text-muted">লিটার</span></h4>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-top pt-3 mt-auto">
+                            <span class="text-[10px] text-muted fw-bold"><i class="fa-solid fa-check-circle text-success me-1"></i> লিকেজ নেই</span>
+                            <button class="btn btn-outline-primary btn-sm fw-bold text-[11px] px-3">বিল দেখুন</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Gas: Titas -->
+                <div class="col-md-6">
+                    <div class="meter-card gas-theme p-4 h-100 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div>
+                                <h6 class="fw-bold text-dark m-0 fs-6">গ্যাস (তিতাস স্মার্ট মিটার)</h6>
+                                <p class="text-[11px] text-muted font-mono-code m-0 mt-1">কার্ড নং: TT-3341-99</p>
+                            </div>
+                            <div class="bg-orange-50 p-2 rounded-circle text-orange-500 border border-orange-100"><i class="fa-solid fa-fire-flame-curved fs-5"></i></div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-[10px] text-muted text-uppercase fw-bold mb-1 tracking-widest">বর্তমান ব্যালেন্স</p>
+                            <h4 class="font-mono-code fw-bold text-dark m-0">৳ ৪৮০.০০</h4>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-top pt-3 mt-auto">
+                            <span class="badge bg-success bg-opacity-10 text-success border border-success-subtle px-2 py-1 text-[9px]"><span class="status-dot pulse-green me-1"></span> গ্যাস সরবরাহ চালু</span>
+                            <button class="btn btn-outline-warning btn-sm fw-bold text-[11px] px-3 text-orange-600 border-orange-300">রিচার্জ (NFC)</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Broadband/Internet -->
+                <div class="col-md-6">
+                    <div class="meter-card internet-theme p-4 h-100 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div>
+                                <h6 class="fw-bold text-dark m-0 fs-6">ব্রডব্যান্ড (Dot Internet)</h6>
+                                <p class="text-[11px] text-muted font-mono-code m-0 mt-1">আইডি: user_aishik22</p>
+                            </div>
+                            <div class="bg-purple-50 p-2 rounded-circle text-purple-600 border border-purple-100"><i class="fa-solid fa-wifi fs-5"></i></div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-[10px] text-muted text-uppercase fw-bold mb-1 tracking-widest">ব্যান্ডউইথ প্যাক</p>
+                            <h4 class="font-mono-code fw-bold text-dark m-0">40 <span class="text-xs fw-normal text-muted">Mbps</span></h4>
+                            <p class="text-[10px] text-danger m-0 mt-1 fw-medium">মেয়াদ শেষ: ৩ দিন পর</p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-top pt-3 mt-auto">
+                            <span class="text-[11px] text-dark font-mono-code fw-bold">৳ ১,২০০</span>
+                            <button class="btn btn-outline-purple btn-sm fw-bold text-[11px] px-3 text-purple-600 border-purple-300">পে বিল</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Unified Billing Action -->
+            <div class="mt-4 pt-4 border-top border-dashed">
+                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center bg-slate-50 p-3 rounded-4 border border-slate-200">
+                    <div class="mb-2 mb-sm-0">
+                        <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest">সর্বমোট প্রদেয় বিল (সকল খাত)</p>
+                        <h3 class="font-mono-code fw-bold text-primary m-0 mt-1 fs-4">৳ ২,২৮০.০০</h3>
+                    </div>
+                    <button class="btn btn-primary fw-bold px-4 shadow-sm w-100 w-sm-auto"><i class="fa-solid fa-credit-card me-2"></i> এক ক্লিকে পরিশোধ</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Tenancy, City Corp & Footprint -->
+    <div class="col-lg-4 d-flex flex-column gap-4">
+        
+        <!-- Digital Tenancy Registry (CIMS) -->
+        <div class="glass-card p-4 d-flex flex-column border-top" style="border-top-width: 4px; border-top-color: #6366f1;">
+            <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
+                <h4 class="fw-bold text-dark m-0 fs-6">
+                    <i class="fa-solid fa-file-signature text-indigo-600 me-2 fs-5"></i> ভাড়াটিয়া নিবন্ধন (CIMS)
+                </h4>
+                <div class="rounded-circle bg-success bg-opacity-10 text-success d-flex align-items-center justify-content-center p-2" title="পুলিশ ভেরিফাইড">
+                    <i class="fa-solid fa-shield-check"></i>
+                </div>
+            </div>
+            
+            <div class="tenancy-card p-4 mb-4 shadow-sm">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-[9px] text-indigo-700 bg-white px-2 py-1 rounded border border-indigo-200 fw-bold text-uppercase tracking-widest">অ্যাক্টিভ চুক্তি</span>
+                    <i class="fa-solid fa-circle-check text-success"></i>
+                </div>
+                
+                <div class="mb-3">
+                    <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest">যাচাইকৃত বাড়িওয়ালা</p>
+                    <h6 class="fw-bold text-dark m-0 mt-1 fs-6">মোঃ আসাদুল্লাহ খান</h6>
+                    <p class="text-[11px] font-mono-code text-indigo-600 m-0 mt-1 bg-indigo-50 d-inline-block px-2 py-0.5 rounded">UID: AC-44910283</p>
+                </div>
+
+                <div class="row g-2 mb-3">
+                    <div class="col-6">
+                        <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest">মাসিক ভাড়া</p>
+                        <p class="text-sm font-mono-code fw-bold text-dark m-0 mt-1">৳ ২৫,০০০</p>
+                    </div>
+                    <div class="col-6 border-start">
+                        <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest ps-2">চুক্তির মেয়াদ</p>
+                        <p class="text-sm font-mono-code fw-bold text-dark m-0 mt-1 ps-2">৩১ ডিসে ২০২৬</p>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button class="btn btn-white btn-sm border flex-grow-1 fw-semibold text-[11px] text-slate-700 hover-bg-light transition">
+                        <i class="fa-solid fa-file-contract me-1"></i> চুক্তিপত্র
+                    </button>
+                    <button class="btn btn-danger btn-opacity-10 btn-sm border border-danger-subtle flex-grow-1 fw-semibold text-[11px] text-danger bg-danger bg-opacity-10 hover-bg-light transition" title="বাড়িওয়ালার বিরুদ্ধে অভিযোগ">
+                        <i class="fa-solid fa-gavel me-1"></i> অভিযোগ
+                    </button>
+                </div>
+            </div>
+
+            <!-- Police Verification Status -->
+            <div class="p-3 bg-slate-900 rounded-4 shadow-sm mt-auto">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <div class="rounded-circle bg-white bg-opacity-10 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                        <i class="fa-solid fa-building-shield text-info" style="font-size: 14px;"></i>
+                    </div>
+                    <h6 class="m-0 text-sm fw-bold">পুলিশ ডেটাবেস সিঙ্কড</h6>
+                </div>
+                <p class="m-0 text-slate-400 leading-relaxed" style="font-size: 10px;">এই ঠিকানায় আপনার অবস্থান <strong>বনানী থানা</strong> রেকর্ডে স্বয়ংক্রিয়ভাবে আপডেট হয়েছে। কোনো ম্যানুয়াল ফর্মের প্রয়োজন নেই।</p>
+            </div>
+        </div>
+
+        <!-- City Corporation & Waste Management -->
+        <div class="glass-card p-4 border-top" style="border-top-width: 4px; border-top-color: #10b981;">
+            <h4 class="fw-bold text-dark m-0 fs-6 mb-3 d-flex align-items-center">
+                <i class="fa-solid fa-trash-can-arrow-up text-success me-2 fs-5"></i> সিটি কর্পোরেশন সেবা
+            </h4>
+            <div class="d-flex justify-content-between align-items-center p-3 bg-slate-50 rounded-3 border transition hover-bg-light cursor-pointer">
+                <div>
+                    <p class="fw-bold text-dark m-0 text-sm">বর্জ্য ব্যবস্থাপনা বিল</p>
+                    <p class="text-[10px] text-muted m-0 mt-1">ঢাকা উত্তর সিটি কর্পোরেশন</p>
+                </div>
+                <span class="badge bg-success bg-opacity-10 text-success border border-success-subtle text-[10px]">পরিশোধিত</span>
+            </div>
+        </div>
+
+        <!-- Consumption & Carbon Footprint -->
+        <div class="glass-card p-4 flex-grow-1 border-top" style="border-top-width: 4px; border-top-color: #ef4444;">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-bold text-dark fs-6 m-0 d-flex align-items-center"><i class="fa-solid fa-leaf text-success me-2"></i> কার্বন ফুটপ্রিন্ট ও টেকসই ব্যবহার</h5>
+            </div>
+            <p class="text-[11px] text-secondary mb-3 leading-relaxed">রাষ্ট্রীয় ভর্তুকিপ্রাপ্ত সম্পদের আপনার ব্যবহার জাতীয় গড়ের (<strong>২.১ মেট্রিক টন/বছর</strong>) তুলনায় বেশি।</p>
+            
+            <div class="footprint-bar mb-2">
+                <div class="footprint-fill"></div>
+            </div>
+            <div class="d-flex justify-content-between text-[9px] fw-bold text-muted text-uppercase tracking-widest mt-2">
+                <span>পরিবেশবান্ধব</span>
+                <span class="text-danger fw-bold bg-danger bg-opacity-10 px-2 py-0.5 rounded">আপনার ব্যবহার: ২.৮ MT/yr</span>
+                <span>উচ্চ প্রভাব</span>
+            </div>
+            
+            <div class="mt-3 p-2 bg-blue-50 text-blue-700 rounded text-[10px] d-flex align-items-center gap-2 border border-blue-100">
+                <i class="fa-solid fa-lightbulb text-warning"></i>
+                <span>আপনার বিদ্যুৎ ব্যবহার গত মাসের চেয়ে ১০% কম। সাবাশ!</span>
+            </div>
+        </div>
+
+    </div>
+
+</div>

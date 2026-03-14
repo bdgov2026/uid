@@ -1,0 +1,40 @@
+{{ define "main" }}
+<div class="container my-4" id="ListPageContent">
+  {{ .Content }}
+  <h2 class="text-center py-3">..বিস্তারিত তথ্য..</h2>
+  <div id="Index">
+    {{ range $index, $section := .Pages }}
+    <a class="nav-link d-flex border rounded shadow-lg p-3 my-2" href="{{.Permalink}}">
+      <span class="text-bg-dark fs-3 p-1 px-3">{{ printf "%02d" (add $index 1) }}</span>
+      <h3 class="p-1 ps-3">{{.Title}}</h3>
+      {{/* <p class="pt-2">{{.Summary | truncate 200}}</p> */}}
+    </a>
+    {{ end }}
+  </div>
+</div>
+{{/*  <div class="container py-4" print-area="home">
+  {{ range $index, $section := .Site.Sections }}
+  {{ if eq $index 0}}
+  <div class="p-5 mb-4 text-bg-dark rounded-3">
+    <div class="container-fluid py-5">
+      {{ partial "my-inline-partial.html" . }}
+    </div>
+  </div>
+  <div class="row align-items-md-stretch">
+    {{ else }}
+    <div class="col-md-6">
+      <div class="h-100 bg-body-tertiary  p-5 rounded-3">
+        {{ partial "my-inline-partial.html" . }}
+      </div>
+    </div>
+    {{ end }}
+    {{ end }}
+  </div>
+</div>  */}}
+{{ end }}
+
+{{/*  {{ define "partials/my-inline-partial.html" }}
+<h2>{{.Title}}</h2>
+<p>{{.Summary | truncate 200}}</p>
+<a class="btn btn-outline-secondary" type="button" href="{{.Permalink}}">{{i18n "readNow" }}</a>
+{{ end }}  */}}

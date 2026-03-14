@@ -1,0 +1,29 @@
+baseURL: "https://aishikrehman.com/"
+DefaultContentLanguage: "bn"
+timeZone: "Asia/Dhaka"
+# enableGitInfo: true
+# googleAnalytics: "G-3NFDT41J8E"
+# contentDir: "content/discrete-mathematics/"
+paginate: 5
+
+permalinks:
+  page:
+    hsc-bangla-1st-paper: /:slug/
+  section:
+    hsc-bansgla-1st-paper: /:slug/
+
+
+
+title: UID
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+      hardWraps: true
+  tableOfContents:
+    endLevel: 3
+    ordered: false
+    startLevel: 2
+outputs:
+  home: ["HTML", "RSS", "JSON"]

@@ -1,0 +1,404 @@
+---
+title: "অর্থনীতি ও কর খতিয়ান"
+description: "আপনার জাতীয় কর ছাড়পত্র, ক্রেডিট রেটিং, অগ্রিম কর এবং স্বয়ংক্রিয় আয় যাচাইকরণের লেজার।"
+---
+
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    /* Premium Glassmorphism styling */
+    .glass-card {
+        background: #ffffff;
+        border: 1px solid var(--border-color, #e2e8f0);
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+        border-radius: 1.25rem;
+        transition: box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* NBR Tax Card Styling - Premium Official Blue */
+    .tax-card {
+        background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+        color: white;
+        box-shadow: 0 10px 25px -5px rgba(30, 58, 138, 0.4);
+        position: relative;
+        overflow: hidden;
+        border-radius: 1.25rem;
+    }
+    .tax-card::before {
+        content: '';
+        position: absolute;
+        top: -50%; left: -50%; width: 200%; height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+        transform: rotate(30deg);
+        pointer-events: none;
+    }
+
+    /* SVG Gauge Animation for Credit Score */
+    .gauge-arc {
+        stroke-dasharray: 251.2;
+        stroke-dashoffset: 251.2;
+        animation: fillGauge 1.5s ease-out forwards;
+    }
+    @keyframes fillGauge {
+        to { stroke-dashoffset: 50.24; } /* roughly 80% filled */
+    }
+
+    .hover-translate-up { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .hover-translate-up:hover { transform: translateY(-4px); }
+    .hover-bg-light { transition: background-color 0.2s; }
+    .hover-bg-light:hover { background-color: #f8fafc !important; }
+    
+    .tracking-widest { letter-spacing: 0.05em; }
+    
+    /* Table Styling */
+    .table-ledger th {
+        background-color: #f8fafc;
+        color: #64748b;
+        font-weight: 600;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 1rem;
+        border-bottom: 2px solid #e2e8f0;
+    }
+    .table-ledger td {
+        padding: 1rem;
+        vertical-align: middle;
+        font-size: 0.875rem;
+        border-bottom: 1px solid #f1f5f9;
+    }
+</style>
+
+<div class="row g-4">
+
+    <!-- ROW 1: NBR Tax Status & Credit Score -->
+    <div class="col-lg-8">
+        <div class="tax-card p-4 p-lg-5 h-100 d-flex flex-column justify-content-between hover-translate-up transition">
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start z-1 position-relative mb-4 gap-3">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="d-flex align-items-center justify-content-center bg-white rounded-circle shadow-sm" style="width: 56px; height: 56px;">
+                        <i class="fa-solid fa-building-columns text-primary fs-4"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-[10px] tracking-widest fw-bold m-0 mb-1 text-uppercase" style="color: #bfdbfe;">জাতীয় রাজস্ব বোর্ড (NBR)</h3>
+                        <p class="fs-4 fw-bold text-white m-0 lh-sm">কর ছাড়পত্র স্ট্যাটাস</p>
+                    </div>
+                </div>
+                <div class="border px-3 py-1.5 rounded-pill text-[10px] fw-bold text-uppercase tracking-widest d-flex align-items-center shadow-sm" style="background: rgba(34, 197, 94, 0.2); color: #86efac; border-color: rgba(34, 197, 94, 0.5) !important;">
+                    <span class="rounded-circle bg-success spinner-grow spinner-grow-sm me-2" style="width: 8px; height: 8px;"></span>
+                    সক্রিয় এবং ক্লিয়ারকৃত
+                </div>
+            </div>
+
+            <div class="row g-3 z-1 position-relative mt-auto">
+                <div class="col-md-4">
+                    <div class="p-4 rounded-4 border h-100" style="background: rgba(0,0,0,0.2); border-color: rgba(255,255,255,0.1) !important;">
+                        <p class="text-[10px] text-uppercase fw-bold m-0 mb-1" style="color: #93c5fd;">ই-টিন (E-TIN) সংযুক্ত</p>
+                        <p class="text-white font-mono-code fw-bold fs-5 tracking-widest m-0">349-182-990-1</p>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="p-4 rounded-4 border h-100 d-flex justify-content-between align-items-center" style="background: rgba(0,0,0,0.2); border-color: rgba(255,255,255,0.1) !important;">
+                        <div>
+                            <p class="text-[10px] text-uppercase fw-bold m-0 mb-1" style="color: #93c5fd;">কর নির্ধারণী বছর: ২০২৫-২০২৬</p>
+                            <p class="text-white fw-bold fs-5 m-0 d-flex align-items-center">
+                                শূন্য কর রিটার্ন দাখিলকৃত <i class="fa-solid fa-circle-check text-success ms-2 fs-6"></i>
+                            </p>
+                            <p class="m-0 mt-1" style="color: #bfdbfe; font-size: 11px;">আয় করযোগ্য সীমার নিচে (৩,৫০,০০০ টাকা)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Citizen Credit Rating (CIB) -->
+    <div class="col-lg-4">
+        <div class="glass-card p-4 p-lg-5 h-100 d-flex flex-column justify-content-center align-items-center position-relative hover-translate-up transition" style="border-top: 4px solid #6366f1;">
+            <div class="position-absolute top-0 end-0 p-3 text-muted cursor-pointer" title="ক্রেডিট ইনফরমেশন ব্যুরো (CIB) স্ট্যাটাস">
+                <i class="fa-solid fa-circle-info hover:text-indigo-500 transition"></i>
+            </div>
+            
+            <h3 class="text-[11px] fw-bold text-secondary text-uppercase tracking-widest m-0 mb-3 text-center">সিআইবি (CIB) ক্রেডিট রেটিং</h3>
+            
+            <div class="position-relative mb-2" style="width: 180px; height: 100px; overflow: hidden;">
+                <svg width="100%" height="100%" viewBox="0 0 100 50">
+                    <path d="M 10 45 A 40 40 0 0 1 90 45" fill="none" stroke="#e2e8f0" stroke-width="8" stroke-linecap="round"/>
+                    <path class="gauge-arc" d="M 10 45 A 40 40 0 0 1 90 45" fill="none" stroke="#10b981" stroke-width="8" stroke-linecap="round"/>
+                </svg>
+                <div class="position-absolute bottom-0 start-0 w-100 text-center" style="padding-bottom: 5px;">
+                    <span class="fs-1 fw-bold text-dark font-mono-code" style="letter-spacing: -1px;">780</span>
+                </div>
+            </div>
+            
+            <span class="text-sm fw-bold text-uppercase tracking-widest mb-4" style="color: #059669;">চমৎকার অবস্থান</span>
+
+            <div class="w-100 bg-slate-50 rounded-3 p-3 border d-flex justify-content-between align-items-center mt-auto">
+                <span class="text-[11px] fw-bold text-secondary m-0">ঋণ খেলাপি:</span>
+                <span class="badge bg-white text-dark border shadow-sm px-2 py-1 text-[10px]">নেই (ক্লিয়ার)</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ROW 2: NEW BD Specific Trackers (Travel Quota & TDS) -->
+<div class="row g-4 mt-1">
+    
+    <!-- Foreign Currency Endorsement Quota -->
+    <div class="col-lg-6">
+        <div class="glass-card p-4 p-lg-5 h-100 border-top" style="border-top-width: 4px; border-top-color: #0ea5e9;">
+            <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-4">
+                <div>
+                    <h3 class="fw-bold text-dark fs-5 m-0 d-flex align-items-center">
+                        <i class="fa-solid fa-passport text-info me-2 fs-4"></i>
+                        বৈদেশিক মুদ্রা ট্রাভেল কোটা
+                    </h3>
+                    <p class="text-[11px] text-secondary m-0 mt-1">বাংলাদেশ ব্যাংকের বার্ষিক এনডোর্সমেন্ট ট্র্যাকার (২০২৬)</p>
+                </div>
+                <span class="badge bg-info bg-opacity-10 text-info-emphasis border border-info-subtle px-2 py-1 text-[9px] tracking-widest">BB SYNCED</span>
+            </div>
+
+            <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-end mb-2">
+                    <span class="text-xs fw-bold text-slate-700">ব্যবহৃত কোটা</span>
+                    <span class="text-sm font-mono-code fw-bold text-dark">$ ২,৪৫০ <span class="text-muted fw-normal text-[11px]">/ $ ১২,০০০</span></span>
+                </div>
+                <div class="progress rounded-pill shadow-sm" style="height: 10px; background-color: #e0f2fe;">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 20.4%;"></div>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column gap-2 mt-auto">
+                <div class="d-flex justify-content-between align-items-center p-3 rounded-3 bg-slate-50 border">
+                    <div class="d-flex align-items-center gap-3">
+                        <i class="fa-brands fa-cc-mastercard fs-4 text-secondary"></i>
+                        <span class="text-[11px] fw-semibold text-dark">City Bank (Dual Currency)</span>
+                    </div>
+                    <span class="font-mono-code text-[11px] fw-bold text-danger">-$ ২,৪৫০</span>
+                </div>
+                <p class="text-[9px] text-muted text-center mt-2 m-0"><i class="fa-solid fa-circle-info me-1"></i> পাসপোর্ট নম্বরের সাথে সংযুক্ত সকল কার্ড এবং ক্যাশ এনডোর্সমেন্ট এখানে স্বয়ংক্রিয়ভাবে যোগ হয়।</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TDS & AIT Tracker (Advance Tax) -->
+    <div class="col-lg-6">
+        <div class="glass-card p-4 p-lg-5 h-100 border-top" style="border-top-width: 4px; border-top-color: #f59e0b;">
+            <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-4">
+                <div>
+                    <h3 class="fw-bold text-dark fs-5 m-0 d-flex align-items-center">
+                        <i class="fa-solid fa-hand-holding-dollar text-warning-emphasis me-2 fs-4"></i>
+                        অগ্রিম ও উৎস কর (AIT/TDS)
+                    </h3>
+                    <p class="text-[11px] text-secondary m-0 mt-1">বিভিন্ন খাত থেকে স্বয়ংক্রিয়ভাবে কর্তনকৃত করের হিসাব।</p>
+                </div>
+                <span class="badge bg-warning bg-opacity-10 text-warning-emphasis border border-warning-subtle px-2 py-1 text-[9px] tracking-widest">ট্যাক্স রিবেট</span>
+            </div>
+
+            <div class="d-flex flex-column gap-3">
+                <div class="d-flex justify-content-between align-items-center p-2 rounded hover-bg-light transition">
+                    <span class="text-[11px] fw-semibold text-dark"><i class="fa-solid fa-car-side text-muted me-2"></i> গাড়ির ফি (BRTA)</span>
+                    <span class="font-mono-code fw-bold text-dark text-sm">৳ ৩,০০০</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2 rounded hover-bg-light transition">
+                    <span class="text-[11px] fw-semibold text-dark"><i class="fa-solid fa-building-columns text-muted me-2"></i> ব্যাংক মুনাফা কর্তন (১০%)</span>
+                    <span class="font-mono-code fw-bold text-dark text-sm">৳ ১,২০০</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2 rounded hover-bg-light transition">
+                    <span class="text-[11px] fw-semibold text-dark"><i class="fa-solid fa-file-invoice text-muted me-2"></i> মোবাইল বিল/ইন্টারনেট</span>
+                    <span class="font-mono-code fw-bold text-dark text-sm">৳ ৩৫০</span>
+                </div>
+            </div>
+
+            <div class="mt-3 pt-3 border-top border-dashed">
+                <div class="d-flex justify-content-between align-items-center p-3 rounded-4" style="background-color: #fffbeb; border: 1px solid #fde68a;">
+                    <span class="text-[11px] text-warning-emphasis text-uppercase tracking-widest fw-bold">মোট সমন্বয়যোগ্য কর</span>
+                    <span class="fs-4 fw-bold text-warning-emphasis font-mono-code lh-1">৳ ৪,৫৫০</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ROW 3: Automated Income Proof & Financial Links -->
+<div class="row g-4 mt-1">
+    <!-- Dynamic Income Calculation -->
+    <div class="col-lg-6">
+        <div class="glass-card p-4 p-lg-5 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-4">
+                <div>
+                    <h3 class="fw-bold text-dark fs-5 m-0 d-flex align-items-center">
+                        <i class="fa-solid fa-wallet text-success me-2 fs-4"></i>
+                        স্বয়ংক্রিয় আয় প্রমাণপত্র
+                    </h3>
+                    <p class="text-[11px] text-secondary m-0 mt-1">ব্যাংকিং ও সম্পদ এপিআইয়ের (API) মাধ্যমে তাৎক্ষণিকভাবে গণনাকৃত।</p>
+                </div>
+                <button class="btn btn-light border btn-sm fw-semibold text-dark shadow-sm hover-bg-light transition d-none d-sm-block">
+                    <i class="fa-solid fa-download me-1 text-success"></i> সনদ নিন
+                </button>
+            </div>
+
+            <div class="d-flex flex-column gap-3">
+                <div class="d-flex justify-content-between align-items-center p-2 rounded hover-bg-light transition">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle bg-primary" style="width: 8px; height: 8px;"></div>
+                        <p class="text-[11px] fw-bold text-dark m-0">বেতন ও পারিশ্রমিক</p>
+                    </div>
+                    <p class="font-mono-code fw-bold text-dark m-0 text-sm">৳ ২৪,০০০ <span class="text-muted fw-normal text-[9px]">/মাস</span></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2 rounded hover-bg-light transition">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle bg-success" style="width: 8px; height: 8px;"></div>
+                        <p class="text-[11px] fw-bold text-dark m-0">কৃষি <span class="text-muted text-[9px] fw-normal">(০.১৫ একর)</span></p>
+                    </div>
+                    <p class="font-mono-code fw-bold text-dark m-0 text-sm">৳ ৪,০০০ <span class="text-muted fw-normal text-[9px]">/মাসিক গড়</span></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2 rounded hover-bg-light transition">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle bg-warning" style="width: 8px; height: 8px;"></div>
+                        <p class="text-[11px] fw-bold text-dark m-0">রেমিট্যান্স / ফ্রিল্যান্সিং</p>
+                    </div>
+                    <p class="font-mono-code fw-bold text-muted m-0 text-sm">৳ ০.০০</p>
+                </div>
+
+                <div class="mt-3 pt-4 border-top border-dashed">
+                    <div class="d-flex justify-content-between align-items-center p-4 rounded-4 shadow-sm" style="background-color: #f0fdf4; border: 1px solid #bbf7d0;">
+                        <div>
+                            <p class="text-[10px] text-success-emphasis text-uppercase tracking-widest fw-bold m-0 mb-1">মোট যাচাইকৃত আয়</p>
+                            <p class="fs-3 fw-bold text-success m-0 font-mono-code lh-1" style="letter-spacing: -0.5px;">৳ ২৮,০০০</p>
+                        </div>
+                        <span class="badge bg-white text-success border border-success-subtle shadow-sm px-2 py-1.5 text-[10px]">মাসিক আনুমানিক</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Connected Liabilities & NID Merge Status -->
+    <div class="col-lg-6">
+        <div class="glass-card p-4 p-lg-5 h-100 d-flex flex-column">
+            <h3 class="fw-bold text-dark fs-5 mb-4 border-bottom pb-4">সক্রিয় দায় ও অডিট</h3>
+            
+            <div class="d-flex flex-column gap-4 flex-grow-1">
+                <!-- Loan Status -->
+                <div class="d-flex align-items-center justify-content-between p-3.5 rounded-4 border border-success bg-success bg-opacity-10 transition hover-translate-up">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle bg-white text-success d-flex align-items-center justify-content-center shadow-sm" style="width: 44px; height: 44px;">
+                            <i class="fa-solid fa-building-columns fs-5"></i>
+                        </div>
+                        <div>
+                            <p class="fw-bold text-success-emphasis m-0 text-sm">ব্যাংক ঋণ স্ট্যাটাস</p>
+                            <p class="text-[11px] text-success m-0 mt-1">কোনো সক্রিয় ঋণ বাধ্যবাধকতা নেই।</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-circle-check text-success fs-4"></i>
+                </div>
+
+                <!-- Municipal Taxes -->
+                <div class="d-flex align-items-center justify-content-between p-3.5 rounded-4 border bg-white hover-translate-up transition shadow-sm">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle bg-slate-50 text-secondary d-flex align-items-center justify-content-center border border-slate-200" style="width: 44px; height: 44px;">
+                            <i class="fa-solid fa-city fs-5"></i>
+                        </div>
+                        <div>
+                            <p class="fw-bold text-dark m-0 text-sm">পৌরসভা হোল্ডিং ট্যাক্স</p>
+                            <p class="text-[11px] text-muted m-0 mt-1">ময়মনসিংহ সিটি কর্পোরেশন</p>
+                        </div>
+                    </div>
+                    <span class="badge bg-slate-100 text-slate-600 border px-2 py-1 text-[10px]">প্রযোজ্য নয়</span>
+                </div>
+
+                <!-- Welfare Eligibility -->
+                <div class="mt-auto pt-3">
+                    <p class="text-[10px] fw-bold text-uppercase text-muted mb-2 tracking-widest">স্বয়ংক্রিয় কল্যাণ (Welfare) স্ট্যাটাস</p>
+                    <div class="p-3.5 bg-slate-900 text-white rounded-4 d-flex justify-content-between align-items-center shadow-sm" style="border: 1px solid #334155;">
+                        <div>
+                            <p class="fw-bold m-0 text-sm">কৃষি ভর্তুকি</p>
+                            <p class="m-0 mt-1" style="font-size: 10px; color: #94a3b8;">আয় এবং জমির ভিত্তিতে যোগ্য</p>
+                        </div>
+                        <span class="badge bg-success px-2 py-1.5 text-[10px] tracking-widest">সক্রিয়</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ROW 4: Tax Filing Ledger -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="glass-card p-4 p-lg-5">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 border-bottom pb-4 gap-3">
+                <div>
+                    <h3 class="fw-bold text-dark fs-5 m-0">কর নির্ধারণী লেজার</h3>
+                    <p class="text-[11px] text-secondary m-0 mt-1">স্বয়ংক্রিয় রিটার্ন এবং এনবিআর (NBR) ছাড়পত্রের ইতিহাস।</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-light border btn-sm fw-semibold px-3 text-dark hover-bg-light transition"><i class="fa-solid fa-filter text-muted me-1"></i> ফিল্টার</button>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-ledger table-hover align-middle m-0">
+                    <thead>
+                        <tr>
+                            <th class="rounded-start">নির্ধারণী বছর</th>
+                            <th>দাখিলের তারিখ</th>
+                            <th class="text-end">মোট আয়</th>
+                            <th class="text-end">নির্ধারিত কর</th>
+                            <th>স্ট্যাটাস</th>
+                            <th class="text-end rounded-end">পদক্ষেপ</th>
+                        </tr>
+                    </thead>
+                    <tbody class="border-top-0">
+                        <!-- Record 1 (Current) -->
+                        <tr>
+                            <td class="fw-bold text-dark font-mono-code">২০২৫-২০২৬</td>
+                            <td class="text-muted text-[12px] font-mono-code">০৫ নভে ২০২৫</td>
+                            <td class="text-end font-mono-code text-dark fw-medium">৳ ৩,৩৬,০০০</td>
+                            <td class="text-end font-mono-code text-success fw-bold">৳ ০</td>
+                            <td>
+                                <span class="badge bg-success bg-opacity-10 text-success border border-success px-2 py-1 text-[10px]"><i class="fa-solid fa-check me-1"></i> ক্লিয়ারকৃত</span>
+                            </td>
+                            <td class="text-end">
+                                <button class="btn btn-sm btn-light border fw-semibold text-[11px] text-primary transition hover-bg-light"><i class="fa-solid fa-print me-1"></i> প্রাপ্তিস্বীকার</button>
+                            </td>
+                        </tr>
+                        <!-- Record 2 -->
+                        <tr>
+                            <td class="fw-bold text-dark font-mono-code">২০২৪-২০২৫</td>
+                            <td class="text-muted text-[12px] font-mono-code">২৮ অক্টো ২০২৪</td>
+                            <td class="text-end font-mono-code text-dark fw-medium">৳ ২,৯০,০০০</td>
+                            <td class="text-end font-mono-code text-success fw-bold">৳ ০</td>
+                            <td>
+                                <span class="badge bg-success bg-opacity-10 text-success border border-success px-2 py-1 text-[10px]"><i class="fa-solid fa-check me-1"></i> ক্লিয়ারকৃত</span>
+                            </td>
+                            <td class="text-end">
+                                <button class="btn btn-sm btn-light border fw-semibold text-[11px] text-primary transition hover-bg-light"><i class="fa-solid fa-print me-1"></i> প্রাপ্তিস্বীকার</button>
+                            </td>
+                        </tr>
+                        <!-- Record 3 (Student/Unemployed) -->
+                        <tr>
+                            <td class="fw-bold text-dark font-mono-code">২০২৩-২০২৪</td>
+                            <td class="text-muted text-[12px] font-mono-code">স্বয়ংক্রিয় অব্যাহতি</td>
+                            <td class="text-end font-mono-code text-muted fw-medium">৳ ০</td>
+                            <td class="text-end font-mono-code text-muted fw-bold">৳ ০</td>
+                            <td>
+                                <span class="badge bg-slate-100 text-slate-600 border px-2 py-1 text-[10px]">শিক্ষার্থী হিসেবে অব্যাহতি</span>
+                            </td>
+                            <td class="text-end text-muted">
+                                <i class="fa-solid fa-minus ms-3"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

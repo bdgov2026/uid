@@ -1,0 +1,564 @@
+---
+title: "পরিবার ও বংশলতিকা"
+description: "আপনার যাচাইকৃত বংশগত গ্রাফ, ভাইবোন এবং আইনি বন্ধনের বিস্তারিত তথ্য।"
+---
+
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    .glass-card {
+        background: #ffffff;
+        border: 1px solid var(--border-color, #e2e8f0);
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+        border-radius: 1.25rem;
+        transition: box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Trust & Status Banner */
+    .trust-banner {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        color: white;
+        border-radius: 1.25rem;
+        box-shadow: 0 10px 25px -5px rgba(4, 120, 87, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    .trust-banner::after {
+        content: '';
+        position: absolute;
+        top: -50%; left: -50%; width: 200%; height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+        pointer-events: none;
+    }
+
+    /* Family Tree Node Styles */
+    .tree-wrapper {
+        min-width: 800px;
+        padding: 2rem 0;
+    }
+    .node-card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 1rem;
+        padding: 1.25rem 1rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        z-index: 2;
+        width: 180px;
+        margin: 0 auto;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .node-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -8px rgba(0,0,0,0.08); border-color: #cbd5e1; }
+    
+    /* Thematic Node Borders */
+    .node-paternal { border-top: 4px solid #3b82f6; }
+    .node-maternal { border-top: 4px solid #ec4899; }
+    .node-self { border-top: 4px solid #10b981; background: #f0fdf4; border-color: #a7f3d0; }
+    .node-deceased { opacity: 0.9; background-color: #f8fafc; }
+    
+    /* Tree Connecting Lines */
+    .line-v { width: 2px; height: 24px; background-color: #cbd5e1; margin: 0 auto; transition: background-color 0.3s; }
+    .line-h-wrapper { display: flex; align-items: center; justify-content: center; width: 100%; }
+    .line-h { height: 2px; background-color: #cbd5e1; width: 50%; transition: background-color 0.3s; }
+
+    .tree-wrapper:hover .line-v, .tree-wrapper:hover .line-h { background-color: #94a3b8; }
+
+    /* Marriage Card (Premium Official Look) */
+    .marriage-card {
+        background: linear-gradient(to bottom right, #ffffff, #f8fafc);
+        border: 1px solid #e2e8f0;
+        border-left: 5px solid #059669;
+        border-radius: 1.25rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .dependent-item {
+        background-color: #ffffff;
+        border: 1px solid #f1f5f9;
+        transition: all 0.2s;
+    }
+    .hover-translate-up { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .hover-translate-up:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+
+    /* Custom Badges */
+    .badge-soft-success { background-color: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+    .badge-soft-danger { background-color: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+    .badge-soft-warning { background-color: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+
+    /* History Table */
+    .history-row td {
+        font-size: 0.85rem;
+        border-bottom: 1px solid #f1f5f9;
+        padding: 12px 8px;
+        color: #475569;
+    }
+    
+    /* Utility for tracking */
+    .tracking-widest { letter-spacing: 0.08em; }
+    .font-mono-code { font-family: 'Fira Code', monospace; }
+</style>
+
+<div class="row g-4">
+    <!-- TOP SECTION: Combined Verification Status -->
+    <div class="col-12">
+        <div class="trust-banner p-4 p-lg-5 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-4">
+            <div class="d-flex align-items-center gap-4 z-1">
+                <div class="rounded-circle bg-white d-flex align-items-center justify-content-center text-success shadow-sm" style="width: 64px; height: 64px;">
+                    <i class="fa-solid fa-dna fs-3"></i>
+                </div>
+                <div>
+                    <h3 class="fw-bold text-white fs-4 m-0 mb-1">সার্বজনীন পারিবারিক ট্রাস্ট খতিয়ান</h3>
+                    <p class="text-sm m-0" style="color: #d1fae5; font-weight: 500;">বংশগত গ্রাফ, ভাইবোন এবং আইনি বন্ধনের ভল্ট</p>
+                </div>
+            </div>
+            <div class="z-1 text-md-end">
+                <span class="badge bg-white text-success px-4 py-2.5 rounded-pill fw-bold tracking-wider shadow-sm" style="font-size: 0.8rem;">
+                    <i class="fa-solid fa-check-double me-2"></i> বায়োমেট্রিক্যালি যাচাইকৃত
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOP SECTION: Ancestry Graph (The Core) -->
+    <div class="col-12">
+        <div class="glass-card p-4 p-lg-5 overflow-auto">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-5 border-bottom pb-4 gap-3">
+                <div>
+                    <h4 class="fw-bold text-dark m-0 fs-5 mb-1"><i class="fa-solid fa-sitemap text-success me-2"></i> পূর্বসূরী ও বংশলতিকা গ্রাফ</h4>
+                    <p class="text-sm text-muted m-0">যাচাইকৃত জৈবিক সম্পর্ক এবং বংশানুক্রমিক উত্তরাধিকার।</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-light border btn-sm fw-semibold hover-translate-up"><i class="fa-solid fa-fingerprint text-success me-1"></i> জেনেটিক হ্যাশ যাচাই</button>
+                    <button class="btn btn-dark btn-sm fw-semibold px-3 hover-translate-up"><i class="fa-solid fa-download me-1"></i> ফ্যামিলি ট্রি</button>
+                </div>
+            </div>
+
+            <div class="tree-wrapper mx-auto">
+                <!-- TIER 1: Grandparents -->
+                <div class="row text-center">
+                    <div class="col-3">
+                        <div class="node-card node-paternal node-deceased">
+                            <span class="badge badge-soft-warning px-2 py-0.5 rounded-pill position-absolute top-0 start-50 translate-middle" style="font-size: 10px;">মৃত</span>
+                            <p class="text-[10px] text-muted fw-bold m-0 mb-1 mt-1 tracking-widest">দাদা</p>
+                            <h6 class="fw-bold text-dark m-0 text-sm">জৈন উদ্দিন</h6>
+                            <button class="btn btn-link p-0 text-[11px] text-primary fw-bold mt-2 text-decoration-none">ঐতিহ্য দেখুন <i class="fa-solid fa-chevron-right text-[9px]"></i></button>
+                        </div>
+                        <div class="line-v"></div>
+                    </div>
+                    <div class="col-3">
+                        <div class="node-card node-paternal node-deceased">
+                            <span class="badge badge-soft-warning px-2 py-0.5 rounded-pill position-absolute top-0 start-50 translate-middle" style="font-size: 10px;">মৃত</span>
+                            <p class="text-[10px] text-muted fw-bold m-0 mb-1 mt-1 tracking-widest">দাদি</p>
+                            <h6 class="fw-bold text-dark m-0 text-sm">হাফিজা খাতুন</h6>
+                            <button class="btn btn-link p-0 text-[11px] text-primary fw-bold mt-2 text-decoration-none">ঐতিহ্য দেখুন <i class="fa-solid fa-chevron-right text-[9px]"></i></button>
+                        </div>
+                        <div class="line-v"></div>
+                    </div>
+                    <div class="col-3">
+                        <div class="node-card node-maternal node-deceased">
+                            <span class="badge badge-soft-warning px-2 py-0.5 rounded-pill position-absolute top-0 start-50 translate-middle" style="font-size: 10px;">মৃত</span>
+                            <p class="text-[10px] text-muted fw-bold m-0 mb-1 mt-1 tracking-widest">নানা</p>
+                            <h6 class="fw-bold text-dark m-0 text-sm">আবুল হোসেন</h6>
+                            <button class="btn btn-link p-0 text-[11px] text-primary fw-bold mt-2 text-decoration-none">ঐতিহ্য দেখুন <i class="fa-solid fa-chevron-right text-[9px]"></i></button>
+                        </div>
+                        <div class="line-v"></div>
+                    </div>
+                    <div class="col-3">
+                        <div class="node-card node-maternal">
+                            <span class="badge badge-soft-success px-2 py-0.5 rounded-pill position-absolute top-0 start-50 translate-middle" style="font-size: 10px;">জীবিত</span>
+                            <p class="text-[10px] text-muted fw-bold m-0 mb-1 mt-1 tracking-widest">নানি</p>
+                            <h6 class="fw-bold text-dark m-0 text-sm">হাফিজা বেগম</h6>
+                            <p class="font-mono-code text-muted m-0 mt-2" style="font-size: 10px;">UID: 363.1.1</p>
+                        </div>
+                        <div class="line-v"></div>
+                    </div>
+                </div>
+
+                <!-- Connectors Tier 1 to 2 -->
+                <div class="row m-0">
+                    <div class="col-6 p-0"><div class="line-h-wrapper"><div class="line-h"></div></div><div class="line-v"></div></div>
+                    <div class="col-6 p-0"><div class="line-h-wrapper"><div class="line-h"></div></div><div class="line-v"></div></div>
+                </div>
+
+                <!-- TIER 2: Parents -->
+                <div class="row text-center">
+                    <div class="col-6">
+                        <div class="node-card node-paternal" style="width: 220px;">
+                            <p class="text-[11px] text-primary fw-bold m-0 mb-1 tracking-widest">পিতা</p>
+                            <h6 class="fw-bold text-dark m-0">দুলাল মিয়া</h6>
+                            <p class="font-mono-code text-muted m-0 mt-1" style="font-size: 11px;">UID: 10253.1.2.2</p>
+                        </div>
+                        <div class="line-v"></div>
+                    </div>
+                    <div class="col-6">
+                        <div class="node-card node-maternal" style="width: 220px;">
+                            <p class="text-[11px] text-danger fw-bold m-0 mb-1 tracking-widest">মাতা</p>
+                            <h6 class="fw-bold text-dark m-0">সুরাইয়া খাতুন</h6>
+                            <p class="font-mono-code text-muted m-0 mt-1" style="font-size: 11px;">UID: 12986.1.1.1</p>
+                        </div>
+                        <div class="line-v"></div>
+                    </div>
+                </div>
+
+                <!-- Final Connector -->
+                <div class="row m-0"><div class="col-12 p-0"><div class="line-h-wrapper"><div class="line-h" style="width: 60%;"></div></div><div class="line-v" style="height: 30px;"></div></div></div>
+
+                <!-- TIER 3: Self -->
+                <div class="text-center">
+                    <div class="node-card node-self p-3 mx-auto" style="width: 300px;">
+                        <span class="badge bg-success text-white px-3 py-1 text-[10px] position-absolute top-0 start-50 translate-middle shadow-sm rounded-pill tracking-wider">মূল ব্যক্তি</span>
+                        <h5 class="fw-bold text-dark m-0 fs-5 mt-2">ঐশিক রেহমান</h5>
+                        <p class="font-mono-code text-success fw-semibold m-0 mt-1" style="font-size: 12px; letter-spacing: 1px;">AA-10253636</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- LOWER SECTION: Marital History, Progeny & Siblings -->
+    <div class="col-lg-7 col-xl-8">
+        <div class="d-flex flex-column gap-4">
+            
+            <!-- CURRENT MARRIAGE -->
+            <div class="marriage-card p-4 p-lg-5 shadow-sm">
+                <div class="d-flex justify-content-between align-items-start mb-4">
+                    <div>
+                        <h4 class="fw-bold text-dark fs-5 m-0"><i class="fa-solid fa-heart text-danger me-2"></i> বর্তমান বৈবাহিক সম্পর্ক</h4>
+                        <p class="text-sm text-secondary m-0 mt-1">অবস্থা: বিবাহিত • প্রাথমিক আইনি বন্ধন</p>
+                    </div>
+                    <button class="btn btn-outline-success btn-sm fw-semibold px-3 bg-white hover-translate-up">
+                        <i class="fa-solid fa-certificate me-1"></i> ডিজিটাল নিকাহনামা
+                    </button>
+                </div>
+
+                <div class="row g-4 align-items-center mt-1">
+                    <div class="col-md-6">
+                        <div class="p-3 bg-white border rounded-4 d-flex align-items-center gap-3 shadow-sm hover-translate-up transition">
+                            <img src="https://i.pravatar.cc/150?img=32" class="rounded-circle border border-2 border-danger-subtle" style="width: 50px; height: 50px;">
+                            <div>
+                                <h6 class="fw-bold text-dark m-0 text-sm">নুসরাত জাহান</h6>
+                                <p class="text-[11px] font-mono-code text-danger m-0 mt-1">স্ত্রী UID: AB-98765432</p>
+                                <p class="text-[10px] text-muted m-0">বিবাহের তারিখ: ২০ ডিসে ২০২৫</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="p-3 bg-light border border-dashed rounded-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-[11px] text-muted fw-bold">দেনমোহর নিরাপত্তা</span>
+                                <span class="badge badge-soft-success" style="font-size: 9px;">যাচাইকৃত</span>
+                            </div>
+                            <p class="font-mono-code fw-bold text-dark m-0 fs-6">৳ ৫,০০,০০০ <span class="text-success text-xs fw-normal ms-1">(সম্পূর্ণ পরিশোধিত)</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HISTORICAL MARRIAGE RECORDS -->
+            <div class="glass-card p-4">
+                <h5 class="fw-bold text-dark m-0 fs-6 mb-3 border-bottom pb-3">
+                    <i class="fa-solid fa-clock-rotate-left text-muted me-2"></i> পূর্ববর্তী বৈবাহিক রেকর্ড
+                </h5>
+                <div class="table-responsive">
+                    <table class="table table-borderless align-middle m-0">
+                        <thead class="bg-light text-[11px] fw-bold text-muted border-bottom">
+                            <tr>
+                                <th class="py-2">পূর্ববর্তী সম্পর্ক (স্বামী/স্ত্রী)</th>
+                                <th class="py-2">সময়কাল</th>
+                                <th class="py-2">আইনি অবস্থা</th>
+                                <th class="text-end py-2">রেকর্ড</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr class="history-row">
+                                <td class="fw-semibold text-dark">কোন রেকর্ড নেই</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td class="text-end">N/A</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="d-flex align-items-center gap-2 mt-3 p-2 bg-light rounded-3">
+                    <i class="fa-solid fa-circle-info text-muted text-xs ms-1"></i>
+                    <p class="text-[11px] text-muted m-0">পূর্ববর্তী বৈবাহিক সম্পর্ক (যদি থাকে) উত্তরাধিকার এবং খোরপোষ অডিটের জন্য সংরক্ষণ করা হয়।</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SIDE COLUMN: Progeny & Siblings Grouped -->
+    <div class="col-lg-5 col-xl-4">
+        <div class="d-flex flex-column gap-4 h-100">
+            
+            <!-- CHILDREN / PROGENY -->
+            <div class="glass-card p-4 d-flex flex-column">
+                <h4 class="fw-bold text-dark m-0 fs-5 mb-4 border-bottom pb-3"><i class="fa-solid fa-children text-primary me-2"></i> সন্তানসন্ততি ও বংশধর</h4>
+                
+                <div class="d-flex flex-column gap-4 flex-grow-1">
+                    <!-- Union 1: Children -->
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-[11px] fw-bold text-primary bg-primary bg-opacity-10 px-2 py-1 rounded">সম্পর্ক: নুসরাত জাহান</span>
+                            <span class="text-[10px] text-muted">০১ জন নিবন্ধিত</span>
+                        </div>
+                        <div class="dependent-item p-3 rounded-4 shadow-sm d-flex align-items-center gap-3 hover-translate-up mt-3 border-start border-4 border-primary">
+                            <div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+                                <i class="fa-solid fa-child"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold text-dark m-0 text-sm">যায়ান রহমান</h6>
+                                <p class="text-[11px] font-mono-code text-muted m-0 mt-1">UID: AC-20261102</p>
+                                <p class="text-[11px] text-primary fw-semibold m-0">বয়স: ১.৫ মাস</p>
+                            </div>
+                            <button class="btn btn-link p-0 ms-auto text-muted"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Add New Action -->
+                    <div class="mt-auto pt-4 border-top">
+                        <button class="btn btn-light w-100 py-2 border border-dashed text-sm fw-semibold rounded-3 transition text-dark hover-bg-light">
+                            <i class="fa-solid fa-baby-carriage me-2 text-primary"></i> নতুন সন্তান নিবন্ধন
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW: SIBLINGS SECTION -->
+            <div class="glass-card p-4 d-flex flex-column flex-grow-1">
+                <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-3">
+                    <h4 class="fw-bold text-dark m-0 fs-5"><i class="fa-solid fa-users text-indigo-500 me-2"></i> সহোদর (ভাই-বোন)</h4>
+                    <span class="badge bg-indigo-50 text-indigo-600 border border-indigo-200 text-[10px]">০২ জন নিবন্ধিত</span>
+                </div>
+
+                <div class="d-flex flex-column gap-3">
+                    <!-- Sibling 1 -->
+                    <div class="dependent-item p-3 rounded-4 shadow-sm d-flex align-items-center gap-3 hover-translate-up transition border-start border-4 border-indigo-500">
+                        <img src="https://i.pravatar.cc/150?img=11" class="rounded-circle border" style="width: 44px; height: 44px;">
+                        <div>
+                            <h6 class="fw-bold text-dark m-0 text-sm">আরিফ রেহমান</h6>
+                            <p class="text-[10px] text-muted m-0 mt-1">জ্যেষ্ঠ ভ্রাতা (Elder Brother)</p>
+                        </div>
+                        <div class="ms-auto text-end">
+                            <span class="badge badge-soft-success mb-1" style="font-size: 9px;">যাচাইকৃত <i class="fa-solid fa-dna ms-1"></i></span>
+                            <p class="text-[10px] font-mono-code text-muted m-0">UID: AC-10253600</p>
+                        </div>
+                    </div>
+
+                    <!-- Sibling 2 -->
+                    <div class="dependent-item p-3 rounded-4 shadow-sm d-flex align-items-center gap-3 hover-translate-up transition border-start border-4 border-pink-400">
+                        <img src="https://i.pravatar.cc/150?img=5" class="rounded-circle border" style="width: 44px; height: 44px;">
+                        <div>
+                            <h6 class="fw-bold text-dark m-0 text-sm">সাদিয়া রেহমান</h6>
+                            <p class="text-[10px] text-muted m-0 mt-1">কনিষ্ঠ ভগ্নী (Younger Sister)</p>
+                        </div>
+                        <div class="ms-auto text-end">
+                            <span class="badge badge-soft-success mb-1" style="font-size: 9px;">যাচাইকৃত <i class="fa-solid fa-dna ms-1"></i></span>
+                            <p class="text-[10px] font-mono-code text-muted m-0">UID: AC-10253789</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Extended Dependents (Parents/Guardians) -->
+    <div class="col-12">
+        <div class="glass-card p-4 p-lg-5">
+            <h5 class="fw-bold text-dark m-0 fs-5 mb-4 d-flex align-items-center border-bottom pb-3">
+                <i class="fa-solid fa-people-group text-secondary me-2"></i> যাচাইকৃত নির্ভরশীল এবং আইনি অভিভাবকত্ব
+            </h5>
+            <div class="row g-4 mt-1">
+                <div class="col-md-4">
+                    <div class="p-3 rounded-4 border bg-white d-flex align-items-center gap-3 hover-translate-up transition shadow-sm">
+                        <img src="https://i.pravatar.cc/150?img=12" class="rounded-circle border" style="width: 44px; height: 44px;">
+                        <div>
+                            <h6 class="fw-bold text-dark m-0 text-sm">দুলাল মিয়া</h6>
+                            <p class="text-[11px] text-muted fw-semibold m-0 mt-1">পিতা (Father)</p>
+                        </div>
+                        <span class="badge bg-primary bg-opacity-10 text-primary ms-auto font-mono-code border border-primary-subtle" style="font-size: 9px;">PATH-1.2.2</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 rounded-4 border bg-white d-flex align-items-center gap-3 hover-translate-up transition shadow-sm">
+                        <img src="https://i.pravatar.cc/150?img=44" class="rounded-circle border" style="width: 44px; height: 44px;">
+                        <div>
+                            <h6 class="fw-bold text-dark m-0 text-sm">সুরাইয়া খাতুন</h6>
+                            <p class="text-[11px] text-muted fw-semibold m-0 mt-1">মাতা (Mother)</p>
+                        </div>
+                        <span class="badge bg-danger bg-opacity-10 text-danger ms-auto font-mono-code border border-danger-subtle" style="font-size: 9px;">PATH-1.1.1</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-light border h-100 w-100 rounded-4 text-sm fw-semibold text-muted border-dashed py-3 transition hover-bg-light">
+                        <i class="fa-solid fa-plus-circle me-1 text-primary"></i> নির্ভরশীল আত্মীয় যোগ করুন
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- BOTTOM SECTIONS -->
+<div class="row g-4 mt-2">
+
+    <!-- LEFT COLUMN: Heritage & Memorials (Ancestors) -->
+    <div class="col-lg-7">
+        <div class="glass-card p-4 p-lg-5 h-100">
+            <h4 class="fw-bold text-dark m-0 fs-5 mb-4 border-bottom pb-3">
+                <i class="fa-solid fa-monument text-secondary me-2"></i> পৈতৃক ঐতিহ্য এবং স্মৃতিস্তম্ভ
+            </h4>
+
+            <div class="d-flex flex-column gap-4">
+                <!-- Memorial 1: Paternal Grandfather -->
+                <div class="p-4 border rounded-4 bg-light bg-opacity-50 hover-translate-up transition shadow-sm">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-circle bg-white shadow-sm border border-2 border-white overflow-hidden" style="width: 50px; height: 50px;">
+                                <img src="https://i.pravatar.cc/150?img=52" class="w-100 h-100 grayscale" style="opacity: 0.8; filter: grayscale(100%);">
+                            </div>
+                            <div>
+                                <h5 class="fw-bold text-dark m-0 fs-6">জয়ন উদ্দিন (১৯৪০ - ২০১২)</h5>
+                                <p class="text-[11px] text-muted m-0 mt-1">মূল ব্যক্তি: দাদা</p>
+                            </div>
+                        </div>
+                        <span class="badge bg-dark text-white rounded-pill px-2 py-1 text-[10px] tracking-wider">ডিপ লেজার</span>
+                    </div>
+                    
+                    <!-- Graveyard GPS Section -->
+                    <div class="bg-white rounded-3 p-3 border mb-3">
+                        <p class="text-[11px] fw-bold text-muted m-0 mb-2">শেষ বিশ্রামের স্থান (জিপিএস যাচাইকৃত)</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="fw-bold text-dark m-0 text-sm">বনানী গোরস্থান, ঢাকা</h6>
+                                <p class="text-[11px] text-secondary m-0 mt-1">সেকশন: ৪, সারি: ১২, প্লট: ৮৮</p>
+                            </div>
+                            <span class="badge badge-soft-success py-1.5"><i class="fa-solid fa-location-crosshairs me-1"></i> 23.7937° N, 90.4066° E</span>
+                        </div>
+                        <div class="mt-3 pt-2 border-top border-dashed text-center">
+                            <p class="text-[10px] text-danger fw-bold m-0"><i class="fa-solid fa-shield-halved me-1"></i> পুনর্বিক্রয় সুরক্ষিত: ইউইউডিআই-ডিড সক্রিয়</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-white bg-white btn-sm border fw-semibold text-xs flex-grow-1 hover-bg-light"><i class="fa-solid fa-book-open text-muted me-1"></i> জীবন কাহিনী</button>
+                        <button class="btn btn-white bg-white btn-sm border fw-semibold text-xs flex-grow-1 hover-bg-light"><i class="fa-solid fa-images text-muted me-1"></i> ফটো আর্কাইভ</button>
+                    </div>
+                </div>
+
+                <!-- Memorial 2: Maternal Grandfather -->
+                <div class="p-4 border rounded-4 bg-light bg-opacity-50 hover-translate-up transition shadow-sm">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-circle bg-white shadow-sm border border-2 border-white overflow-hidden" style="width: 50px; height: 50px;">
+                                <img src="https://i.pravatar.cc/150?img=60" class="w-100 h-100 grayscale" style="opacity: 0.8; filter: grayscale(100%);">
+                            </div>
+                            <div>
+                                <h5 class="fw-bold text-dark m-0 fs-6">আবুল হোসেন (১৯৪৫ - ২০১৮)</h5>
+                                <p class="text-[11px] text-muted m-0 mt-1">মূল ব্যক্তি: নানা</p>
+                            </div>
+                        </div>
+                        <span class="badge bg-dark text-white rounded-pill px-2 py-1 text-[10px] tracking-wider">ডিপ লেজার</span>
+                    </div>
+                    
+                    <div class="bg-white rounded-3 p-3 border">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="fw-bold text-dark m-0 text-sm">তারুন্দিয়া পারিবারিক গোরস্থান, ময়মনসিংহ</h6>
+                                <p class="text-[11px] text-secondary m-0 mt-1">পৈতৃক বাড়ির ভল্ট</p>
+                            </div>
+                            <span class="badge badge-soft-success py-1.5"><i class="fa-solid fa-location-dot me-1"></i> 24.7471° N, 90.4203° E</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Post-Death Security & E-Wasiyat -->
+    <div class="col-lg-5">
+        <div class="d-flex flex-column gap-4 h-100">
+            
+            <!-- E-Wasiyat (The Digital Will) -->
+            <div class="p-4 p-lg-5 rounded-4 shadow-sm position-relative overflow-hidden" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155;">
+                <div class="d-flex justify-content-between align-items-start mb-4 position-relative z-1">
+                    <div>
+                        <span class="badge bg-warning text-dark fw-bold tracking-widest text-[10px] px-2 py-1 shadow-sm">
+                            ক্রিপ্টোগ্রাফিক্যালি লক করা
+                        </span>
+                        <h4 class="fw-bold text-white fs-5 m-0 mt-3">ডিজিটাল ই-অসিয়ত (Digital Will)</h4>
+                    </div>
+                    <i class="fa-solid fa-scroll text-warning fs-3 opacity-75"></i>
+                </div>
+                
+                <p class="text-sm text-slate-400 mb-4 position-relative z-1" style="line-height: 1.6;">এই নথিটি আপনার বায়োমেট্রিক কী দ্বারা এনক্রিপ্ট করা। হাসপাতাল নোড দ্বারা একটি <span class="text-info fw-semibold">যাচাইকৃত মৃত্যু সনদ</span> জারি হলেই কেবল এটি উত্তরাধিকারীদের জন্য আনলক হবে।</p>
+                
+                <div class="p-3 bg-white bg-opacity-10 rounded-3 border border-white border-opacity-10 mb-4 position-relative z-1">
+                    <div class="d-flex justify-content-between text-[11px] mb-2">
+                        <span class="text-slate-400">সর্বশেষ আপডেট:</span>
+                        <span class="text-slate-200 font-mono-code">১০ মার্চ ২০২৬</span>
+                    </div>
+                    <div class="d-flex justify-content-between text-[11px]">
+                        <span class="text-slate-400">হ্যাশ ইন্টিগ্রিটি:</span>
+                        <span class="text-success font-mono-code fw-bold">বৈধ (SHA-256)</span>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2 position-relative z-1">
+                    <button class="btn btn-outline-light btn-sm fw-semibold flex-grow-1 border-opacity-25 py-2"><i class="fa-solid fa-pen-nib me-1"></i> অসিয়ত আপডেট করুন</button>
+                    <button class="btn btn-warning btn-sm fw-bold flex-grow-1 py-2 text-dark">উত্তরাধিকার পরীক্ষা</button>
+                </div>
+            </div>
+
+            <!-- Heritage Succession Tracker -->
+            <div class="glass-card p-4 p-lg-5 flex-grow-1">
+                <h4 class="fw-bold text-dark m-0 fs-6 mb-4 border-bottom pb-3">উত্তরাধিকার লাইন (আইনি)</h4>
+                
+                <p class="text-[11px] text-muted fw-bold mb-3 tracking-wider">বর্তমান অগ্রাধিকারপ্রাপ্ত উত্তরাধিকারী (ফরায়েজ হিসাব)</p>
+                
+                <div class="d-flex flex-column gap-3">
+                    <div class="d-flex align-items-center gap-3 p-2 rounded-3 hover-bg-light transition border border-transparent">
+                        <div class="p-2 rounded bg-danger bg-opacity-10 text-danger">
+                            <i class="fa-solid fa-person-dress fs-5"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <p class="fw-bold text-dark m-0 text-sm">নুসরাত জাহান (স্ত্রী)</p>
+                            <p class="text-[11px] text-muted m-0 mt-1">আইনি অংশ: ১/৮ (সন্তান থাকায়)</p>
+                        </div>
+                        <span class="badge badge-soft-success" style="font-size: 9px;">যাচাইকৃত</span>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3 p-2 rounded-3 hover-bg-light transition border border-transparent">
+                        <div class="p-2 rounded bg-primary bg-opacity-10 text-primary">
+                            <i class="fa-solid fa-child fs-5"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <p class="fw-bold text-dark m-0 text-sm">যায়ান রহমান (পুত্র)</p>
+                            <p class="text-[11px] text-muted m-0 mt-1">আইনি অংশ: অবশিষ্ট (আসাবা)</p>
+                        </div>
+                        <span class="badge badge-soft-success" style="font-size: 9px;">যাচাইকৃত</span>
+                    </div>
+                </div>
+
+                <!-- GPS Anti-Fraud Alert -->
+                <div class="mt-4 p-3 bg-danger bg-opacity-10 rounded-4 border border-danger border-opacity-25">
+                    <h6 class="text-[11px] fw-bold text-danger mb-2 d-flex align-items-center">
+                        <i class="fa-solid fa-triangle-exclamation me-1.5"></i> কবর পুনর্বিক্রয় বিরোধী সতর্কতা
+                    </h6>
+                    <p class="m-0 text-danger" style="font-size: 11px; opacity: 0.9; line-height: 1.5;">ইউইউডিআই সিস্টেম <strong>জয়ন উদ্দিনের</strong> কবরের জিপিএস স্থানাঙ্ক লক করেছে। এই স্থানাঙ্কে অন্য কোনো ইউইউডিআই নিবন্ধনের চেষ্টা করলে মিউনিসিপ্যাল অডিট ট্রিগার হবে।</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

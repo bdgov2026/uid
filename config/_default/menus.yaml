@@ -1,0 +1,142 @@
+main:
+# একাডেমিক
+  - name: "প্রাথমিক"
+    identifier: প্রাথমিক
+    url: "#"
+    weight: 2
+  - name: "প্রাক-প্রাথমিক"
+    url: "/class-0/"
+    parent: "প্রাথমিক"
+    weight: 11
+  - name: "১ম শ্রেণি"
+    parent: প্রাথমিক
+    url: "/class-1/"
+  - name: "২য় শ্রেণি"
+    parent: প্রাথমিক
+    url: "/class-2/"
+  - name: "৩য় শ্রেণি"
+    url: "/class-3/"
+    parent: "প্রাথমিক"
+  - name: "৪র্থ শ্রেণি"
+    parent: প্রাথমিক
+    url: "/class-4/"
+  - name: "৫ম শ্রেণি"
+    parent: প্রাথমিক
+    url: "/class-5/"
+  - name: "ইবতেদায়ী"
+    url: "/class-0/"
+    parent: "প্রাথমিক"
+
+  - name: "কিন্ডারগার্টেন"
+    url: "#"
+    weight: 1
+
+  - name: "মাধ্যমিক"
+    url: "/br/faq"
+    weight: 3
+
+# এসএসসি
+  - name: "এসএসসি"
+    id: "এসএসসি"
+    weight: 4
+  - name: "এসএসসি ২০২৬"
+    url: "/dr/"
+    parent: "এসএসসি" 
+  - name: "পাঠ্যবই"
+    url: "/dr/correction/"
+    parent: "এসএসসি"
+  - name: "৯ম-১০ম"
+    url: "/dr/cancel"
+    parent: "এসএসসি"
+  - name: "টেস্ট পেপার"
+    url: "/dr/reprint/"
+    parent: "এসএসসি"
+  - name: "গাইড বই"
+    url: "/dr/reprint/"
+    parent: "এসএসসি"
+  - name: "সাজেশন"
+    url: "/dr/convert/"
+    parent: "এসএসসি"
+  - name: "অনলাইন যাচাই"
+    url: "/dr/convert/"
+    parent: "এসএসসি"
+
+# এইচএসসি
+  - name: "এইচএসসি"
+    id: "এইচএসসি"
+    weight: 5
+  - name: "এসএসসি ২০২৬."
+    url: "/dr/"
+    parent: "এইচএসসি" 
+  - name: "পাঠ্যবই."
+    url: "/dr/correction/"
+    parent: "এইচএসসি"
+  - name: "১১শ - ১২শ"
+    url: "/dr/cancel"
+    parent: "এইচএসসি"
+  - name: "টেস্ট পেপার"
+    url: "/dr/reprint/"
+    parent: "এইচএসসি"
+  - name: "গাইড বই"
+    url: "/dr/reprint/"
+    parent: "এইচএসসি"
+  - name: "সাজেশন"
+    url: "/dr/convert/"
+    parent: "এইচএসসি"
+  - name: "অনলাইন যাচাই"
+    url: "/dr/convert/"
+    parent: "এইচএসসি"
+
+  - name: "বিশ্ববিদ্যালয়"
+    url: "/nid/new-voter/"
+
+  - name: "কারিগরি"
+    url: "/nid/new-voter/"
+
+  - name: "মাদ্রাসা"
+    url: "/nid/new-voter/"
+
+  - name: "উন্মুক্ত"
+    url: "/nid/new-voter/"
+  - name: "চাকরি"
+    url: "/nid/new-voter/"
+global: 
+  - name: "বাংলা লার্নিং মডিউল"
+    url: "/learn-bengali/"
+    params:
+      label: অবাংলাভাষীদের জন্য বাংলা শিক্ষণ সামগ্রী
+  - name: "পরিষদ বাংলা অভিধান"
+    url: "/parisad-bengali-dictionary/"
+    params:
+      label: বাংলা ভাষার সর্বাধুনিক, সর্ববৃহৎ ও সমৃদ্ধ বাংলা অভিধান
+  - name: "পরিষদ লোকজ শব্দকোষ"
+    url: #
+    params:
+      label: ময়মনসিংহে অঞ্চলের আঞ্চলিক ভাষা অভিধান
+  - name: "পরিষদ সমার্থক শব্দকোষ"
+    url: #
+    params:
+      label: ময়মনসিংহে অঞ্চলের আঞ্চলিক ভাষা অভিধান
+  - name: "বাংলা প্রবাদ সংগ্রহ"
+    url: #
+    params:
+      label: ময়মনসিংহে অঞ্চলের আঞ্চলিক ভাষা অভিধান
+  - name: "বাঙালির যা যা"
+    url: #
+    params:
+      label: বাঙালির ভাষা, প্রযুক্তি, সংস্কৃতি সমস্ত কিছু নিয়ে গ্রন্থ
+  - name: "Discrete Mathematics in Bengali"
+    url: "/discrete-mathematics/"
+    params:
+      label: বাঙালির ভাষা, প্রযুক্তি, সংস্কৃতি সমস্ত কিছু নিয়ে গ্রন্থ
+globallinks:
+  - name: "ঐশিক আইটি সেন্টার"
+    url: "https://itc.aishikrehman.com/"
+    params:
+      label: লক্ষীগঞ্জ বাজার, ঈশ্বরগঞ্জ, ময়মনসিংহ
+  - name: "ঐশিক লার্নিং সেন্টার"
+    url: "https://learn.aishikrehman.com/"
+    params:
+      label: লক্ষীগঞ্জ বাজার, ঈশ্বরগঞ্জ, ময়মনসিংহ
+  - name: "বাংলা পরিষদ"
+    url: "https://bengalicouncil.github.io/"

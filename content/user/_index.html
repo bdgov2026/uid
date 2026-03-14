@@ -1,0 +1,346 @@
+---
+title: "ড্যাশবোর্ড ওভারভিউ"
+description: "আপনার সার্বজনীন জীবন খতিয়ান সিঙ্ক করা হয়েছে এবং হালনাগাদ আছে।"
+---
+
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    /* Premium Glassmorphism styling */
+    .glass-card {
+        background: #ffffff;
+        border: 1px solid var(--border-color, #e2e8f0);
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+        border-radius: 1.25rem;
+        transition: box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* UUDI Smart Card - Premium Deep Green */
+    .uid-card {
+        background: linear-gradient(135deg, #047857 0%, #064e3b 100%);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 15px 35px -5px rgba(4, 120, 87, 0.4);
+        border-radius: 1.5rem;
+    }
+    .uid-card::before {
+        content: '';
+        position: absolute;
+        top: -50%; left: -50%; width: 200%; height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+        transform: rotate(30deg);
+        pointer-events: none;
+    }
+
+    /* Trust Score Gauge */
+    .gauge-arc {
+        stroke-dasharray: 251.2; /* 2 * pi * r (r=40) */
+        stroke-dashoffset: 251.2;
+        animation: fillScoreGauge 1.5s ease-out forwards;
+    }
+    @keyframes fillScoreGauge {
+        to { stroke-dashoffset: 5.024; } /* 98% filled */
+    }
+
+    /* Address Line Styles */
+    .address-root-card {
+        background: linear-gradient(to right, #f8fafc, #ffffff);
+        border-left: 4px solid #8b5cf6;
+    }
+    .address-birth-card {
+        background: linear-gradient(to right, #f0fdf4, #ffffff);
+        border-left: 4px solid #10b981;
+    }
+    .address-current-card {
+        background: linear-gradient(to right, #eff6ff, #ffffff);
+        border: 1px solid #bfdbfe;
+        box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1);
+    }
+
+    .font-mono-code { font-family: 'Fira Code', monospace; }
+    .tracking-widest { letter-spacing: 0.08em; }
+    .hover-bg-light { transition: background-color 0.2s ease; }
+    .hover-bg-light:hover { background-color: #f8fafc !important; }
+    .hover-translate-up { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .hover-translate-up:hover { transform: translateY(-4px); }
+</style>
+
+<div class="row g-4">
+
+    <!-- ROW 1: Smart ID Card & Trust Score -->
+    <div class="col-lg-8">
+        <!-- Digital Smart ID Card -->
+        <div class="uid-card uid-pattern p-4 p-lg-5 text-white d-flex flex-column justify-content-between h-100 hover-translate-up transition">
+            <div class="d-flex justify-content-between align-items-start z-1">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-white rounded-circle d-flex align-items-center justify-content-center p-1 border border-2 border-danger shadow-sm" style="width: 60px; height: 60px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/National_Emblem_of_Bangladesh.svg" alt="BD Govt" class="w-100 h-100 opacity-75">
+                    </div>
+                    <div>
+                        <h3 class="fw-bold fs-5 m-0 lh-1 text-white">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h3>
+                        <p class="text-[10px] m-0 mt-1 tracking-widest text-uppercase fw-bold" style="color: #a7f3d0;">National Smart Identity (UUDI)</p>
+                    </div>
+                </div>
+                
+                <!-- Smart Chip -->
+                <div class="rounded-3 border border-warning shadow-sm d-flex flex-column justify-content-around p-1.5" style="width: 54px; height: 42px; background: linear-gradient(135deg, #fef08a 0%, #d97706 100%);">
+                    <div class="w-100" style="height: 1.5px; background: rgba(161,98,7,0.4);"></div>
+                    <div class="w-100" style="height: 1.5px; background: rgba(161,98,7,0.4);"></div>
+                    <div class="w-100" style="height: 1.5px; background: rgba(161,98,7,0.4);"></div>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-end mt-5 pt-3 z-1 gap-4">
+                <div>
+                    <p class="text-[10px] text-uppercase tracking-widest fw-bold m-0 mb-1" style="color: #a7f3d0;">ইউনিভার্সাল আইডি (UID) নম্বর</p>
+                    <p class="fs-2 font-mono-code fw-bold text-white tracking-widest m-0 mb-3" style="text-shadow: 0 2px 4px rgba(0,0,0,0.2); letter-spacing: 2px;">AA-10253636</p>
+                    
+                    <h2 class="fs-4 fw-bold m-0 text-white">ঐশিক রেহমান</h2>
+                    <p class="text-xs m-0 mt-1 fw-medium" style="color: #d1fae5;">জন্ম তারিখ: ১৫ ফেব্রু ২০০০ &nbsp;|&nbsp; রক্তের গ্রুপ: B+</p>
+                </div>
+                
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-white p-2 rounded-4 shadow-sm">
+                        <!-- Dummy QR Code -->
+                        <svg class="text-dark" style="width: 80px; height: 80px;" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zm-3 0h2v2h-2v-2zm3 3h3v2h-3v-2zm-2 2h2v3h-2v-3zm-4-2h3v2h-3v-2z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trust Score & Module Sync -->
+    <div class="col-lg-4">
+        <div class="glass-card p-4 p-lg-5 h-100 d-flex flex-column justify-content-center align-items-center text-center hover-translate-up transition border-top" style="border-top-width: 4px; border-top-color: #10b981;">
+            <h3 class="text-[11px] fw-bold text-secondary text-uppercase tracking-widest m-0 mb-3">নাগরিক ট্রাস্ট স্কোর (Trust Score)</h3>
+            
+            <div class="position-relative mb-4 mt-2" style="width: 150px; height: 150px;">
+                <!-- Circular Progress SVG -->
+                <svg class="w-100 h-100" style="transform: rotate(-90deg);" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+                    <circle class="gauge-arc" cx="50" cy="50" r="40" fill="none" stroke="#10b981" stroke-width="8" stroke-linecap="round"/>
+                </svg>
+                <div class="position-absolute top-50 start-50 translate-middle text-center w-100">
+                    <span class="fs-1 fw-bold text-dark font-mono-code" style="letter-spacing: -1px;">৯৮%</span>
+                    <span class="d-block text-[9px] text-success fw-bold text-uppercase tracking-widest mt-1 bg-success bg-opacity-10 rounded-pill px-2 py-0.5 d-inline-block">যাচাইকৃত নোড</span>
+                </div>
+            </div>
+
+            <div class="row w-100 g-3 text-start border-top pt-3">
+                <div class="col-6">
+                    <span class="text-[11px] text-secondary fw-semibold d-flex align-items-center">
+                        <i class="fa-solid fa-check-circle text-success me-1.5"></i> বায়ো-সিঙ্কড
+                    </span>
+                </div>
+                <div class="col-6">
+                    <span class="text-[11px] text-secondary fw-semibold d-flex align-items-center">
+                        <i class="fa-solid fa-check-circle text-success me-1.5"></i> কর ক্লিয়ার
+                    </span>
+                </div>
+                <div class="col-6">
+                    <span class="text-[11px] text-secondary fw-semibold d-flex align-items-center">
+                        <i class="fa-solid fa-check-circle text-success me-1.5"></i> এনআইডি (NID) মার্জড
+                    </span>
+                </div>
+                <div class="col-6">
+                    <span class="text-[11px] text-secondary fw-semibold d-flex align-items-center">
+                        <i class="fa-solid fa-check-circle text-success me-1.5"></i> শিক্ষা সিঙ্কড
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ROW 2: Connected Identifiers & Geographical Trace -->
+<div class="row g-4 mt-1">
+    
+    <!-- Geo Trace (Current Address vs Root Addresses) -->
+    <div class="col-lg-6 d-flex flex-column gap-4">
+        
+        <!-- 1. DYNAMIC: Present / Current Address -->
+        <div class="glass-card p-4">
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+                <h4 class="fw-bold text-dark m-0 fs-6 d-flex align-items-center">
+                    <i class="fa-solid fa-location-dot text-blue-600 me-2 fs-5"></i> বর্তমান ঠিকানা / কর্মস্থল
+                </h4>
+                <button class="btn btn-outline-primary btn-sm fw-semibold text-[10px] px-3 rounded-pill"><i class="fa-solid fa-pen-to-square me-1"></i> পরিবর্তন করুন</button>
+            </div>
+
+            <div class="address-current-card rounded-4 p-4 position-relative overflow-hidden">
+                <div class="position-absolute top-0 end-0 bg-blue-100 text-blue-700 text-[9px] fw-bold px-3 py-1 rounded-bottom-start tracking-widest">লাইভ স্ট্যাটাস</div>
+                <h5 class="fw-bold text-dark m-0 fs-5 mb-1 mt-1">অ্যাপার্টমেন্ট ৪বি, হাউজ ১২, রোড ৫, ব্লক সি</h5>
+                <p class="text-sm text-secondary fw-medium m-0 mb-3">বসুন্ধরা আ/এ, ঢাকা-১২২৯</p>
+                
+                <div class="d-flex flex-wrap gap-2 text-[10px]">
+                    <span class="font-mono-code text-muted bg-white border px-2 py-1 rounded"><i class="fa-solid fa-location-crosshairs text-blue-400 me-1"></i> Geo-Tag: 23.8151° N, 90.4255° E</span>
+                    <span class="font-mono-code text-success bg-success bg-opacity-10 border border-success-subtle px-2 py-1 rounded" title="সর্বশেষ আপডেট করা হয়েছে"><i class="fa-solid fa-clock-rotate-left me-1"></i> ১ বছর আগে আপডেট</span>
+                </div>
+            </div>
+            
+            <button class="btn btn-link text-decoration-none text-[11px] text-muted fw-semibold mt-2 p-0"><i class="fa-solid fa-clock-rotate-left me-1"></i> পূর্ববর্তী ঠিকানার হিস্ট্রি (লগ) দেখুন</button>
+        </div>
+
+        <!-- 2. STATIC: Root Addresses (Permanent & Birth) -->
+        <div class="glass-card p-4 flex-grow-1">
+            <h4 class="fw-bold text-dark m-0 fs-6 border-bottom pb-3 mb-4 d-flex align-items-center">
+                <i class="fa-solid fa-house-flag text-purple-600 me-2 fs-5"></i> মৌলিক ও অপরিবর্তনীয় ঠিকানা
+            </h4>
+
+            <div class="d-flex flex-column gap-3">
+                <!-- Permanent Address -->
+                <div class="address-root-card rounded-4 p-3 border border-slate-200 border-start-0 shadow-sm transition hover-translate-up" style="border-left-width: 4px !important;">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="fw-bold text-dark m-0 fs-6">স্থায়ী / পৈতৃক ঠিকানা</h5>
+                        <span class="badge bg-purple-50 text-purple-700 border border-purple-200 text-[9px] tracking-widest">বংশলতিকা যাচাইকৃত</span>
+                    </div>
+                    <p class="text-xs text-secondary m-0">গ্রাম: তারুন্দিয়া, ডাকঘর: তারুন্দিয়া</p>
+                    <p class="text-xs text-secondary fw-medium m-0 mb-2">উপজেলা: ঈশ্বরগঞ্জ, জেলা: ময়মনসিংহ</p>
+                    <p class="text-[10px] text-muted font-mono-code m-0 bg-slate-50 d-inline-block px-2 py-0.5 rounded border"><i class="fa-solid fa-link me-1 text-purple-400"></i> উৎস: পৈতৃক গ্রাফ (দুলাল মিয়া)</p>
+                </div>
+
+                <!-- Birth Location -->
+                <div class="address-birth-card rounded-4 p-3 border border-slate-200 border-start-0 shadow-sm transition hover-translate-up" style="border-left-width: 4px !important;">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="fw-bold text-dark m-0 fs-6">জন্মস্থান (Genesis)</h5>
+                        <span class="badge bg-emerald-50 text-emerald-700 border border-emerald-200 text-[9px] tracking-widest font-mono-code">১৫ ফেব্রু ২০০০</span>
+                    </div>
+                    <p class="text-xs text-secondary m-0">ময়মনসিংহ মেডিকেল কলেজ হাসপাতাল</p>
+                    <p class="text-xs text-secondary fw-medium m-0 mb-2">চরপাড়া, ময়মনসিংহ-২২০০</p>
+                    <p class="text-[10px] text-muted font-mono-code m-0 bg-slate-50 d-inline-block px-2 py-0.5 rounded border"><i class="fa-solid fa-hospital-user me-1 text-emerald-500"></i> উৎস: হাসপাতাল জন্ম রেজিস্ট্রি</p>
+                </div>
+            </div>
+            
+            <div class="mt-3 p-2 bg-warning bg-opacity-10 rounded text-[10px] text-warning-emphasis d-flex align-items-center gap-2 border border-warning-subtle">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>মৌলিক ঠিকানাগুলো শুধুমাত্র উপযুক্ত আইনি বা মিউটেশন প্রক্রিয়ার মাধ্যমেই পরিবর্তনযোগ্য।</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Merged Identifiers & Legacy Data -->
+    <div class="col-lg-6">
+        <div class="glass-card p-4 p-lg-5 h-100 d-flex flex-column border-top" style="border-top-width: 4px; border-top-color: #64748b;">
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-4 mb-4">
+                <div>
+                    <h4 class="fw-bold text-dark m-0 fs-5 d-flex align-items-center">
+                        <i class="fa-solid fa-fingerprint text-slate-600 me-2"></i> একীভূত পরিচিতি (Merged IDs)
+                    </h4>
+                    <p class="text-[11px] text-secondary m-0 mt-1">আপনার সকল পুরাতন আইডি UUDI প্রোফাইলে একীভূত করা হয়েছে।</p>
+                </div>
+                <button class="btn btn-outline-secondary btn-sm fw-semibold shadow-sm text-xs"><i class="fa-solid fa-plus me-1"></i> পুরাতন আইডি লিংক</button>
+            </div>
+
+            <div class="d-flex flex-column gap-3 flex-grow-1">
+                
+                <!-- Old NID -->
+                <div class="d-flex align-items-center justify-content-between p-3 rounded-4 border bg-slate-50 transition hover-bg-light">
+                    <div>
+                        <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest mb-1">পুরাতন জাতীয় পরিচয়পত্র (NID)</p>
+                        <p class="fw-bold text-dark m-0 fs-5 font-mono-code" style="text-decoration: line-through; opacity: 0.6;">19983921093</p>
+                    </div>
+                    <div class="text-end">
+                        <span class="badge bg-slate-200 border text-slate-600 mb-1 px-2 py-1 text-[9px] tracking-widest">নিষ্ক্রিয় / বাতিল</span>
+                        <p class="text-[10px] text-success fw-bold font-mono-code m-0 mt-1"><i class="fa-solid fa-code-merge"></i> একীভূত: ২০২৫</p>
+                    </div>
+                </div>
+
+                <!-- Birth Reg -->
+                <div class="d-flex align-items-center justify-content-between p-3 rounded-4 border bg-white hover-translate-up transition shadow-sm">
+                    <div>
+                        <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest mb-1">জন্ম নিবন্ধন সনদ (BRN)</p>
+                        <p class="fw-bold text-dark m-0 fs-6 font-mono-code">20006113123456789</p>
+                    </div>
+                    <div class="text-end">
+                        <span class="badge bg-success bg-opacity-10 border border-success-subtle text-success mb-1 px-2 py-1 text-[9px] tracking-widest">সক্রিয় (Alias)</span>
+                        <p class="text-[10px] text-muted font-mono-code m-0 mt-1"><i class="fa-solid fa-link text-primary"></i> অরিজিনের সাথে যুক্ত</p>
+                    </div>
+                </div>
+
+                <!-- TIN Number -->
+                <div class="d-flex align-items-center justify-content-between p-3 rounded-4 border bg-white hover-translate-up transition shadow-sm">
+                    <div>
+                        <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest mb-1">ট্যাক্স আইডেন্টিফিকেশন (TIN)</p>
+                        <p class="fw-bold text-dark m-0 fs-6 font-mono-code">349-182-990-1</p>
+                    </div>
+                    <div class="text-end">
+                        <span class="badge bg-success bg-opacity-10 border border-success-subtle text-success mb-1 px-2 py-1 text-[9px] tracking-widest">সক্রিয় (Alias)</span>
+                        <p class="text-[10px] text-muted font-mono-code m-0 mt-1"><i class="fa-solid fa-building-columns text-primary"></i> এনবিআর (NBR) সিঙ্কড</p>
+                    </div>
+                </div>
+                
+                <!-- Passport -->
+                <div class="d-flex align-items-center justify-content-between p-3 rounded-4 border bg-white hover-translate-up transition shadow-sm mt-auto">
+                    <div>
+                        <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest mb-1">ই-পাসপোর্ট (E-Passport)</p>
+                        <p class="fw-bold text-dark m-0 fs-6 font-mono-code">A01234567</p>
+                    </div>
+                    <div class="text-end">
+                        <span class="badge bg-success bg-opacity-10 border border-success-subtle text-success mb-1 px-2 py-1 text-[9px] tracking-widest">সক্রিয় (Alias)</span>
+                        <p class="text-[10px] text-muted font-mono-code m-0 mt-1"><i class="fa-solid fa-plane text-primary"></i> মেয়াদ: ২০৩৩ পর্যন্ত</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ROW 3: Quick Action Services -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="glass-card p-4">
+            <h4 class="fw-bold text-dark m-0 fs-6 border-bottom pb-3 mb-4 d-flex align-items-center">
+                <i class="fa-solid fa-bolt text-warning-emphasis me-2 fs-5"></i> প্রয়োজনীয় দ্রুত সেবা (Quick Actions)
+            </h4>
+            
+            <div class="row g-3">
+                <div class="col-md-3 col-sm-6">
+                    <button class="btn btn-white w-100 border p-3 text-start hover-bg-light transition d-flex flex-column gap-3 hover-translate-up rounded-4 shadow-sm">
+                        <div class="rounded-circle bg-purple-50 text-purple-600 d-flex align-items-center justify-content-center border border-purple-100" style="width: 44px; height: 44px;"><i class="fa-solid fa-sitemap fs-5"></i></div>
+                        <div>
+                            <span class="fw-bold text-dark text-sm d-block">ওয়ারিশান সনদ</span>
+                            <span class="text-[10px] text-muted">তাৎক্ষণিক ডাউনলোড</span>
+                        </div>
+                    </button>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <button class="btn btn-white w-100 border p-3 text-start hover-bg-light transition d-flex flex-column gap-3 hover-translate-up rounded-4 shadow-sm">
+                        <div class="rounded-circle bg-green-50 text-green-600 d-flex align-items-center justify-content-center border border-green-100" style="width: 44px; height: 44px;"><i class="fa-solid fa-file-invoice-dollar fs-5"></i></div>
+                        <div>
+                            <span class="fw-bold text-dark text-sm d-block">আয়ের প্রমাণপত্র</span>
+                            <span class="text-[10px] text-muted">ব্যাংক সিঙ্কড ডেটা</span>
+                        </div>
+                    </button>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <button class="btn btn-white w-100 border p-3 text-start hover-bg-light transition d-flex flex-column gap-3 hover-translate-up rounded-4 shadow-sm">
+                        <div class="rounded-circle bg-orange-50 text-orange-600 d-flex align-items-center justify-content-center border border-orange-100" style="width: 44px; height: 44px;"><i class="fa-solid fa-shield-halved fs-5"></i></div>
+                        <div>
+                            <span class="fw-bold text-dark text-sm d-block">পুলিশ ক্লিয়ারেন্স</span>
+                            <span class="text-[10px] text-muted">অটোমেটিক ভেরিফিকেশন</span>
+                        </div>
+                    </button>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <button class="btn btn-white w-100 border p-3 text-start hover-bg-light transition d-flex flex-column gap-3 hover-translate-up rounded-4 shadow-sm">
+                        <div class="rounded-circle bg-blue-50 text-blue-600 d-flex align-items-center justify-content-center border border-blue-100" style="width: 44px; height: 44px;"><i class="fa-solid fa-house-medical fs-5"></i></div>
+                        <div>
+                            <span class="fw-bold text-dark text-sm d-block">নতুন ঠিকানা হালনাগাদ</span>
+                            <span class="text-[10px] text-muted">ভাড়াটিয়া/মালিকানা পরিবর্তন</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

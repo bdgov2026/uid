@@ -1,0 +1,259 @@
+---
+title: "Foreign National & Immigration Ledger"
+description: "Visa tracking, work permits, and security clearance for foreign residents."
+---
+
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    .font-mono-code { font-family: 'Fira Code', monospace; }
+    
+    .glass-card {
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        border-radius: 1.25rem;
+    }
+
+    /* FNID Card Style - Distinct from Citizen ID */
+    .fnid-card {
+        background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+        color: white;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 15px 35px -5px rgba(30, 41, 59, 0.4);
+        border-radius: 1.5rem;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    .fnid-card::before {
+        content: 'FOREIGN NATIONAL';
+        position: absolute;
+        top: 20px; right: -40px;
+        background: #f59e0b;
+        color: #000;
+        font-size: 10px;
+        font-weight: 900;
+        padding: 5px 50px;
+        transform: rotate(45deg);
+        z-index: 10;
+    }
+
+    /* Visa/Permit Badge */
+    .status-badge {
+        padding: 6px 12px;
+        border-radius: 50px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .status-active { background: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0; }
+    .status-expiry { background: #fee2e2; color: #dc2626; border: 1px solid #fecaca; }
+
+    /* Immigration Path */
+    .path-item {
+        border-left: 3px solid #e2e8f0;
+        padding-left: 20px;
+        position: relative;
+        padding-bottom: 20px;
+    }
+    .path-item::before {
+        content: '';
+        position: absolute;
+        left: -8px; top: 0;
+        width: 13px; height: 13px;
+        border-radius: 50%;
+        background: white;
+        border: 3px solid #6366f1;
+    }
+
+    .hover-translate-up { transition: transform 0.2s; }
+    .hover-translate-up:hover { transform: translateY(-4px); }
+</style>
+
+<div class="row g-4">
+
+    <!-- TOP SECTION: FNID Smart Card & Visa Status -->
+    <div class="col-lg-8">
+        <div class="fnid-card p-4 p-lg-5 h-100 d-flex flex-column justify-content-between">
+            <div class="d-flex justify-content-between align-items-start z-1">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-white rounded-circle p-1" style="width: 50px; height: 50px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/National_Emblem_of_Bangladesh.svg" class="w-100 h-100">
+                    </div>
+                    <div>
+                        <h4 class="fw-bold m-0 fs-5">Foreign National Identity</h4>
+                        <p class="text-xs m-0 text-slate-400">Department of Immigration & Passports, BD</p>
+                    </div>
+                </div>
+                <div class="text-end me-5">
+                    <p class="text-[10px] text-uppercase fw-bold text-slate-400 m-0">Nationality</p>
+                    <h5 class="fw-bold m-0">United Kingdom <i class="fa-solid fa-flag-usa fs-6 ms-1"></i></h5>
+                </div>
+            </div>
+
+            <div class="mt-5 mb-4 z-1">
+                <p class="text-xs text-uppercase tracking-widest text-slate-400 m-0">Unique FNID Number</p>
+                <h2 class="font-mono-code fw-bold text-white m-0 tracking-widest">FN-902188431</h2>
+            </div>
+
+            <div class="row g-3 z-1 align-items-end">
+                <div class="col-sm-7">
+                    <h3 class="fs-4 fw-bold m-0 text-white">Johnathan Mark Spencer</h3>
+                    <p class="text-xs text-slate-400 m-0 mt-1">Passport: GBR-7729103 | Gender: Male</p>
+                </div>
+                <div class="col-sm-5 text-sm-end">
+                    <div class="bg-white bg-opacity-10 p-2 rounded-3 d-inline-block border border-white border-opacity-10">
+                        <p class="text-[9px] text-uppercase text-slate-400 m-0 text-start">Biometric Verified</p>
+                        <i class="fa-solid fa-fingerprint text-success fs-4 mt-1"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right: Quick Visa Status -->
+    <div class="col-lg-4">
+        <div class="glass-card p-4 p-lg-5 h-100 d-flex flex-column">
+            <h5 class="fw-bold text-slate-800 mb-4 border-bottom pb-2">Current Visa Status</h5>
+            
+            <div class="text-center mb-4">
+                <div class="d-inline-block p-4 rounded-circle bg-blue-50 text-blue-600 mb-3 shadow-sm">
+                    <i class="fa-solid fa-passport fs-1"></i>
+                </div>
+                <h4 class="fw-bold text-slate-900 m-0">Category: 'E'</h4>
+                <p class="text-xs text-muted mt-1">Employment / Business Visa</p>
+            </div>
+
+            <div class="bg-light rounded-4 p-3 border mb-4">
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="text-xs text-muted fw-bold">Issued Date:</span>
+                    <span class="text-xs fw-bold text-slate-700">12 Jan 2026</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="text-xs text-muted fw-bold">Expiry Date:</span>
+                    <span class="text-xs fw-bold text-danger">11 Jan 2027</span>
+                </div>
+                <div class="progress mt-3" style="height: 6px;">
+                    <div class="progress-bar bg-primary" style="width: 65%"></div>
+                </div>
+                <p class="text-[10px] text-center mt-2 text-muted">304 Days Remaining</p>
+            </div>
+
+            <button class="btn btn-dark w-100 fw-bold py-2 mt-auto shadow-sm">
+                <i class="fa-solid fa-rotate me-2"></i> Apply for Extension
+            </button>
+        </div>
+    </div>
+
+    <!-- ROW 2: Work Permit & Local Host -->
+    <div class="col-lg-7">
+        <div class="glass-card p-4 p-lg-5">
+            <h5 class="fw-bold text-slate-800 mb-4 border-bottom pb-3"><i class="fa-solid fa-briefcase text-primary me-2"></i> Employment & Work Permit</h5>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="p-3 border rounded-4 bg-white shadow-sm hover-translate-up">
+                        <p class="text-[10px] text-muted text-uppercase fw-bold mb-2">BIDA Work Permit</p>
+                        <h6 class="fw-bold text-slate-900 m-0">Permit # WP-2026-BD4</h6>
+                        <p class="text-xs text-success fw-bold m-0 mt-2"><i class="fa-solid fa-check-circle me-1"></i> VERIFIED ACTIVE</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 border rounded-4 bg-white shadow-sm hover-translate-up">
+                        <p class="text-[10px] text-muted text-uppercase fw-bold mb-2">Local Employer</p>
+                        <h6 class="fw-bold text-slate-900 m-0">HSBC Bangladesh Ltd.</h6>
+                        <p class="text-xs text-muted m-0 mt-2">Verified Corporate Node</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Host/Guarantor Citizen Link -->
+            <div class="mt-4 pt-3 border-top">
+                <p class="text-xs fw-bold text-muted text-uppercase mb-3 tracking-wider">Local Host / Guarantor (UUDI Link)</p>
+                <div class="p-3 bg-slate-50 rounded-4 d-flex align-items-center gap-3 border">
+                    <img src="https://i.pravatar.cc/150?img=11" class="rounded-circle border" style="width: 44px; height: 44px;">
+                    <div>
+                        <h6 class="fw-bold text-slate-800 m-0 text-sm">Aishik Rehman</h6>
+                        <p class="text-[10px] font-mono-code text-indigo-600 m-0">UUDI: AA-10253636</p>
+                    </div>
+                    <span class="ms-auto badge bg-white text-dark border shadow-sm fw-bold" style="font-size: 10px;">HOST VERIFIED</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT: Security Clearance & Remittance -->
+    <div class="col-lg-5">
+        <div class="glass-card p-4 p-lg-5 h-100">
+            <h5 class="fw-bold text-slate-800 mb-4 border-bottom pb-3"><i class="fa-solid fa-shield-halved text-success me-2"></i> Compliance Ledger</h5>
+            
+            <div class="d-flex flex-column gap-3">
+                <!-- NSI/SB Clearance -->
+                <div class="d-flex justify-content-between align-items-center p-3 rounded-3 border bg-success bg-opacity-10 border-success border-opacity-25">
+                    <div class="d-flex align-items-center gap-3">
+                        <i class="fa-solid fa-user-check text-success fs-5"></i>
+                        <div>
+                            <p class="fw-bold text-dark m-0 text-xs">Security Clearance</p>
+                            <p class="text-[9px] text-success fw-bold m-0">SB/NSI AUDIT PASSED 2026</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-circle-check text-success"></i>
+                </div>
+
+                <!-- Remittance Outflow Tracker -->
+                <div class="p-3 rounded-4 border bg-light">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <p class="fw-bold text-slate-800 m-0 text-xs">Remittance Outflow (YTD)</p>
+                        <i class="fa-solid fa-money-bill-transfer text-muted"></i>
+                    </div>
+                    <h4 class="font-mono-code fw-bold text-slate-900 m-0">$ 42,500 <span class="text-xs text-muted fw-normal">Authorized</span></h4>
+                    <p class="text-[9px] text-muted m-0 mt-2">Linked to Central Bank foreign exchange quota for expats.</p>
+                </div>
+
+                <!-- Limitations Notice -->
+                <div class="p-3 bg-warning bg-opacity-10 rounded-4 border border-warning border-opacity-25">
+                    <h6 class="text-[10px] fw-bold text-warning-emphasis text-uppercase mb-2">FNID Limitations</h6>
+                    <ul class="m-0 p-0 text-[10px] text-slate-600 list-unstyled d-flex flex-column gap-1">
+                        <li><i class="fa-solid fa-circle-xmark text-danger me-1"></i> No Voting Rights (Electoral)</li>
+                        <li><i class="fa-solid fa-circle-xmark text-danger me-1"></i> No Direct Land Ownership (Agriculture)</li>
+                        <li><i class="fa-solid fa-circle-info text-info me-1"></i> Requires Exit Permit for Final Departure</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTTOM: Immigration History -->
+    <div class="col-12">
+        <div class="glass-card p-4 p-lg-5">
+            <h5 class="fw-bold text-slate-800 mb-4 border-bottom pb-3"><i class="fa-solid fa-plane-arrival text-indigo-500 me-2"></i> Entry & Exit Timeline</h5>
+            
+            <div class="row g-4 mt-2">
+                <div class="col-md-4">
+                    <div class="path-item">
+                        <h6 class="fw-bold text-slate-800 m-0 text-sm">Last Arrival (Dhaka)</h6>
+                        <p class="text-xs text-muted mb-1">Flight: QR-641 from Doha</p>
+                        <span class="text-xs font-mono-code fw-bold text-primary">12 Jan 2026, 09:15 AM</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="path-item">
+                        <h6 class="fw-bold text-slate-800 m-0 text-sm">Previous Exit (Dhaka)</h6>
+                        <p class="text-xs text-muted mb-1">Purpose: Personal Travel</p>
+                        <span class="text-xs font-mono-code fw-bold text-slate-500">20 Dec 2025, 23:45 PM</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="path-item" style="border-left-color: transparent;">
+                        <h6 class="fw-bold text-slate-800 m-0 text-sm">Genesis Entry (Dhaka)</h6>
+                        <p class="text-xs text-muted mb-1">Initial Arrival into BD</p>
+                        <span class="text-xs font-mono-code fw-bold text-slate-500">05 Feb 2022</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

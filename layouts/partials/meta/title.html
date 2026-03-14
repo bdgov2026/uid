@@ -1,0 +1,7 @@
+{{ if .IsHome }}
+{{ .Site.Title }}
+{{- else if isset .Params "title" -}}
+{{ partial "function/title.html" .Title }} | {{ .Site.Title }}
+{{- else -}}
+{{ .Site.Title }}
+{{- end -}}

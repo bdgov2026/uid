@@ -1,0 +1,334 @@
+---
+title: "শিক্ষা ও দক্ষতা বিকাশ"
+description: "যাচাইকৃত একাডেমিক ট্রান্সক্রিপ্ট, কারিগরি দক্ষতা এবং প্রাতিষ্ঠানিক রেকর্ড।"
+---
+
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    /* Premium Glassmorphism styling */
+    .glass-card {
+        background: #ffffff;
+        border: 1px solid var(--border-color, #e2e8f0);
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+        border-radius: 1.25rem;
+        transition: box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Edu specific banner */
+    .edu-banner {
+        background: linear-gradient(135deg, #0f766e 0%, #042f2e 100%);
+        color: white;
+        border-radius: 1.25rem;
+        box-shadow: 0 10px 25px -5px rgba(15, 118, 110, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    .edu-banner::before {
+        content: '';
+        position: absolute;
+        top: -50%; right: -50%; width: 200%; height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+        transform: rotate(45deg);
+        pointer-events: none;
+    }
+
+    /* Timeline Styles */
+    .timeline {
+        position: relative;
+        padding-left: 2rem;
+        margin-bottom: 0;
+    }
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 0.5rem;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: #e2e8f0;
+    }
+    .timeline-item {
+        position: relative;
+        margin-bottom: 2rem;
+    }
+    .timeline-item:last-child {
+        margin-bottom: 0;
+    }
+    .timeline-marker {
+        position: absolute;
+        left: -2.35rem; /* centers the dot on the line */
+        width: 1.2rem;
+        height: 1.2rem;
+        border-radius: 50%;
+        background-color: #fff;
+        border: 3px solid #0ea5e9; /* blue-500 */
+        box-shadow: 0 0 0 4px rgba(255,255,255,0.8);
+        z-index: 1;
+        transition: all 0.3s ease;
+    }
+    
+    .timeline-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid #e2e8f0;
+        background: #ffffff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .timeline-card:hover {
+        border-color: #93c5fd;
+        box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+    }
+    .timeline-card:hover .timeline-marker {
+        transform: scale(1.2);
+    }
+
+    /* Skill badges */
+    .skill-badge {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        color: #475569;
+        font-weight: 600;
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.5rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        transition: all 0.2s;
+    }
+    .skill-badge:hover {
+        background: #f1f5f9;
+        border-color: #cbd5e1;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+
+    .tracking-widest { letter-spacing: 0.05em; }
+    .hover-bg-light:hover { background-color: #f8fafc !important; }
+    .hover-translate-up { transition: transform 0.2s; }
+    .hover-translate-up:hover { transform: translateY(-4px); }
+</style>
+
+<div class="row g-4">
+
+    <!-- Top Status Banner -->
+    <div class="col-12">
+        <div class="edu-banner p-4 p-lg-5 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-4">
+            <div class="d-flex align-items-center gap-4 z-1">
+                <div class="rounded-circle bg-white d-flex align-items-center justify-content-center text-teal-700 shadow-sm border border-teal-100" style="width: 64px; height: 64px;">
+                    <i class="fa-solid fa-user-graduate fs-3"></i>
+                </div>
+                <div>
+                    <span class="badge bg-white bg-opacity-20 border border-white border-opacity-25 px-3 py-1 text-[10px] fw-bold tracking-widest mb-2 rounded-pill">
+                        <i class="fa-solid fa-check-double me-1"></i> ভেরিফাইড প্রোফাইল
+                    </span>
+                    <h3 class="fw-bold text-white fs-4 m-0 mt-1">সর্বোচ্চ ডিগ্রি: বি.এসসি. ইন সিএসই (CSE)</h3>
+                    <p class="text-sm m-0 mt-1" style="color: #99f6e4;">বিশ্ববিদ্যালয় মঞ্জুরী কমিশনের (UGC) সাথে সম্পূর্ণ সিঙ্ক করা হয়েছে।</p>
+                </div>
+            </div>
+            
+            <div class="z-1 d-flex gap-2">
+                <button class="btn btn-light fw-bold text-teal-800 shadow-sm px-4 py-2.5 transition hover-translate-up">
+                    <i class="fa-solid fa-link me-2 text-teal-600"></i> এমপ্লয়ার টোকেন তৈরি করুন
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN ACADEMIC TIMELINE -->
+    <div class="col-lg-7 col-xl-8 d-flex flex-column gap-4">
+        <div class="glass-card p-4 p-lg-5 flex-grow-1">
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center border-bottom pb-4 mb-4 gap-3">
+                <h4 class="fw-bold text-dark m-0 fs-5"><i class="fa-solid fa-timeline text-indigo-500 me-2"></i> প্রাতিষ্ঠানিক শিক্ষাগত রেকর্ড</h4>
+                <span class="badge bg-success bg-opacity-10 text-success border border-success px-3 py-1.5 text-[11px] rounded-pill tracking-widest">
+                    <i class="fa-solid fa-check-circle me-1"></i> বাংলাদেশ শিক্ষা বোর্ড লিঙ্কড
+                </span>
+            </div>
+
+            <div class="timeline mt-4">
+                
+                <!-- Tertiary Education (University) -->
+                <div class="timeline-item">
+                    <div class="timeline-marker" style="border-color: #8b5cf6; background-color: #f3e8ff;"></div>
+                    <div class="timeline-card rounded-4 p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="badge bg-purple-100 text-purple-700 border border-purple-200 px-2 py-1 text-[10px] fw-bold tracking-widest mb-2 rounded">
+                                উচ্চশিক্ষা (ইউজিসি)
+                            </span>
+                            <span class="text-[11px] font-mono-code text-muted fw-bold bg-light px-2 py-0.5 rounded border">২০২০ - ২০২৪</span>
+                        </div>
+                        <h4 class="fw-bold text-dark fs-5 mb-1">কম্পিউটার সায়েন্স অ্যান্ড ইঞ্জিনিয়ারিং (বি.এসসি.)</h4>
+                        <p class="text-[12px] text-secondary mb-3"><i class="fa-solid fa-building-columns me-1 text-muted"></i> ঢাকা বিশ্ববিদ্যালয়</p>
+                        
+                        <div class="bg-light rounded-3 p-3 border mb-0">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-6">
+                                    <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest">সিজিপিএ (CGPA)</p>
+                                    <p class="font-mono-code fw-bold text-indigo-600 m-0 fs-5">৩.৮৫ <span class="text-muted fw-normal" style="font-size: 11px;">/ ৪.০০</span></p>
+                                </div>
+                                <div class="col-6 text-end border-start">
+                                    <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest">রেজিঃ / রোল হ্যাশ</p>
+                                    <p class="font-mono-code fw-bold text-dark m-0" style="font-size: 12px;">DU-20-88912X</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Higher Secondary (HSC) -->
+                <div class="timeline-item">
+                    <div class="timeline-marker" style="border-color: #3b82f6; background-color: #dbeafe;"></div>
+                    <div class="timeline-card rounded-4 p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="badge bg-blue-100 text-blue-700 border border-blue-200 px-2 py-1 text-[10px] fw-bold tracking-widest mb-2 rounded">
+                                উচ্চ মাধ্যমিক (বোর্ড)
+                            </span>
+                            <span class="text-[11px] font-mono-code text-muted fw-bold bg-light px-2 py-0.5 rounded border">পাসের বছর: ২০১৯</span>
+                        </div>
+                        <h4 class="fw-bold text-dark fs-6 mb-1">এইচএসসি (বিজ্ঞান বিভাগ)</h4>
+                        <p class="text-[12px] text-secondary mb-3"><i class="fa-solid fa-school me-1 text-muted"></i> নটর ডেম কলেজ • ঢাকা বোর্ড</p>
+                        
+                        <div class="bg-light rounded-3 p-3 border mb-0">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-6">
+                                    <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest">জিপিএ (GPA)</p>
+                                    <p class="font-mono-code fw-bold text-blue-600 m-0 fs-5">৫.০০ <span class="text-muted fw-normal" style="font-size: 11px;">/ ৫.০০</span></p>
+                                </div>
+                                <div class="col-6 text-end border-start">
+                                    <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest">বোর্ড রোল</p>
+                                    <p class="font-mono-code fw-bold text-dark m-0" style="font-size: 12px;">১৮২৯০১</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary (SSC) -->
+                <div class="timeline-item">
+                    <div class="timeline-marker" style="border-color: #10b981; background-color: #d1fae5;"></div>
+                    <div class="timeline-card rounded-4 p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="badge bg-success bg-opacity-10 text-success border border-success px-2 py-1 text-[10px] fw-bold tracking-widest mb-2 rounded">
+                                মাধ্যমিক (বোর্ড)
+                            </span>
+                            <span class="text-[11px] font-mono-code text-muted fw-bold bg-light px-2 py-0.5 rounded border">পাসের বছর: ২০১৭</span>
+                        </div>
+                        <h4 class="fw-bold text-dark fs-6 mb-1">এসএসসি (বিজ্ঞান বিভাগ)</h4>
+                        <p class="text-[12px] text-secondary mb-3"><i class="fa-solid fa-school me-1 text-muted"></i> ময়মনসিংহ জিলা স্কুল • ঢাকা বোর্ড</p>
+                        
+                        <div class="bg-light rounded-3 p-3 border mb-0">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-6">
+                                    <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest">জিপিএ (GPA)</p>
+                                    <p class="font-mono-code fw-bold text-success m-0 fs-5">৫.০০ <span class="text-muted fw-normal" style="font-size: 11px;">/ ৫.০০</span></p>
+                                </div>
+                                <div class="col-6 text-end border-start">
+                                    <p class="text-[10px] text-muted text-uppercase fw-bold m-0 tracking-widest">বোর্ড রোল</p>
+                                    <p class="font-mono-code fw-bold text-dark m-0" style="font-size: 12px;">৩০৪৫১২</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Primary Education Link (Minimized) -->
+                <div class="timeline-item pb-2">
+                    <div class="timeline-marker" style="border-color: #cbd5e1; background-color: #f8fafc; width: 0.8rem; height: 0.8rem; left: -2.15rem; border-width: 2px;"></div>
+                    <div class="ps-2">
+                        <p class="text-[11px] text-muted m-0 d-flex align-items-center"><i class="fa-solid fa-link me-1.5 text-slate-400"></i> প্রাথমিক শিক্ষা (PSC/JSC) ডিপ লেজারে যাচাইকৃত ও সংরক্ষিত রয়েছে।</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SKILLS, LANGUAGES & CERTIFICATIONS -->
+    <div class="col-lg-5 col-xl-4 d-flex flex-column gap-4">
+        
+        <!-- Language Proficiency -->
+        <div class="glass-card p-4">
+            <h4 class="fw-bold text-dark m-0 fs-6 mb-3 border-bottom pb-2 d-flex align-items-center">
+                <i class="fa-solid fa-language text-orange-500 me-2 fs-5"></i> ভাষাগত দক্ষতা
+            </h4>
+            
+            <div class="d-flex flex-column gap-3 mt-3">
+                <!-- Bengali -->
+                <div class="d-flex justify-content-between align-items-center p-3 rounded-3 border bg-slate-50 transition hover-bg-light">
+                    <div>
+                        <h6 class="fw-bold text-dark m-0 fs-6">বাংলা</h6>
+                        <p class="text-[10px] text-muted m-0 text-uppercase tracking-widest mt-1">মাতৃভাষা</p>
+                    </div>
+                    <span class="badge bg-slate-200 text-slate-700 border border-slate-300 px-2 py-1 text-[9px] tracking-widest">স্বয়ংক্রিয় যাচাইকৃত</span>
+                </div>
+                
+                <!-- English -->
+                <div class="d-flex justify-content-between align-items-center p-3 rounded-3 border bg-orange-50 bg-opacity-50 border-orange-100 transition hover-bg-light">
+                    <div>
+                        <h6 class="fw-bold text-dark m-0 fs-6">ইংরেজি</h6>
+                        <p class="text-[10px] text-muted m-0 text-uppercase tracking-widest mt-1">আইইএলটিএস (IELTS) একাডেমিক</p>
+                    </div>
+                    <div class="text-end">
+                        <span class="badge bg-orange-500 text-white shadow-sm px-2 py-1 fs-6 font-mono-code">ব্যান্ড ৭.৫</span>
+                        <p class="m-0 mt-1 font-mono-code text-muted" style="font-size: 9px;">মেয়াদ: অক্টো ২০২৬</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Skills & Vocations (NSDA) -->
+        <div class="glass-card p-4 flex-grow-1 border-top" style="border-top-width: 4px; border-top-color: #8b5cf6;">
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+                <h4 class="fw-bold text-dark m-0 fs-6 d-flex align-items-center">
+                    <i class="fa-solid fa-microchip text-purple-600 me-2 fs-5"></i> কারিগরি ও বৃত্তিমূলক দক্ষতা
+                </h4>
+                <i class="fa-solid fa-circle-plus text-secondary cursor-pointer hover:text-primary transition" title="সনদ যোগ করুন"></i>
+            </div>
+            
+            <p class="text-[11px] text-secondary mb-4 leading-relaxed">জাতীয় দক্ষতা উন্নয়ন কর্তৃপক্ষ (NSDA) এবং গ্লোবাল আইটি (IT) সনদ।</p>
+
+            <div class="d-flex flex-wrap gap-2 mb-4">
+                <div class="skill-badge">
+                    <i class="fa-brands fa-aws text-warning fs-6"></i> এডব্লিউএস (AWS) আর্কিটেক্ট
+                </div>
+                <div class="skill-badge">
+                    <i class="fa-brands fa-python text-primary fs-6"></i> পাইথন (অ্যাডভান্সড)
+                </div>
+                <div class="skill-badge">
+                    <i class="fa-solid fa-database text-secondary fs-6"></i> এসকিউএল (SQL) মডেলিং
+                </div>
+            </div>
+
+            <!-- Certification Document Link -->
+            <div class="border rounded-4 p-3 bg-white hover-bg-light transition cursor-pointer d-flex justify-content-between align-items-center shadow-sm">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="rounded-circle bg-purple-50 text-purple-600 d-flex align-items-center justify-content-center border border-purple-100" style="width: 40px; height: 40px;">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <div>
+                        <p class="fw-bold text-dark m-0 text-sm">এনএসডিএ (NSDA) লেভেল ৪</p>
+                        <p class="text-[10px] text-muted m-0 mt-1">যাচাইকৃত সরকারি মান (IT)</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-muted text-xs"></i>
+            </div>
+        </div>
+
+        <!-- Automated Actions -->
+        <div class="glass-card p-4 p-lg-5 position-relative overflow-hidden" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-color: #334155;">
+            <i class="fa-solid fa-file-pdf position-absolute text-white opacity-5" style="font-size: 5rem; right: -10px; top: 10px;"></i>
+            <h4 class="fw-bold fs-6 mb-2 text-white position-relative z-1">শিক্ষাগত স্বচ্ছতা (Transparency)</h4>
+            <p class="text-[11px] text-slate-300 mb-4 position-relative z-1 leading-relaxed">চাকরির আবেদনের জন্য প্রাথমিক থেকে উচ্চশিক্ষা পর্যন্ত একটি সমন্বিত এবং যাচাইকৃত ডিজিটাল ট্রান্সক্রিপ্ট বা সিভি তৈরি করুন।</p>
+            <button class="btn w-100 fw-semibold text-sm text-dark transition hover-translate-up shadow-sm" style="background-color: #f8fafc;">
+                <i class="fa-solid fa-file-arrow-down me-2 text-danger"></i> মাস্টার সিভি ডাউনলোড
+            </button>
+        </div>
+
+    </div>
+
+</div>

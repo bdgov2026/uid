@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ইউইউডিআই জব পোর্টাল</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Global Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap');
+        
+        body {
+            background-color: #f8fafc;
+            font-family: 'Noto Sans Bengali', 'Inter', sans-serif;
+            color: #334155;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 2rem 2rem;
+            margin-bottom: 2rem;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; width: 50%; height: 100%;
+            background-image: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        /* Job Card Styling */
+        .job-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        .job-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px -5px rgba(0,0,0,0.08);
+            border-color: #cbd5e1;
+        }
+        
+        .job-logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e2e8f0;
+            background-color: #f8fafc;
+        }
+
+        /* Requirement Tags */
+        .req-tag {
+            font-size: 10px;
+            font-family: 'Fira Code', monospace;
+            padding: 4px 8px;
+            border-radius: 6px;
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .req-tag.pass {
+            background: rgba(16, 185, 129, 0.1);
+            color: #059669;
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        .req-tag.fail {
+            background: rgba(239, 68, 68, 0.1);
+            color: #dc2626;
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        /* Smart Match Badge */
+        .match-badge {
+            position: absolute;
+            top: -12px; right: 20px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
+            letter-spacing: 0.05em;
+        }
+        .match-badge.partial {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3);
+        }
+
+        /* Filter Sidebar */
+        .filter-sidebar {
+            background: white;
+            border-radius: 1.25rem;
+            border: 1px solid #e2e8f0;
+            position: sticky;
+            top: 20px;
+        }
+
+        /* Custom Tabs */
+        .job-tabs .nav-link {
+            color: #64748b;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.2s;
+        }
+        .job-tabs .nav-link.active {
+            background-color: #1e3a8a;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(30, 58, 138, 0.2);
+        }
+        .job-tabs .nav-link:hover:not(.active) {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+
+        .font-mono-code { font-family: 'Fira Code', monospace; }
+        .text-xs { font-size: 0.75rem; }
+        .text-sm { font-size: 0.875rem; }
+        .tracking-widest { letter-spacing: 0.1em; }
+        .cursor-pointer { cursor: pointer; }
+        .hover-translate-up { transition: transform 0.2s; }
+        .hover-translate-up:hover { transform: translateY(-4px); }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section (Public Header) -->
+    <div class="hero-section container-fluid px-4 px-lg-5">
+        <div class="container mx-auto" style="max-width: 1200px;">
+            <div class="row align-items-center">
+                <div class="col-lg-7 z-1">
+                    <span class="badge bg-white bg-opacity-20 text-white px-3 py-1.5 rounded-pill mb-3 text-[10px] tracking-widest border border-white border-opacity-25">
+                        <i class="fa-solid fa-microchip me-1"></i> স্মার্ট অটোমেটেড নিয়োগ প্রক্রিয়া
+                    </span>
+                    <h1 class="fw-bold fs-1 mb-3">জাতীয় কর্মসংস্থান পোর্টাল</h1>
+                    <p class="fs-6 text-blue-100 mb-4 leading-relaxed" style="max-width: 550px;">
+                        আপনার ইউইউডিআই (UUDI) প্রোফাইল ব্যবহার করে এক ক্লিকে সরকারি ও বেসরকারি চাকরিতে আবেদন করুন। কোনো সিভি তৈরি বা ম্যানুয়াল ডেটা এন্ট্রির প্রয়োজন নেই।
+                    </p>
+                    
+                    <!-- Quick Search -->
+                    <div class="bg-white p-2 rounded-pill shadow-lg d-flex align-items-center" style="max-width: 500px;">
+                        <div class="d-flex align-items-center flex-grow-1 px-3">
+                            <i class="fa-solid fa-magnifying-glass text-muted me-2"></i>
+                            <input type="text" class="form-control border-0 shadow-none bg-transparent" placeholder="পদবি, দক্ষতা বা প্রতিষ্ঠানের নাম...">
+                        </div>
+                        <div class="border-start px-3 d-none d-sm-block" style="width: 150px;">
+                            <select class="form-select border-0 shadow-none bg-transparent text-muted text-sm cursor-pointer">
+                                <option>সকল স্থান</option>
+                                <option>ঢাকা</option>
+                                <option>চট্টগ্রাম</option>
+                                <option>রিমোট</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary rounded-pill px-4 fw-bold">খুঁজুন</button>
+                    </div>
+                </div>
+                
+                <!-- Logged In User Mini Profile -->
+                <div class="col-lg-5 text-end d-none d-lg-block z-1">
+                    <div class="d-inline-block bg-white bg-opacity-10 p-3 rounded-4 border border-white border-opacity-20 backdrop-blur text-start">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <img src="https://i.pravatar.cc/150?img=11" class="rounded-circle border border-2 border-white" style="width: 48px; height: 48px;" alt="User">
+                            <div>
+                                <p class="text-white fw-bold m-0 fs-6">ঐশিক রেহমান</p>
+                                <p class="text-blue-200 m-0 text-xs font-mono-code">UID: AA-10253636</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <span class="badge bg-success bg-opacity-25 text-white border border-success border-opacity-50" style="font-size: 10px;"><i class="fa-solid fa-graduation-cap me-1"></i> B.Sc. (CSE)</span>
+                            <span class="badge bg-primary bg-opacity-25 text-white border border-primary border-opacity-50" style="font-size: 10px;"><i class="fa-solid fa-shield-check me-1"></i> পুলিশ ক্লিয়ার</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="container pb-5" style="max-width: 1200px;">
+        <div class="row g-4">
+            
+            <!-- Filters Sidebar -->
+            <div class="col-lg-3">
+                <div class="filter-sidebar p-4">
+                    <h6 class="fw-bold text-dark mb-4 border-bottom pb-2">ফিল্টার করুন</h6>
+                    
+                    <div class="mb-4">
+                        <p class="text-xs fw-bold text-muted text-uppercase tracking-widest mb-2">ক্যাটাগরি</p>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="cat1" checked>
+                            <label class="form-check-label text-sm text-slate-700" for="cat1">সরকারি (BCS/নন-ক্যাডার)</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="cat2" checked>
+                            <label class="form-check-label text-sm text-slate-700" for="cat2">বেসরকারি (প্রাইভেট)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="cat3">
+                            <label class="form-check-label text-sm text-slate-700" for="cat3">এনজিও (NGO)</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <p class="text-xs fw-bold text-muted text-uppercase tracking-widest mb-2">কাজের ধরন</p>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="type1">
+                            <label class="form-check-label text-sm text-slate-700" for="type1">ফুল-টাইম</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="type2">
+                            <label class="form-check-label text-sm text-slate-700" for="type2">পার্ট-টাইম</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="type3">
+                            <label class="form-check-label text-sm text-slate-700" for="type3">ফ্রিল্যান্স / চুক্তিভিত্তিক</label>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-blue-50 rounded-3 border border-blue-100">
+                        <div class="form-check form-switch d-flex align-items-center gap-2 p-0 m-0">
+                            <input class="form-check-input ms-0 mt-0" type="checkbox" id="smartMatch" checked style="width: 36px; height: 20px;">
+                            <label class="form-check-label text-xs fw-bold text-blue-800" for="smartMatch">শুধু যোগ্য চাকরি দেখান</label>
+                        </div>
+                        <p class="text-[10px] text-muted m-0 mt-2" style="font-size: 10px;">আপনার প্রোফাইলের সাথে ম্যাচ করা সার্কুলারগুলো আগে দেখানো হবে।</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Job Listings -->
+            <div class="col-lg-9">
+                
+                <!-- Navigation Tabs -->
+                <ul class="nav nav-pills job-tabs mb-4 bg-white p-2 rounded-4 border d-inline-flex" id="jobTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active text-sm" data-bs-toggle="pill" type="button" role="tab">সুপারিশকৃত (Smart Match)</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link text-sm" data-bs-toggle="pill" type="button" role="tab">সাম্প্রতিক সার্কুলার</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link text-sm" data-bs-toggle="pill" type="button" role="tab">আমার আবেদনসমূহ</button>
+                    </li>
+                </ul>
+
+                <!-- Job Cards Container -->
+                <div class="d-flex flex-column gap-4">
+                    
+                    <!-- JOB 1: Govt Perfect Match -->
+                    <div class="job-card">
+                        <div class="match-badge">৯৮% ম্যাচ (যোগ্য)</div>
+                        
+                        <div class="d-flex align-items-start gap-3 mb-3">
+                            <div class="job-logo bg-success bg-opacity-10 text-success border-success border-opacity-25">
+                                <i class="fa-solid fa-building-flag fs-3"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h4 class="fw-bold text-dark m-0 fs-5">সহকারী প্রোগ্রামার (৯ম গ্রেড)</h4>
+                                        <p class="text-sm text-primary fw-semibold m-0 mt-1">তথ্য ও যোগাযোগ প্রযুক্তি মন্ত্রণালয়</p>
+                                    </div>
+                                    <span class="badge bg-slate-100 text-slate-700 border font-mono-code" style="font-size: 10px;">শেষ সময়: ২০ মার্চ</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row text-sm text-slate-600 mb-4 g-2">
+                            <div class="col-sm-auto pe-3"><i class="fa-solid fa-location-dot text-muted me-1"></i> আগারগাঁও, ঢাকা</div>
+                            <div class="col-sm-auto pe-3"><i class="fa-solid fa-briefcase text-muted me-1"></i> সরকারি (নন-ক্যাডার)</div>
+                            <div class="col-sm-auto font-mono-code"><i class="fa-solid fa-money-bill-wave text-muted me-1"></i> ৳ ২২,০০০ - ৫৩,০৬০</div>
+                        </div>
+
+                        <!-- Auto Eligibility Check Engine -->
+                        <div class="bg-slate-50 rounded-3 p-3 mb-4 border border-dashed">
+                            <p class="text-xs text-uppercase fw-bold text-slate-500 tracking-widest mb-2" style="font-size: 10px;"><i class="fa-solid fa-microchip text-primary me-1"></i> সিস্টেম শর্ত যাচাই (Auto-Check)</p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="req-tag pass"><i class="fa-solid fa-check"></i> বয়স < ৩০ (আপনার: ২৬)</span>
+                                <span class="req-tag pass"><i class="fa-solid fa-check"></i> শিক্ষাগত: B.Sc in CSE (যাচাইকৃত)</span>
+                                <span class="req-tag pass"><i class="fa-solid fa-check"></i> পুলিশ রেকর্ড ক্লিয়ার</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="text-muted m-0" style="font-size: 10px;"><i class="fa-solid fa-bolt text-warning me-1"></i> ফি প্রদান: <span class="fw-bold text-dark">টাকাপে (TakaPay) অটো-ডিডাক্ট</span></p>
+                            <button class="btn btn-primary fw-bold px-4 shadow-sm hover-translate-up text-sm">
+                                এক ক্লিকে আবেদন (One-Click)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- JOB 2: Private Sector Partial Match -->
+                    <div class="job-card">
+                        <div class="match-badge partial">৮৫% ম্যাচ</div>
+                        
+                        <div class="d-flex align-items-start gap-3 mb-3">
+                            <div class="job-logo text-danger">
+                                <i class="fa-solid fa-motorcycle fs-3"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h4 class="fw-bold text-dark m-0 fs-5">সিনিয়র ক্লাউড ইঞ্জিনিয়ার</h4>
+                                        <p class="text-sm text-secondary fw-semibold m-0 mt-1">পাঠাও লিমিটেড (Pathao)</p>
+                                    </div>
+                                    <span class="badge bg-slate-100 text-slate-700 border font-mono-code" style="font-size: 10px;">শেষ সময়: ২৫ মার্চ</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row text-sm text-slate-600 mb-4 g-2">
+                            <div class="col-sm-auto pe-3"><i class="fa-solid fa-location-dot text-muted me-1"></i> বনানী, ঢাকা</div>
+                            <div class="col-sm-auto pe-3"><i class="fa-solid fa-briefcase text-muted me-1"></i> ফুল-টাইম (প্রাইভেট)</div>
+                            <div class="col-sm-auto font-mono-code"><i class="fa-solid fa-money-bill-wave text-muted me-1"></i> ৳ ৮০,০০০ - ১,০০,০০০</div>
+                        </div>
+
+                        <!-- Auto Eligibility Check Engine -->
+                        <div class="bg-slate-50 rounded-3 p-3 mb-4 border border-dashed">
+                            <p class="text-xs text-uppercase fw-bold text-slate-500 tracking-widest mb-2" style="font-size: 10px;"><i class="fa-solid fa-microchip text-primary me-1"></i> সিস্টেম শর্ত যাচাই (Auto-Check)</p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="req-tag pass"><i class="fa-solid fa-check"></i> শিক্ষাগত: B.Sc in CSE</span>
+                                <span class="req-tag pass"><i class="fa-solid fa-check"></i> স্কিল: AWS Certified</span>
+                                <span class="req-tag fail"><i class="fa-solid fa-xmark"></i> অভিজ্ঞতা: ৩ বছর প্রয়োজন (আপনার: ২ বছর)</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="text-muted m-0" style="font-size: 10px;">যেহেতু অভিজ্ঞতা কম, প্রতিষ্ঠান আপনার আবেদন প্রত্যাখ্যান করতে পারে।</p>
+                            <button class="btn btn-outline-dark fw-bold px-4 hover-translate-up text-sm">
+                                UUDI প্রোফাইল পাঠান
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- JOB 3: Entry Level Generic -->
+                    <div class="job-card">
+                        <div class="d-flex align-items-start gap-3 mb-3">
+                            <div class="job-logo text-primary">
+                                <i class="fa-solid fa-building-columns fs-3"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h4 class="fw-bold text-dark m-0 fs-5">ক্যাশ অফিসার (জেনারেল)</h4>
+                                        <p class="text-sm text-secondary fw-semibold m-0 mt-1">সোনালী ব্যাংক পিএলসি</p>
+                                    </div>
+                                    <span class="badge bg-danger bg-opacity-10 text-danger border border-danger-subtle font-mono-code" style="font-size: 10px;">শেষ সময়: আগামীকাল</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row text-sm text-slate-600 mb-4 g-2">
+                            <div class="col-sm-auto pe-3"><i class="fa-solid fa-location-dot text-muted me-1"></i> যেকোনো স্থান (বাংলাদেশ)</div>
+                            <div class="col-sm-auto pe-3"><i class="fa-solid fa-briefcase text-muted me-1"></i> সরকারি ব্যাংক</div>
+                            <div class="col-sm-auto font-mono-code"><i class="fa-solid fa-money-bill-wave text-muted me-1"></i> ১০ম গ্রেড</div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                            <p class="text-muted m-0" style="font-size: 10px;"><i class="fa-solid fa-circle-check text-success me-1"></i> আপনার সকল প্রাথমিক যোগ্যতা সঠিক রয়েছে।</p>
+                            <button class="btn btn-primary fw-bold px-4 shadow-sm hover-translate-up text-sm">
+                                আবেদন করুন (৳ ২০০)
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- Pagination -->
+                <div class="d-flex justify-content-center mt-5">
+                    <nav aria-label="Job pagination">
+                        <ul class="pagination pagination-sm font-mono-code">
+                            <li class="page-item disabled"><a class="page-link" href="#">পূর্ববর্তী</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">১</a></li>
+                            <li class="page-item"><a class="page-link" href="#">২</a></li>
+                            <li class="page-item"><a class="page-link" href="#">৩</a></li>
+                            <li class="page-item"><a class="page-link" href="#">পরবর্তী</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

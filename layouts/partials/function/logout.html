@@ -1,0 +1,37 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const scriptVersion = "1.0.0";
+        const userNameLink = document.getElementById("userName");
+        const logoutBtn = document.getElementById("logoutBtn");
+
+        const storedVersion = localStorage.getItem("scriptVersion");
+        if (storedVersion !== scriptVersion) {
+            localStorage.clear();
+            localStorage.setItem("scriptVersion", scriptVersion);
+        }
+
+        const loggedInUser = localStorage.getItem("username");
+        if (loggedInUser) {
+            userNameLink.textContent = loggedInUser;
+            userNameLink.removeAttribute("href");
+            logoutBtn.style.display = "inline-block";
+        }
+
+        logoutBtn.addEventListener("click", function () {
+            localStorage.clear(); // Clear all session data
+            userNameLink.textContent = "Login";
+            userNameLink.setAttribute("href", "/login/");
+            logoutBtn.style.display = "none";
+            window.location.href = "/login/"; // Redirect to login page
+        });
+
+
+        if (loggedInUser === 'aishik') {
+            const requiredElements = document.querySelectorAll('[required]');
+            requiredElements.forEach(function (element, index) {
+                {{/*  console.log(Step 4: Removing 'required' from element ${index + 1}:, element);  */}}
+                element.removeAttribute('required');
+            });
+        }
+    });
+</script>

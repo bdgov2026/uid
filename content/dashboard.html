@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ইউইউডিআই (UUDI) | এক পরিচয়, এক জীবন খতিয়ান</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Global Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --primary-color: #059669;
+            --primary-dark: #064e3b;
+            --indigo-accent: #4f46e5;
+            --bg-glass: rgba(255, 255, 255, 0.9);
+            --border-glass: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            font-family: 'Noto Sans Bengali', 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero-bg {
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+            min-height: 85vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            border-radius: 0 0 3rem 3rem;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            width: 150%; height: 150%;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 50%);
+            top: -50%; left: -25%;
+            animation: rotateBg 20s linear infinite;
+        }
+
+        @keyframes rotateBg {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 0;
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);
+            border-color: var(--primary-color);
+        }
+
+        .feature-icon {
+            width: 56px; height: 56px;
+            background: #ecfdf5;
+            color: var(--primary-color);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Glass Floating Card */
+        .glass-float {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            color: white;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-premium {
+            background: #ffffff;
+            color: var(--primary-dark);
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            border-radius: 100px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: none;
+            font-size: 0.9rem;
+        }
+
+        .btn-premium:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.4);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px; left: 0;
+            width: 50px; height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .tracking-widest { letter-spacing: 0.1em; }
+        .font-mono-code { font-family: 'Fira Code', monospace; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg nav-glass sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/National_Emblem_of_Bangladesh_Monochrome.svg" alt="UUDI Logo" width="40" height="40" style="filter: brightness(0) invert(1);">
+                <span class="fw-bold text-white fs-4 tracking-tight">ইউইউডিআই</span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fa-solid fa-bars text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-lg-3 align-items-center mt-3 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link text-white opacity-75 small fw-medium" href="#">সেবা ক্যাটালগ</a></li>
+                    <li class="nav-item"><a class="nav-link text-white opacity-75 small fw-medium" href="#">নিরাপত্তা</a></li>
+                    <li class="nav-item"><a class="nav-link text-white opacity-75 small fw-medium" href="#">সহায়তা</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="/user" class="btn btn-premium btn-sm">লগইন / ড্যাশবোর্ড</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section hero-bg">
+        <div class="container py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <span class="badge bg-white bg-opacity-20 text-white px-3 py-1.5 rounded-pill mb-4 text-uppercase tracking-widest fw-bold" style="font-size: 10px;">
+                        Next-Gen GovTech
+                    </span>
+                    <h1 class="display-3 fw-bold text-white mb-3">এক পরিচয়।<br>সম্পূর্ণ জীবন খতিয়ান।</h1>
+                    <p class="fs-5 text-emerald-100 opacity-75 mb-5 pe-lg-5">ইউইউডিআই (UUDI) হলো একটি সার্বজনীন ডিজিটাল পরিচিতি যা আপনার শিক্ষা, স্বাস্থ্য, সম্পদ এবং নাগরিক অধিকারকে একীভূত করে। একটি নিরাপদ ব্লকচেইন নেটওয়ার্ক।</p>
+                    
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
+                        <button class="btn btn-premium">ইউআইডি তৈরি করুন</button>
+                        <button class="btn btn-outline-light rounded-pill px-4 fw-bold">কিভাবে কাজ করে?</button>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="glass-float">
+                        <div class="d-flex justify-content-between mb-4">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-white rounded-circle p-1" style="width: 48px; height: 48px;">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/National_Emblem_of_Bangladesh_Monochrome.svg" alt="Govt" class="w-100">
+                                </div>
+                                <div>
+                                    <p class="m-0 text-xxs fw-bold tracking-widest text-emerald-300">CITIZEN CARD</p>
+                                    <h5 class="m-0 fw-bold">ঐশিক রেহমান</h5>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <span class="badge bg-success bg-opacity-50 border border-success-subtle text-white rounded-pill px-3">সক্রিয়</span>
+                            </div>
+                        </div>
+                        
+                        <div class="my-4 pt-3">
+                            <p class="text-xxs text-emerald-200 fw-bold mb-1 tracking-widest">UNIVERSAL ID NUMBER</p>
+                            <h2 class="font-mono-code fw-bold tracking-widest mb-4">AA-10253636</h2>
+                        </div>
+                        
+                        <div class="row g-3">
+                            <div class="col-4 border-end border-white border-opacity-10">
+                                <p class="text-[10px] text-emerald-200 m-0 mb-1">রক্তের গ্রুপ</p>
+                                <p class="fw-bold m-0 font-mono-code">B+</p>
+                            </div>
+                            <div class="col-4 border-end border-white border-opacity-10">
+                                <p class="text-[10px] text-emerald-200 m-0 mb-1">জন্মস্থান</p>
+                                <p class="fw-bold m-0">ময়মনসিংহ</p>
+                            </div>
+                            <div class="col-4">
+                                <p class="text-[10px] text-emerald-200 m-0 mb-1">ট্রাস্ট স্কোর</p>
+                                <p class="fw-bold m-0 font-mono-code text-success">৯৮%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Modules Section -->
+    <section class="py-5 mt-lg-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-dark section-title">স্মার্ট নাগরিক ইকোসিস্টেম</h2>
+                <p class="text-muted mx-auto" style="max-width: 600px;">আপনার জীবনের প্রতিটি ক্ষেত্র এখন একটি একীভূত ডিজিটাল খতিয়ানের মাধ্যমে সংযুক্ত। কোনো কাগজপত্রের ঝামেলা নেই।</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Identity -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-id-card-clip"></i></div>
+                        <h5 class="fw-bold mb-3">কোর আইডেন্টিটি</h5>
+                        <p class="small text-muted mb-0">আপনার এনআইডি, পাসপোর্ট এবং জন্ম নিবন্ধনকে একটিমাত্র বায়োমেট্রিক হ্যাশে একীভূত করা হয়েছে।</p>
+                    </div>
+                </div>
+                <!-- Health -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background:#fff1f2; color:#e11d48;"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <h5 class="fw-bold mb-3">স্বাস্থ্য ও ডিএনএ</h5>
+                        <p class="small text-muted mb-0">অটো-সিঙ্কড প্রেসক্রিপশন, ডিএনএ সিগনেচার এবং জরুরি স্বাস্থ্য প্রোফাইল যা আপনার জীবন বাঁচাতে পারে।</p>
+                    </div>
+                </div>
+                <!-- Finance -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background:#eff6ff; color:#2563eb;"><i class="fa-solid fa-wallet"></i></div>
+                        <h5 class="fw-bold mb-3">ডিজিটাল ওয়ালেট</h5>
+                        <p class="small text-muted mb-0">সরাসরি সরকারি ভাতা গ্রহণ (G2P), ট্যাক্স রিফান্ড এবং সকল ইউটিলিটি বিল পরিশোধের একীভূত ব্যবস্থা।</p>
+                    </div>
+                </div>
+                <!-- Education -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background:#f5f3ff; color:#7c3aed;"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <h5 class="fw-bold mb-3">শিক্ষা ও ক্যারিয়ার</h5>
+                        <p class="small text-muted mb-0">আপনার সকল একাডেমিক ট্রান্সক্রিপ্ট এবং কর্মজীবনের রেকর্ড ব্লকচেইনে আজীবন সুরক্ষিত ও যাচাইকৃত।</p>
+                    </div>
+                </div>
+                <!-- Assets -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background:#fff7ed; color:#ea580c;"><i class="fa-solid fa-house-flag"></i></div>
+                        <h5 class="fw-bold mb-3">সম্পদ ও ভূমি</h5>
+                        <p class="small text-muted mb-0">ভূমির ই-পর্চা, হোল্ডিং ট্যাক্স এবং গাড়ির ডিজিটাল রেজিস্ট্রেশন সবকিছু এক ক্লিকে এক্সেস করুন।</p>
+                    </div>
+                </div>
+                <!-- Privacy -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background:#f8fafc; color:#0f172a;"><i class="fa-solid fa-user-shield"></i></div>
+                        <h5 class="fw-bold mb-3">গোপনীয়তা নিয়ন্ত্রণ</h5>
+                        <p class="small text-muted mb-0">আপনার ডেটা কে এক্সেস করবে তার পূর্ণ নিয়ন্ত্রণ আপনার হাতে। টাইম-লকড টোকেন ব্যবহারের সুবিধা।</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-5 bg-white">
+        <div class="container border-top border-bottom py-5">
+            <div class="row g-4 text-center">
+                <div class="col-6 col-md-3">
+                    <h2 class="fw-bold text-primary mb-1">১৬ কোটি+</h2>
+                    <p class="text-xs text-muted text-uppercase fw-bold tracking-widest">নিবন্ধিত নাগরিক</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <h2 class="fw-bold text-primary mb-1">১০০%</h2>
+                    <p class="text-xs text-muted text-uppercase fw-bold tracking-widest">ডিজিটাল ভেরিফিকেশন</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <h2 class="fw-bold text-primary mb-1">০</h2>
+                    <p class="text-xs text-muted text-uppercase fw-bold tracking-widest">ম্যানুয়াল সই প্রয়োজন</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <h2 class="fw-bold text-primary mb-1">২৪/৭</h2>
+                    <p class="text-xs text-muted text-uppercase fw-bold tracking-widest">স্মার্ট সেবা</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark text-white">
+        <div class="container py-4">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/National_Emblem_of_Bangladesh_Monochrome.svg" alt="Logo" width="40" style="filter: brightness(0) invert(1);">
+                        <h4 class="fw-bold m-0 tracking-tight">ইউইউডিআই</h4>
+                    </div>
+                    <p class="text-secondary small leading-relaxed">জাতীয় ইউইউডিআই কর্তৃপক্ষ হলো একটি স্বাধীন নিয়ন্ত্রক সংস্থা যা নাগরিকদের ব্যক্তিগত ও প্রশাসনিক তথ্যের নিরাপত্তা এবং ডিজিটাল সেবা নিশ্চিত করে।</p>
+                </div>
+                <div class="col-6 col-lg-2 ms-lg-auto">
+                    <h6 class="fw-bold text-white mb-4">প্লাটফর্ম</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 text-secondary small">
+                        <li><a href="#" class="text-decoration-none text-secondary">কিভাবে কাজ করে</a></li>
+                        <li><a href="#" class="text-decoration-none text-secondary">নিরাপত্তা প্রোটোকল</a></li>
+                        <li><a href="#" class="text-decoration-none text-secondary">এপিআই এক্সেস</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold text-white mb-4">আইনি</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 text-secondary small">
+                        <li><a href="#" class="text-decoration-none text-secondary">গোপনীয়তা নীতি</a></li>
+                        <li><a href="#" class="text-decoration-none text-secondary">ডেটা সুরক্ষা আইন</a></li>
+                        <li><a href="#" class="text-decoration-none text-secondary">ব্যবহারের শর্তাবলী</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold text-white mb-4">নিউজলেটার</h6>
+                    <p class="text-secondary small mb-3">স্মার্ট নাগরিক সেবার আপডেট পেতে সাবস্ক্রাইব করুন।</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control bg-transparent border-secondary text-white text-sm" placeholder="আপনার ইমেইল">
+                        <button class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-5 pt-4 text-center">
+                <p class="m-0 text-secondary" style="font-size: 11px;">&copy; ২০২৬ জাতীয় ইউইউডিআই কর্তৃপক্ষ। গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের একটি কৌশলগত উদ্যোগ।</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

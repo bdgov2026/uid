@@ -3,485 +3,564 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ইউআইডি (UID) - জাতীয় সমন্বিত পরিচয় পোর্টাল</title>
+    <title>ইউআইডি | বাংলাদেশ সরকারের ডিজিটাল হাব</title>
+    
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- FontAwesome -->
+    <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
+        /* Global Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
         
+        :root {
+            --gov-primary: #047857; /* Emerald 700 */
+            --gov-primary-hover: #065f46; /* Emerald 800 */
+            --gov-dark: #0b0c0c; /* Gov.uk near black */
+            --gov-bg: #f3f2f1; /* Gov.uk light grey */
+            --gov-border: #b1b4b6; /* Gov.uk mid grey */
+            --gov-focus: #ffdd00; /* Gov.uk yellow focus */
+            --gov-link: #1d70b8; /* Gov.uk blue link */
+            --gov-link-hover: #003078;
+        }
+
         body {
             font-family: 'Noto Sans Bengali', 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: var(--gov-dark);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        /* Gov style Header */
+        .gov-header {
+            background-color: var(--gov-dark);
+            border-bottom: 5px solid var(--gov-primary);
+            padding: 0;
+        }
+
+        .navbar-brand img {
+            filter: brightness(0) invert(1);
+        }
+
+        .gov-header .nav-link {
+            color: #ffffff !important;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 1rem 1.5rem !important;
+        }
+
+        .gov-header .nav-link:hover, .gov-header .nav-link:focus {
+            background-color: #1d70b8;
+            color: #ffffff !important;
+        }
+
+        /* Dropdown Styling */
+        .dropdown-menu {
+            border-radius: 0;
+            border: 1px solid var(--gov-dark);
+            padding: 0;
+            margin-top: 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .dropdown-item {
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            border-bottom: 1px solid var(--gov-border);
+        }
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+        .dropdown-item:hover, .dropdown-item:focus {
+            background-color: var(--gov-bg);
+            color: var(--gov-link-hover);
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-color: var(--gov-bg);
+            padding: 3rem 0 4rem 0;
+            border-bottom: 1px solid var(--gov-border);
+        }
+
+        .hero-title {
+            font-weight: 700;
+            font-size: 3rem;
+            letter-spacing: -0.02em;
+            color: var(--gov-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Gov Style Buttons */
+        .btn-gov {
+            background-color: var(--gov-primary);
+            color: white;
+            font-weight: 700;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0;
+            border: 2px solid transparent;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 3px 0 #022c22;
+            transition: none;
+        }
+        .btn-gov:hover {
+            background-color: var(--gov-primary-hover);
+            color: white;
+        }
+        .btn-gov:focus {
+            outline: 3px solid var(--gov-focus);
+            outline-offset: 0;
+            box-shadow: inset 0 0 0 2px var(--gov-dark);
+        }
+
+        .btn-gov-outline {
+            background-color: transparent;
+            color: var(--gov-dark);
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            border: 2px solid var(--gov-dark);
+            font-size: 1.1rem;
+        }
+        .btn-gov-outline:hover {
+            background-color: var(--gov-dark);
+            color: white;
+        }
+
+        /* Large Search Bar */
+        .gov-search {
+            border: 2px solid var(--gov-dark);
+            border-radius: 0;
+            overflow: hidden;
+            display: flex;
+            background: white;
+        }
+        .gov-search input {
+            border: none;
+            padding: 0.75rem 1rem;
+            font-size: 1.1rem;
+            box-shadow: none !important;
+            border-radius: 0;
+        }
+        .gov-search input:focus {
+            outline: 3px solid var(--gov-focus);
+            outline-offset: -3px;
+        }
+        .gov-search button {
+            background-color: var(--gov-dark);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            font-size: 1.2rem;
+        }
+        .gov-search button:hover {
+            background-color: #334155;
+        }
+
+        /* Gov Cards (Services) */
+        .service-card {
+            background: #ffffff;
+            border: 1px solid var(--gov-border);
+            border-top: 5px solid var(--gov-primary);
+            padding: 1.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 4px;
+        }
+        .service-card:hover {
             background-color: #f8fafc;
-            color: #0f172a;
-            overflow-x: hidden;
+            border-color: #94a3b8;
+        }
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gov-primary);
+            margin-bottom: 0.75rem;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-color: transparent;
+            transition: text-decoration-color 0.2s;
+        }
+        .service-card:hover h3 {
+            text-decoration-color: var(--gov-primary);
+        }
+
+        /* Flat ID Card Illustration */
+        .flat-id-card {
+            background-color: #ffffff;
+            border: 2px solid var(--gov-dark);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 8px 8px 0px rgba(15, 23, 42, 0.1);
+            position: relative;
+        }
+        .flat-id-card .seal {
+            width: 48px;
+            height: 48px;
+            border: 2px solid var(--gov-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
         }
 
         .font-mono-code { font-family: 'Fira Code', monospace; }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-
-        /* Hero Background with Network Pattern */
-        .hero-bg {
-            background: linear-gradient(135deg, #022c22 0%, #064e3b 50%, #047857 100%);
-            position: relative;
-        }
-        .hero-bg::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 30px 30px;
-            opacity: 0.5;
-        }
+        .text-xxs { font-size: 0.75rem; }
         
-        /* Glassmorphism Cards */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-            border-radius: 1.5rem;
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            border-color: #10b981;
-        }
-
-        /* Verification Floating Box */
-        .verify-box {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            padding: 0.5rem;
-            transition: all 0.3s ease;
-        }
-        .verify-box:hover {
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
-        }
-        .verify-input {
-            background: transparent !important;
-            border: none !important;
-            color: white !important;
-            box-shadow: none !important;
-            font-size: 1.1rem;
-        }
-        .verify-input::placeholder { color: rgba(167, 243, 208, 0.7); }
-
-        .gradient-text {
-            background: linear-gradient(to right, #34d399, #fbbf24);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Navbar & Dropdown Hover Styles */
-        .custom-navbar {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        @media (min-width: 992px) {
-            .nav-item.dropdown:hover .dropdown-menu {
-                display: block;
-                visibility: visible;
-                opacity: 1;
-                transform: translateY(0);
-            }
-            .dropdown-menu {
-                display: block;
-                visibility: hidden;
-                opacity: 0;
-                transform: translateY(10px);
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                margin-top: 0;
-                border: 1px solid #f1f5f9;
-                border-radius: 1rem;
-                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-                padding: 0.5rem;
-            }
-        }
-
-        /* Mega Menu Item styling */
-        .mega-menu-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 15px;
-            border-radius: 0.75rem;
-            color: #1e293b;
-            text-decoration: none;
-            transition: background 0.2s;
-        }
-        .mega-menu-item:hover {
-            background: #f0fdf4;
-            color: #047857;
-        }
-        .mega-icon-box {
-            width: 36px; height: 36px;
-            border-radius: 0.5rem;
-            display: flex; align-items: center; justify-content: center;
+        /* Footer */
+        .gov-footer {
+            background-color: #e2e8f0;
+            border-top: 1px solid var(--gov-border);
+            padding: 3rem 0;
             font-size: 1rem;
         }
-
-        .btn-login {
-            background: #0f172a;
-            color: white;
-            border-radius: 50px;
+        .footer-heading {
+            font-size: 1.25rem;
             font-weight: 700;
-            padding: 10px 24px;
-            transition: all 0.3s;
+            color: var(--gov-dark);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--gov-border);
         }
-        .btn-login:hover {
-            background: #020617;
-            transform: scale(1.05);
-            color: white;
+        .footer-link {
+            color: var(--gov-link);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            font-weight: 400;
+            display: block;
+            margin-bottom: 0.75rem;
         }
-
-        /* Float Animation */
-        @keyframes float-down {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(10px); }
+        .footer-link:hover {
+            color: var(--gov-link-hover);
+            text-decoration-thickness: 2px;
         }
-        .animate-bounce-custom { animation: float-down 2s infinite; }
+        .footer-meta-link {
+            color: var(--gov-dark);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            font-size: 0.875rem;
+            margin-right: 1rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+        .footer-meta-link:hover {
+            color: var(--gov-dark);
+            text-decoration-thickness: 2px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Top Navigation (No Sidebar) -->
-    <nav class="navbar navbar-expand-lg fixed-top custom-navbar py-2 py-lg-3">
-        <div class="container-fluid px-4 px-lg-5">
-            
-            <!-- Logo & Branding -->
-            <a class="navbar-brand d-flex align-items-center gap-3" href="#">
-                <div class="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold fs-5 shadow-sm border border-2 border-danger" style="width: 48px; height: 48px; background: linear-gradient(135deg, #15803d, #064e3b);">
-                    BD
-                </div>
-                <div class="d-none d-sm-block">
-                    <h1 class="fw-bold fs-5 m-0 text-dark lh-1">ইউআইডি পোর্টাল</h1>
-                    <p class="m-0 fw-bold text-uppercase font-sans" style="font-size: 10px; color: #15803d; letter-spacing: 0.1em;">Govt. of Bangladesh</p>
-                </div>
-            </a>
-
-            <!-- Mobile Toggle -->
-            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-toggle="collapse" data-bs-target="#mainNav">
-                <i class="fa-solid fa-bars fs-4 text-secondary"></i>
-            </button>
-
-            <!-- Menu Items -->
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-3">
-                    
-                    <!-- Dropdown 1: Modules -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link fw-bold text-secondary" href="#" role="button">
-                            কোর মডিউলসমূহ <i class="fa-solid fa-chevron-down ms-1" style="font-size: 10px;"></i>
-                        </a>
-                        <div class="dropdown-menu border-0" style="width: 300px;">
-                            <a href="#" class="mega-menu-item">
-                                <div class="mega-icon-box bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-sitemap"></i></div>
-                                <div>
-                                    <h6 class="fw-bold m-0" style="font-size: 14px;">পরিচয় ও বংশলতিকা</h6>
-                                    <p class="text-muted m-0" style="font-size: 11px;">পারিবারিক ইতিহাস ও উত্তরাধিকার</p>
-                                </div>
-                            </a>
-                            <a href="#" class="mega-menu-item">
-                                <div class="mega-icon-box bg-success bg-opacity-10 text-success"><i class="fa-solid fa-heart-pulse"></i></div>
-                                <div>
-                                    <h6 class="fw-bold m-0" style="font-size: 14px;">স্বাস্থ্য ও জেনেটিক্স</h6>
-                                    <p class="text-muted m-0" style="font-size: 11px;">ক্লিনিক্যাল ও মেডিকেল রেকর্ড</p>
-                                </div>
-                            </a>
-                            <a href="#" class="mega-menu-item">
-                                <div class="mega-icon-box bg-warning bg-opacity-10 text-warning"><i class="fa-solid fa-building-columns"></i></div>
-                                <div>
-                                    <h6 class="fw-bold m-0" style="font-size: 14px;">অর্থনীতি ও সম্পদ</h6>
-                                    <p class="text-muted m-0" style="font-size: 11px;">ট্যাক্স, ব্যাংক এবং ওয়ালেট</p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-
-                    <!-- Dropdown 2: E-Services -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link fw-bold text-secondary" href="#" role="button">
-                            ই-সেবাসমূহ <i class="fa-solid fa-chevron-down ms-1" style="font-size: 10px;"></i>
-                        </a>
-                        <div class="dropdown-menu border-0" style="width: 280px;">
-                            <a href="#" class="mega-menu-item">
-                                <i class="fa-solid fa-certificate text-success fs-5 w-25 text-center"></i>
-                                <div>
-                                    <h6 class="fw-bold m-0" style="font-size: 14px;">ডিজিটাল সনদপত্র</h6>
-                                    <p class="text-muted m-0" style="font-size: 11px;">৪৫+ অটো-ভেরিফাইড সনদ</p>
-                                </div>
-                            </a>
-                            <a href="#" class="mega-menu-item">
-                                <i class="fa-solid fa-hand-holding-dollar text-success fs-5 w-25 text-center"></i>
-                                <div>
-                                    <h6 class="fw-bold m-0" style="font-size: 14px;">ভাতা ও প্রণোদনা</h6>
-                                    <p class="text-muted m-0" style="font-size: 11px;">সামাজিক নিরাপত্তা জাল</p>
-                                </div>
-                            </a>
-                            <a href="#" class="mega-menu-item">
-                                <i class="fa-solid fa-earth-americas text-orange-500 fs-5 w-25 text-center"></i>
-                                <div>
-                                    <h6 class="fw-bold m-0" style="font-size: 14px;">প্রবাসী গেটওয়ে</h6>
-                                    <p class="text-muted m-0" style="font-size: 11px;">রেমিট্যান্স ও কনস্যুলার সেবা</p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-
-                    <!-- Dropdown 3: Verification -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link fw-bold text-secondary" href="#" role="button">
-                            যাচাইকরণ <i class="fa-solid fa-chevron-down ms-1" style="font-size: 10px;"></i>
-                        </a>
-                        <div class="dropdown-menu border-0">
-                            <a class="dropdown-item fw-bold text-secondary py-2" href="#"><i class="fa-solid fa-fingerprint me-2"></i> UID স্ট্যাটাস চেক</a>
-                            <a class="dropdown-item fw-bold text-secondary py-2" href="#"><i class="fa-solid fa-qrcode me-2"></i> সনদ স্ক্যান করুন</a>
-                            <a class="dropdown-item fw-bold text-secondary py-2" href="#"><i class="fa-solid fa-building-user me-2"></i> কর্পোরেট API লগইন</a>
-                        </div>
-                    </li>
-                </ul>
-
-                <!-- Action Buttons -->
-                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
-                    <button class="btn btn-light border btn-sm fw-bold text-secondary d-none d-lg-flex align-items-center gap-2">
-                        <i class="fa-solid fa-language"></i> EN / BN
-                    </button>
-                    <a href="/login" class="btn btn-login shadow-sm d-flex align-items-center gap-2">
-                        <i class="fa-solid fa-fingerprint text-success"></i> নাগরিক লগইন
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <section class="hero-bg min-vh-100 d-flex flex-column justify-content-center align-items-center position-relative w-100 pt-5">
-        
-        <div class="container position-relative z-1 text-center mt-5">
-            <span class="badge bg-white bg-opacity-10 border border-white border-opacity-25 rounded-pill py-2 px-3 mb-4 text-uppercase fw-bold" style="color: #a7f3d0; letter-spacing: 0.1em; font-size: 11px; backdrop-filter: blur(5px);">
-                <i class="fa-solid fa-shield-halved me-1"></i> বাংলাদেশের নিরাপদ ডিজিটাল ব্যাকবোন
-            </span>
-            
-            <h1 class="display-3 fw-bolder text-white mb-4" style="text-shadow: 0 4px 20px rgba(0,0,0,0.3); line-height: 1.2;">
-                এক নাগরিক।<br>
-                এক <span class="gradient-text">নম্বর।</span><br>
-                এক রাষ্ট্র।
-            </h1>
-            
-            <p class="fs-5 text-white text-opacity-75 mb-5 mx-auto" style="max-width: 700px; font-weight: 300;">
-                জাতীয় সর্বজনীন সমন্বিত পরিচয় ব্যবস্থা। একটি বায়োমেট্রিক-সুরক্ষিত অপারেটিং সিস্টেম যা আপনার পরিচয়, স্বাস্থ্য, সম্পদ এবং নাগরিক অধিকারকে এক সুতোয় বাঁধে।
-            </p>
-
-            <!-- Verification & Search Box (Floating) -->
-            <div class="verify-box mx-auto d-flex align-items-center gap-2" style="max-width: 700px;">
-                <div class="px-3 text-success">
-                    <i class="fa-solid fa-magnifying-glass fs-5"></i>
-                </div>
-                <input type="text" class="form-control verify-input font-mono-code" placeholder="ইউআইডি (UID) অথবা সনদের কোড যাচাই করুন...">
-                <button class="btn btn-success rounded-pill px-4 px-md-5 py-2 py-md-3 fw-bold shadow d-flex align-items-center gap-2" style="background: linear-gradient(to right, #10b981, #059669); border: none;">
-                    যাচাই <i class="fa-solid fa-arrow-right d-none d-md-inline"></i>
-                </button>
-            </div>
-            
-            <p class="mt-3 font-mono-code fw-bold text-uppercase" style="color: rgba(167, 243, 208, 0.8); font-size: 11px; letter-spacing: 0.1em;">
-                চেষ্টা করুন: AA-10253636 অথবা CERT-88210
-            </p>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4 text-success text-opacity-50 animate-bounce-custom">
-            <i class="fa-solid fa-chevron-down fs-3"></i>
-        </div>
-    </section>
-
-    <!-- LIVE STATS SECTION -->
-    <section class="py-5 bg-white border-bottom border-light">
+    <!-- Header (Menu) -->
+    <header class="gov-header sticky-top">
         <div class="container">
-            <div class="row g-4 text-center">
-                <div class="col-6 col-md-3 border-end">
-                    <h2 class="display-5 fw-bolder text-dark font-mono-code m-0">১৭.২<span class="text-success">কোটি</span></h2>
-                    <p class="text-muted fw-bold text-uppercase m-0 mt-2" style="font-size: 11px; letter-spacing: 0.1em;">ভেরিফাইড নাগরিক</p>
-                </div>
-                <div class="col-6 col-md-3 border-end-md">
-                    <h2 class="display-5 fw-bolder text-dark font-mono-code m-0">৯৯<span class="text-success">%</span></h2>
-                    <p class="text-muted fw-bold text-uppercase m-0 mt-2" style="font-size: 11px; letter-spacing: 0.1em;">বায়োমেট্রিক নির্ভুলতা</p>
-                </div>
-                <div class="col-6 col-md-3 border-end">
-                    <h2 class="display-5 fw-bolder text-dark font-mono-code m-0">৳২৫০<span class="text-success">কোটি</span></h2>
-                    <p class="text-muted fw-bold text-uppercase m-0 mt-2" style="font-size: 11px; letter-spacing: 0.1em;">আজকের সাবসিডি প্রদান</p>
-                </div>
-                <div class="col-6 col-md-3">
-                    <h2 class="display-5 fw-bolder text-dark font-mono-code m-0">০<span class="text-success">%</span></h2>
-                    <p class="text-muted fw-bold text-uppercase m-0 mt-2" style="font-size: 11px; letter-spacing: 0.1em;">সিস্টেম দুর্নীতি</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MODULES GRID (Ecosystem Overview) -->
-    <section class="py-5" style="background-color: #f8fafc;">
-        <div class="container py-5">
-            <div class="text-center mb-5 mx-auto" style="max-width: 700px;">
-                <h2 class="fw-bold text-dark mb-3">একটি বাধাহীন ইকোসিস্টেম</h2>
-                <p class="text-secondary fs-6">ইউআইডি কাগজের নথি, আমলাতান্ত্রিক জটিলতা এবং ডেটার দ্বৈততা দূর করে নাগরিকের জীবনের প্রতিটি অংশকে একটি মাত্র ক্রিপ্টোগ্রাফিক হ্যাশের সাথে যুক্ত করে।</p>
-            </div>
-
-            <div class="row g-4">
+            <nav class="navbar navbar-expand-lg p-0">
+                <a class="navbar-brand d-flex align-items-center gap-2 py-2" href="#">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/National_Emblem_of_Bangladesh_Monochrome.svg" alt="সরকারি লোগো" width="36" height="36">
+                    <span class="fw-bold text-white fs-4" style="letter-spacing: -0.02em;">ইউআইডি</span>
+                </a>
+                <button class="navbar-toggler border-0 shadow-none text-white me-2" type="button" data-bs-toggle="collapse" data-bs-target="#govNav">
+                    <span class="fw-bold fs-6 me-1">মেন্যু</span> <i class="fa-solid fa-caret-down"></i>
+                </button>
                 
-                <!-- Module 1 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="glass-card p-4 p-md-5">
-                        <div class="rounded-3 bg-indigo-50 text-indigo-600 d-flex align-items-center justify-content-center mb-4 shadow-sm border" style="width: 56px; height: 56px; font-size: 24px;">
-                            <i class="fa-solid fa-sitemap"></i>
-                        </div>
-                        <h4 class="fw-bold text-dark mb-3 fs-5">বংশলতিকা ও উত্তরাধিকার</h4>
-                        <p class="text-secondary mb-4" style="font-size: 14px; line-height: 1.6;">স্বয়ংক্রিয় ফ্যামিলি ট্রি যা আপনার উত্তরাধিকার, ওয়ারিশ সনদ এবং আইনি ফরায়েজ মুহূর্তের মধ্যে হিসাব করে দেয়।</p>
-                        <a href="#" class="fw-bold text-indigo-600 text-decoration-none" style="font-size: 13px;">বিস্তারিত জানুন <i class="fa-solid fa-arrow-right ms-1 text-muted"></i></a>
-                    </div>
-                </div>
-
-                <!-- Module 2 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="glass-card p-4 p-md-5">
-                        <div class="rounded-3 bg-success bg-opacity-10 text-success d-flex align-items-center justify-content-center mb-4 shadow-sm border" style="width: 56px; height: 56px; font-size: 24px;">
-                            <i class="fa-solid fa-heart-pulse"></i>
-                        </div>
-                        <h4 class="fw-bold text-dark mb-3 fs-5">স্বাস্থ্য ও চিকিৎসা লেজার</h4>
-                        <p class="text-secondary mb-4" style="font-size: 14px; line-height: 1.6;">কেন্দ্রীয় ক্লিনিক্যাল ডায়াগনস্টিকস, ই-প্রেসক্রিপশন এবং জেনেটিক ঝুঁকি বিশ্লেষণ সরাসরি আপনার বায়োমেট্রিকের সাথে যুক্ত।</p>
-                        <a href="#" class="fw-bold text-success text-decoration-none" style="font-size: 13px;">বিস্তারিত জানুন <i class="fa-solid fa-arrow-right ms-1 text-muted"></i></a>
-                    </div>
-                </div>
-
-                <!-- Module 3 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="glass-card p-4 p-md-5">
-                        <div class="rounded-3 bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center mb-4 shadow-sm border" style="width: 56px; height: 56px; font-size: 24px;">
-                            <i class="fa-solid fa-building-columns"></i>
-                        </div>
-                        <h4 class="fw-bold text-dark mb-3 fs-5">অর্থনীতি ও কর ব্যবস্থাপনা</h4>
-                        <p class="text-secondary mb-4" style="font-size: 14px; line-height: 1.6;">স্বয়ংক্রিয় আয়কর রিটার্ন, লাইভ ক্রেডিট স্কোর এবং সরকারি ভাতার টাকা সরাসরি আপনার ইউনিফাইড ওয়ালেটে।</p>
-                        <a href="#" class="fw-bold text-primary text-decoration-none" style="font-size: 13px;">বিস্তারিত জানুন <i class="fa-solid fa-arrow-right ms-1 text-muted"></i></a>
-                    </div>
-                </div>
-
-                <!-- Module 4 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="glass-card p-4 p-md-5">
-                        <div class="rounded-3 bg-warning bg-opacity-10 text-warning d-flex align-items-center justify-content-center mb-4 shadow-sm border" style="width: 56px; height: 56px; font-size: 24px;">
-                            <i class="fa-solid fa-scale-balanced"></i>
-                        </div>
-                        <h4 class="fw-bold text-dark mb-3 fs-5">বিচার ও নাগরিক অধিকার</h4>
-                        <p class="text-secondary mb-4" style="font-size: 14px; line-height: 1.6;">ডিজিটাল পুলিশ ক্লিয়ারেন্স, জমি বিরোধ নিষ্পত্তি এবং অপরিবর্তনীয় ব্লকচেইন ভিত্তিক ডিজিটাল ভোটিং রেকর্ড।</p>
-                        <a href="#" class="fw-bold text-warning text-decoration-none" style="font-size: 13px;">বিস্তারিত জানুন <i class="fa-solid fa-arrow-right ms-1 text-muted"></i></a>
-                    </div>
-                </div>
-
-                <!-- Module 5 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="glass-card p-4 p-md-5">
-                        <div class="rounded-3 bg-danger bg-opacity-10 text-danger d-flex align-items-center justify-content-center mb-4 shadow-sm border" style="width: 56px; height: 56px; font-size: 24px;">
-                            <i class="fa-solid fa-earth-americas"></i>
-                        </div>
-                        <h4 class="fw-bold text-dark mb-3 fs-5">প্রবাসী ও অভিবাসী গেটওয়ে</h4>
-                        <p class="text-secondary mb-4" style="font-size: 14px; line-height: 1.6;">প্রবাসী বাংলাদেশীদের জন্য রেমিট্যান্স ইনসেন্টিভ এবং বিদেশীদের জন্য ভিসা ও ওয়ার্ক পারমিট ট্র্যাকিং।</p>
-                        <a href="#" class="fw-bold text-danger text-decoration-none" style="font-size: 13px;">বিস্তারিত জানুন <i class="fa-solid fa-arrow-right ms-1 text-muted"></i></a>
-                    </div>
-                </div>
-
-                <!-- Module 6 (Special Privacy Card) -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="glass-card p-4 p-md-5 border-0 shadow-lg" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
-                        <div class="rounded-3 bg-white bg-opacity-10 text-white d-flex align-items-center justify-content-center mb-4 border border-white border-opacity-25" style="width: 56px; height: 56px; font-size: 24px;">
-                            <i class="fa-solid fa-user-shield"></i>
-                        </div>
-                        <h4 class="fw-bold text-white mb-3 fs-5">তথ্য সুরক্ষা ও সম্মতি</h4>
-                        <p class="text-white text-opacity-75 mb-4" style="font-size: 14px; line-height: 1.6;">আপনার তথ্যের মালিক আপনি। ১০ মিনিটের অস্থায়ী টোকেন তৈরি করুন এবং যেকোনো প্রতিষ্ঠানের এক্সেস বাতিল করুন।</p>
-                        <a href="#" class="fw-bold text-white text-decoration-none" style="font-size: 13px;">প্রাইভেসি রুলস দেখুন <i class="fa-solid fa-arrow-right ms-1 text-muted"></i></a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- CALL TO ACTION / REGISTRATION -->
-    <section class="py-5 bg-white position-relative overflow-hidden">
-        <!-- Abstract Background Shapes -->
-        <div class="position-absolute top-0 end-0 bg-success bg-opacity-10 rounded-circle" style="width: 300px; height: 300px; filter: blur(50px); transform: translate(50%, -50%);"></div>
-        <div class="position-absolute bottom-0 start-0 bg-primary bg-opacity-10 rounded-circle" style="width: 300px; height: 300px; filter: blur(50px); transform: translate(-50%, 50%);"></div>
-        
-        <div class="container py-5 text-center position-relative z-1">
-            <h2 class="fw-bold text-dark mb-4 display-6">আপনার ইউনিভার্সাল পরিচয় নিশ্চিত করেছেন কি?</h2>
-            <p class="text-secondary mb-5 mx-auto fs-5" style="max-width: 700px;">ইউআইডি নিবন্ধন এখন বাধ্যতামূলক। আপনি যদি এখনও আপনার পুরানো এনআইডি বা জন্ম নিবন্ধন সিস্টেমের সাথে যুক্ত না করে থাকেন, তবে নিকটস্থ ভলান্টিয়ার কিওস্কে যোগাযোগ করুন।</p>
-            
-            <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
-                <button class="btn btn-success btn-lg fw-bold px-4 py-3 rounded-4 shadow d-flex align-items-center gap-2">
-                    <i class="fa-solid fa-location-dot"></i> নিকটস্থ কিওস্ক খুঁজুন
-                </button>
-                <button class="btn btn-outline-dark btn-lg fw-bold px-4 py-3 rounded-4 bg-white d-flex align-items-center gap-2">
-                    <i class="fa-solid fa-book-open"></i> নির্দেশিকা পড়ুন
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="py-5 border-top" style="background-color: #0f172a; color: #94a3b8;">
-        <div class="container py-4">
-            <div class="row g-5 mb-4 pb-4 border-bottom border-secondary border-opacity-25">
-                <div class="col-lg-6">
-                    <div class="d-flex align-items-center gap-3 mb-3">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/National_Emblem_of_Bangladesh.svg" alt="BD" style="width: 40px; filter: grayscale(100%) invert(1); opacity: 0.7;">
-                        <span class="fs-5 fw-bold text-white" style="letter-spacing: 0.1em;">ইউআইডি অথরিটি</span>
-                    </div>
-                    <p class="text-sm" style="max-width: 400px; line-height: 1.6;">
-                        প্রধানমন্ত্রীর কার্যালয়ের অধীনে পরিচালিত, ইউআইডি কর্তৃপক্ষ জাতীয় নাগরিক ডেটার ক্রিপ্টোগ্রাফিক অখণ্ডতা এবং শতভাগ নিরাপত্তা নিশ্চিত করে।
-                    </p>
-                </div>
-                <div class="col-sm-6 col-lg-3">
-                    <h5 class="text-white fw-bold mb-4" style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;">রিসোর্স</h5>
-                    <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 14px;">
-                        <li><a href="#" class="text-decoration-none text-secondary hover-text-white">ডেভেলপার API</a></li>
-                        <li><a href="#" class="text-decoration-none text-secondary hover-text-white">ভেরিফিকেশন এন্ডপয়েন্ট</a></li>
-                        <li><a href="#" class="text-decoration-none text-secondary hover-text-white">প্রাইভেসি পলিসি</a></li>
-                        <li><a href="#" class="text-decoration-none text-secondary hover-text-white">আইনি কাঠামো (অ্যাক্ট ২০২৫)</a></li>
+                <div class="collapse navbar-collapse" id="govNav">
+                    <ul class="navbar-nav me-auto">
+                        <!-- Dropdown: Services and Information -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                সেবা ও তথ্য
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                                <li><a class="dropdown-item" href="#">ভাতাসমূহ</a></li>
+                                <li><a class="dropdown-item" href="#">জন্ম, মৃত্যু ও বিবাহ</a></li>
+                                <li><a class="dropdown-item" href="#">ব্যবসা ও স্বকর্মসংস্থান</a></li>
+                                <li><a class="dropdown-item" href="#">শিশু পরিচর্যা ও মাতৃত্ব</a></li>
+                                <li><a class="dropdown-item" href="#">নাগরিকত্ব ও বসবাস</a></li>
+                                <li><a class="dropdown-item" href="#">অপরাধ, বিচার ও আইন</a></li>
+                                <li><a class="dropdown-item" href="#">প্রতিবন্ধী ব্যক্তিবর্গ</a></li>
+                                <li><a class="dropdown-item" href="#">ড্রাইভিং ও পরিবহন</a></li>
+                                <li><a class="dropdown-item" href="#">শিক্ষা ও শিখন</a></li>
+                                <li><a class="dropdown-item" href="#">কর্মী নিয়োগ</a></li>
+                                <li><a class="dropdown-item" href="#">পরিবেশ ও পল্লি</a></li>
+                                <li><a class="dropdown-item" href="#">আবাসন ও স্থানীয় সেবা</a></li>
+                                <li><a class="dropdown-item" href="#">অর্থ ও কর</a></li>
+                                <li><a class="dropdown-item" href="#">পাসপোর্ট ও ভ্রমণ</a></li>
+                                <li><a class="dropdown-item" href="#">ভিসা ও ইমিগ্রেশন</a></li>
+                                <li><a class="dropdown-item" href="#">কাজ, চাকরি ও পেনশন</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Dropdown: Government Activity -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="govActivityDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                সরকারি কার্যক্রম
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="govActivityDropdown">
+                                <li><a class="dropdown-item" href="#">মন্ত্রণালয় ও বিভাগ</a></li>
+                                <li><a class="dropdown-item" href="#">খবর ও আপডেট</a></li>
+                                <li><a class="dropdown-item" href="#">নির্দেশনা ও প্রবিধান</a></li>
+                                <li><a class="dropdown-item" href="#">গবেষণা ও পরিসংখ্যান</a></li>
+                                <li><a class="dropdown-item" href="#">নীতিমালা ও পরামর্শ</a></li>
+                                <li><a class="dropdown-item" href="#">স্বচ্ছতা</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <ul class="navbar-nav align-items-lg-center">
+                        <li class="nav-item">
+                            <a href="/login" class="nav-link bg-white text-dark d-inline-flex align-items-center justify-content-center px-4" style="height: 100%;">
+                                <i class="fa-solid fa-user me-2"></i> নাগরিক লগইন
+                            </a>
+                        </li>
                     </ul>
                 </div>
-                <div class="col-sm-6 col-lg-3">
-                    <h5 class="text-white fw-bold mb-4" style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;">সহায়তা</h5>
-                    <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 14px;">
-                        <li><a href="#" class="text-decoration-none text-secondary hover-text-white">হেল্প সেন্টার (১৬১০০)</a></li>
-                        <li><a href="#" class="text-decoration-none text-secondary hover-text-white">পরিচয় জালিয়াতি রিপোর্ট</a></li>
-                        <li><a href="#" class="text-decoration-none text-secondary hover-text-white">কিওস্ক অপারেটর লগইন</a></li>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-7">
+                        <h1 class="hero-title">জাতীয় ইউআইডি পোর্টালে স্বাগতম</h1>
+                        <p class="fs-4 mb-4 text-dark" style="line-height: 1.4;">
+                            আপনার নাগরিক সেবা, সরকারি তথ্য, শিক্ষা, স্বাস্থ্য, এবং কর-এর সমস্ত রেকর্ড এক জায়গায়। এটি গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের সেন্ট্রাল সিটিজেন পোর্টাল।
+                        </p>
+
+                        <!-- Big Search Box -->
+                        <form class="gov-search mb-4" style="max-width: 600px;">
+                            <label class="visually-hidden" for="search-gov">খুঁজুন</label>
+                            <input type="text" id="search-gov" class="form-control" placeholder="খুঁজুন (যেমন: ট্যাক্স, পাসপোর্ট, ভাতা)...">
+                            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </form>
+
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="/user" class="btn-gov text-decoration-none">
+                                ড্যাশবোর্ডে লগইন করুন <i class="fa-solid fa-chevron-right fs-6 mt-1"></i>
+                            </a>
+                            <a href="#" class="btn-gov-outline text-decoration-none">
+                                কীভাবে নিবন্ধন করবেন
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Flat UID Card Illustration -->
+                    <div class="col-lg-5 d-none d-lg-block">
+                        <div class="flat-id-card">
+                            <div class="d-flex justify-content-between align-items-start mb-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="seal">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/National_Emblem_of_Bangladesh_Monochrome.svg" alt="সিল" class="w-100" style="opacity: 0.8;">
+                                    </div>
+                                    <div>
+                                        <p class="m-0 fw-bold fs-6">গণপ্রজাতন্ত্রী বাংলাদেশ</p>
+                                        <p class="m-0 text-xxs fw-bold text-secondary" style="letter-spacing: 1px;">স্মার্ট নাগরিক খতিয়ান</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4 pt-2 border-top border-2 border-dark">
+                                <p class="text-xxs fw-bold text-secondary m-0 mb-1">ইউআইডি নম্বর</p>
+                                <h2 class="font-mono-code fw-bold m-0" style="letter-spacing: 2px;">AA-10253636</h2>
+                            </div>
+
+                            <div class="row g-3 border-top border-2 border-dark pt-3">
+                                <div class="col-6 border-end border-2 border-dark">
+                                    <p class="text-xxs fw-bold text-secondary m-0 mb-1">নাগরিক</p>
+                                    <h5 class="fw-bold m-0">ঐশিক রেহমান</h5>
+                                </div>
+                                <div class="col-6">
+                                    <p class="text-xxs fw-bold text-secondary m-0 mb-1">স্ট্যাটাস</p>
+                                    <p class="fw-bold m-0 text-success"><i class="fa-solid fa-circle-check me-1"></i> যাচাইকৃত</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Services Section -->
+        <section class="py-5">
+            <div class="container py-4">
+                <h2 class="fw-bold mb-4 pb-2 border-bottom border-2 text-dark">জনপ্রিয় সেবাসমূহ</h2>
+                
+                <div class="row g-4">
+                    <!-- Service 1 -->
+                    <div class="col-md-6 col-lg-4">
+                        <a href="/wallet" class="text-decoration-none">
+                            <div class="service-card">
+                                <h3><i class="fa-solid fa-wallet text-dark me-2"></i> ডিজিটাল ওয়ালেট ও অর্থ</h3>
+                                <p class="text-secondary m-0 mt-2">সরকারি ফি প্রদান, ট্যাক্স পরিশোধ এবং সেন্ট্রাল ব্যাংক থেকে সরাসরি ভাতা গ্রহণ করুন।</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="col-md-6 col-lg-4">
+                        <a href="/health" class="text-decoration-none">
+                            <div class="service-card">
+                                <h3><i class="fa-solid fa-heart-pulse text-dark me-2"></i> স্বাস্থ্য ও বায়োমেট্রিক্স</h3>
+                                <p class="text-secondary m-0 mt-2">আপনার ক্লিনিক্যাল রেকর্ড, ডিএনএ সিগনেচার এবং জরুরি চিকিৎসা তথ্য পরিচালনা করুন।</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="col-md-6 col-lg-4">
+                        <a href="/education" class="text-decoration-none">
+                            <div class="service-card">
+                                <h3><i class="fa-solid fa-graduation-cap text-dark me-2"></i> শিক্ষা ও দক্ষতা</h3>
+                                <p class="text-secondary m-0 mt-2">আপনার যাচাইকৃত একাডেমিক ট্রান্সক্রিপ্ট এবং কারিগরি সনদসমূহ একীভূত করুন।</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Service 4 -->
+                    <div class="col-md-6 col-lg-4">
+                        <a href="/assets" class="text-decoration-none">
+                            <div class="service-card">
+                                <h3><i class="fa-solid fa-house-flag text-dark me-2"></i> সম্পদ ও ভূমি</h3>
+                                <p class="text-secondary m-0 mt-2">জমি বা ফ্ল্যাটের ই-পর্চা এবং ডিজিটাল মালিকানা রেকর্ড হালনাগাদ করুন।</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Service 5 -->
+                    <div class="col-md-6 col-lg-4">
+                        <a href="/lineage" class="text-decoration-none">
+                            <div class="service-card">
+                                <h3><i class="fa-solid fa-sitemap text-dark me-2"></i> পরিবার ও উত্তরাধিকার</h3>
+                                <p class="text-secondary m-0 mt-2">আপনার ডিজিটাল বংশলতিকা এবং উত্তরাধিকারীদের আইনি তথ্য যুক্ত করুন।</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Service 6 -->
+                    <div class="col-md-6 col-lg-4">
+                        <a href="/services" class="text-decoration-none">
+                            <div class="service-card">
+                                <h3><i class="fa-solid fa-file-contract text-dark me-2"></i> ই-সনদ ডাউনলোড</h3>
+                                <p class="text-secondary m-0 mt-2">আয়ের সনদ, পুলিশ ক্লিয়ারেন্স বা ট্রেড লাইসেন্সের মতো যাচাইকৃত সনদ তৈরি করুন।</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Information Section -->
+        <section class="py-5" style="background-color: #0f172a; color: white;">
+            <div class="container py-4">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6">
+                        <h2 class="fw-bold mb-4">জিরো-ইন্টারভেনশন প্রোটোকল</h2>
+                        <p class="fs-5 text-secondary text-white-50">
+                            ইউআইডি সিস্টেমে আপনার ডেটা সম্পূর্ণ স্বয়ংক্রিয়ভাবে যাচাই করা হয়। কোনো সরকারি কর্মকর্তার ম্যানুয়াল সই বা অনুমোদনের প্রয়োজন নেই। 
+                        </p>
+                        <p class="fs-5 text-secondary text-white-50">
+                            অ্যাডভান্সড বায়োমেট্রিক হ্যাশ প্রোটোকল এবং ব্লকচেইন প্রযুক্তি নিশ্চিত করে যে আপনার ডেটা অপরিবর্তনীয় এবং ১০০% সুরক্ষিত।
+                        </p>
+                        <a href="#" class="btn btn-outline-light fw-bold mt-3 border-2">সিকিউরিটি ম্যানুয়াল পড়ুন</a>
+                    </div>
+                    <div class="col-lg-5 offset-lg-1 border-start border-4 border-success ps-lg-5">
+                        <h1 class="fw-bold text-success mb-2">১৬ কোটির+</h1>
+                        <p class="fs-5 fw-bold text-white-50 mb-4">নিবন্ধিত প্রোফাইল</p>
+                        
+                        <h1 class="fw-bold text-success mb-2">০.০০১ সে.</h1>
+                        <p class="fs-5 fw-bold text-white-50 mb-4">ভেরিফিকেশন স্পিড</p>
+                        
+                        <h1 class="fw-bold text-success mb-2">২৪/৭</h1>
+                        <p class="fs-5 fw-bold text-white-50 m-0">অটোমেটেড সেবা</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Comprehensive Gov Style Footer -->
+    <footer class="gov-footer">
+        <div class="container">
+            <div class="row g-4 g-lg-5 mb-5">
+                
+                <!-- Services and Information -->
+                <div class="col-md-8">
+                    <h2 class="footer-heading">সেবা ও তথ্য</h2>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled m-0">
+                                <li><a href="#" class="footer-link">ভাতাসমূহ</a></li>
+                                <li><a href="#" class="footer-link">জন্ম, মৃত্যু, বিবাহ ও পরিচর্যা</a></li>
+                                <li><a href="#" class="footer-link">ব্যবসা ও স্বকর্মসংস্থান</a></li>
+                                <li><a href="#" class="footer-link">শিশু পরিচর্যা ও মাতৃত্ব</a></li>
+                                <li><a href="#" class="footer-link">নাগরিকত্ব ও বাংলাদেশে বসবাস</a></li>
+                                <li><a href="#" class="footer-link">অপরাধ, বিচার ও আইন</a></li>
+                                <li><a href="#" class="footer-link">প্রতিবন্ধী ব্যক্তিবর্গ</a></li>
+                                <li><a href="#" class="footer-link">ড্রাইভিং ও পরিবহন</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled m-0">
+                                <li><a href="#" class="footer-link">শিক্ষা ও শিখন</a></li>
+                                <li><a href="#" class="footer-link">কর্মী নিয়োগ</a></li>
+                                <li><a href="#" class="footer-link">পরিবেশ ও পল্লি</a></li>
+                                <li><a href="#" class="footer-link">আবাসন ও স্থানীয় সেবা</a></li>
+                                <li><a href="#" class="footer-link">অর্থ ও কর</a></li>
+                                <li><a href="#" class="footer-link">পাসপোর্ট, ভ্রমণ ও প্রবাস জীবন</a></li>
+                                <li><a href="#" class="footer-link">ভিসা ও ইমিগ্রেশন</a></li>
+                                <li><a href="#" class="footer-link">কাজ, চাকরি ও পেনশন</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Government Activity -->
+                <div class="col-md-4">
+                    <h2 class="footer-heading">সরকারি কার্যক্রম</h2>
+                    <ul class="list-unstyled m-0">
+                        <li><a href="#" class="footer-link">মন্ত্রণালয় ও বিভাগ</a></li>
+                        <li><a href="#" class="footer-link">খবর</a></li>
+                        <li><a href="#" class="footer-link">নির্দেশনা ও প্রবিধান</a></li>
+                        <li><a href="#" class="footer-link">গবেষণা ও পরিসংখ্যান</a></li>
+                        <li><a href="#" class="footer-link">খসড়া নীতি ও পরামর্শ</a></li>
+                        <li><a href="#" class="footer-link">স্বচ্ছতা</a></li>
+                        <li><a href="#" class="footer-link">সরকার কীভাবে কাজ করে</a></li>
+                        <li><a href="#" class="footer-link">যুক্ত হোন</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center" style="font-size: 12px;">
-                <p class="m-0">&copy; ২০২৬ ন্যাশনাল ইউআইডি অথরিটি, বাংলাদেশ সরকার। সর্বস্বত্ব সংরক্ষিত।</p>
-                <div class="d-flex gap-4 mt-3 mt-md-0">
-                    <span class="d-flex align-items-center gap-2"><i class="fa-solid fa-shield-check text-success"></i> RSA-4096 এনক্রিপ্টেড</span>
-                    <span class="d-flex align-items-center gap-2"><i class="fa-solid fa-server text-primary"></i> সার্ভার অনলাইন</span>
+
+            <!-- Footer Bottom: Meta Links & OGL -->
+            <div class="border-top border-dark pt-4 d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-4">
+                <div>
+                    <div class="mb-3">
+                        <a href="#" class="footer-meta-link">সহায়তা</a>
+                        <a href="#" class="footer-meta-link">গোপনীয়তা</a>
+                        <a href="#" class="footer-meta-link">কুকিজ</a>
+                        <a href="#" class="footer-meta-link">অ্যাক্সেসিবিলিটি</a>
+                        <a href="#" class="footer-meta-link">যোগাযোগ</a>
+                        <a href="#" class="footer-meta-link">শর্তাবলী</a>
+                        <a href="#" class="footer-meta-link">ইংরেজি সংস্করণ</a>
+                        <a href="#" class="footer-meta-link">গভর্নমেন্ট ডিজিটাল সার্ভিস</a>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 text-dark">
+                        <svg viewBox="0 0 48 48" style="width: 24px; height: 24px; fill: currentColor;"><path d="M24 0C10.745 0 0 10.745 0 24s10.745 24 24 24 24-10.745 24-24S37.255 0 24 0zm0 43.2c-10.587 0-19.2-8.613-19.2-19.2S13.413 4.8 24 4.8 43.2 13.413 43.2 24 34.587 43.2 24 43.2zm6.624-28.032l-8.64 8.64-3.84-3.84L14.4 23.76l7.488 7.488 12.288-12.288-3.552-3.792z"></path></svg>
+                        <span style="font-size: 0.875rem;">অন্যথায় উল্লেখ না থাকলে এই ওয়েবসাইটের সকল তথ্য <a href="#" class="footer-link d-inline text-dark fw-bold border-bottom border-dark text-decoration-none">ওপেন গভর্নমেন্ট লাইসেন্স ৩.০</a>-এর আওতায় উন্মুক্ত।</span>
+                    </div>
+                </div>
+                <div class="text-lg-end pb-2">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/National_Emblem_of_Bangladesh_Monochrome.svg" alt="সরকারি লোগো" width="40" style="opacity: 0.8;">
+                    <p class="m-0 mt-2 text-dark fw-bold" style="font-size: 0.875rem;">&copy; বাংলাদেশ সরকার</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS Bundle -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
